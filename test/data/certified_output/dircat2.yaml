@@ -1,0 +1,27 @@
+--- !ruby/object:DirCatSer 
+table: 
+  :ctime: !timestamp 2006-12-27T16:21:43+0100
+  :version: 0.1
+  :entries: 
+  - !ruby/object:EntrySer 
+    table: 
+      :mtime: 2006-12-16 10:39:57 +01:00
+      :path: subdir
+      :name: file3.txt
+      :size: 2
+      :md5: 4124bc0a9335c27f086f24ba207a4912
+  - !ruby/object:EntrySer 
+    table: 
+      :mtime: 2006-12-16 10:39:57 +01:00
+      :path: .
+      :name: file2.txt
+      :size: 3
+      :md5: c5053d4da03789bfbc4bee760fade936
+  - !ruby/object:EntrySer 
+    table: 
+      :mtime: 2006-12-16 10:39:57 +01:00
+      :path: .
+      :name: file1.txt
+      :size: 3
+      :md5: 933222b19ff3e7ea5f65517ea1f7d57e
+  :dirname: C:/prj/dircat/test/data/dir2
