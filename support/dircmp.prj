@@ -1,0 +1,22 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Project Start=D6070C0002001A00120019000E0000003E
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=*.rb
+Create Tagfile=0
+Working Time=17530
+[Files]
+0=D:\GioDoc\Projects\ruby_scripts\
+[Folders]
+D:\GioDoc\Projects\ruby_scripts\=1
+D:\GioDoc\Projects\ruby_scripts\ - bin=1
+D:\GioDoc\Projects\ruby_scripts\ - bin - .svn=1
+D:\GioDoc\Projects\ruby_scripts\ - test=1
+[Open Files]
+Open File0=
+Active File Display Mode=-1
