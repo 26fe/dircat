@@ -3,6 +3,6 @@
 $DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..") )
 $:.unshift( File.join($DIRCAT_HOME, "lib" ) )
 
-require 'cli/dircat_cmp.rb'
+require 'dircat/cli/dircat_cmp.rb'
 
 DirCmp.run
