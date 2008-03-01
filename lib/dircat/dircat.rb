@@ -1,8 +1,11 @@
+# stdlib
 require 'ftools'
 require 'tmpdir'
-require 'md5'
 require 'yaml'
 require 'ostruct'
+
+# dircat
+require 'common/md5'
 
 #
 # GLOBAL VAR
@@ -10,20 +13,6 @@ require 'ostruct'
 
 $VERBOSE_LEVEL = 0
 
-#
-# calcola md5 di file grandi, copiata da usenet
-#
-class MD5
-  def self.file(file)
-    File.open(file, "rb") do |f|
-      res = self.new
-      while (data = f.read(4096))
-        res << data
-      end
-      res
-    end
-  end
-end
 
 #
 # copiata da http://wiki.rubygarden.org/Ruby/page/show/FixNumFormat
