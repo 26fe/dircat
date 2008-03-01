@@ -1,10 +1,10 @@
-$DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..") )
+$DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..", "..") )
 $:.unshift( File.join($DIRCAT_HOME, "lib" ) )
 
 require 'test/unit'
 
-require 'dircat.rb'
-require 'cli/dircat_build.rb'
+require 'dircat/dircat.rb'
+require 'dircat/cli/dircat_build.rb'
 
 class TC_DirCatBuild < Test::Unit::TestCase
 
@@ -12,8 +12,8 @@ class TC_DirCatBuild < Test::Unit::TestCase
     @testdata_dirname         = File.join( $DIRCAT_HOME, "test", "data")
     @dir1_dirname             = File.join( @testdata_dirname, "dir1" )
     @dir2_dirname             = File.join( @testdata_dirname, "dir2" )
-		@certified_output_dirname = File.join( @testdata_dirname, "certified_output" )
-		@tmp_output_dirname       = File.join( @testdata_dirname, "tmp" )
+    @certified_output_dirname = File.join( @testdata_dirname, "certified_output" )
+    @tmp_output_dirname       = File.join( @testdata_dirname, "tmp" )
   end
 
   def test_help

@@ -1,8 +1,8 @@
-$DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..") )
+$DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..", "..") )
 $:.unshift( File.join($DIRCAT_HOME, "lib" ) )
 
 require 'test/unit'
-require 'dircat.rb'
+require 'dircat/dircat.rb'
 
 # dir1 contiene 2 file
 # aggiunto un file a dir1
@@ -26,7 +26,7 @@ require 'dircat.rb'
 class TC_DirCat < Test::Unit::TestCase
 
   def setup
-    @data_dir = File.join($DIRCAT_HOME, "test", "data")
+    @data_dir = File.join($DIRCAT_HOME, "test", "dircat", "data")
     @tmp_dir  = File.join( @data_dir, "tmp" )
   end
 
