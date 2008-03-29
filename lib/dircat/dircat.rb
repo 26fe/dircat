@@ -13,19 +13,18 @@ require 'common/md5'
 
 $VERBOSE_LEVEL = 0
 
-
 #
 # copiata da http://wiki.rubygarden.org/Ruby/page/show/FixNumFormat
 #
 class Numeric
-	def with_separator( separator = ',', length = 3 )
-	  splitter = Regexp.compile "(\\d{#{length}})"
-	  before, after = self.to_s.split('.')
-	  before = before.reverse.gsub splitter, '\1' + separator
-	  str = "#{ before.chomp( separator ).reverse }"
-	  str += ".#{ after }" if after
-	  return str
-	end
+  def with_separator( separator = ',', length = 3 )
+    splitter = Regexp.compile "(\\d{#{length}})"
+    before, after = self.to_s.split('.')
+    before = before.reverse.gsub splitter, '\1' + separator
+    str = "#{ before.chomp( separator ).reverse }"
+    str += ".#{ after }" if after
+    return str
+  end
 end
 
 class EntrySer < OpenStruct
@@ -60,22 +59,22 @@ class Entry
   end
 
   def from_ser( entry_ser )
-		@md5   = entry_ser.md5
-		@name  = entry_ser.name
-		@path  = entry_ser.path
-		@size  = entry_ser.size
-		@mtime = entry_ser.mtime
-		self
+    @md5   = entry_ser.md5
+    @name  = entry_ser.name
+    @path  = entry_ser.path
+    @size  = entry_ser.size
+    @mtime = entry_ser.mtime
+    self
   end
 
   def to_ser
     entry_ser = EntrySer.new
-		entry_ser.md5   = @md5
-		entry_ser.name  = @name
-		entry_ser.path  = @path
-		entry_ser.size  = @size
-		entry_ser.mtime = @mtime
-		entry_ser
+    entry_ser.md5   = @md5
+    entry_ser.name  = @name
+    entry_ser.path  = @path
+    entry_ser.size  = @size
+    entry_ser.mtime = @mtime
+    entry_ser
   end
 
   def to_s
@@ -107,7 +106,7 @@ class DirCat
     self
   end
 
-  def from_ser(dircat_ser)
+  def from_ser( dircat_ser )
     @dirname = dircat_ser.dirname
     @ctime   = dircat_ser.ctime
     @entries = Array.new

@@ -2,9 +2,8 @@ require 'optparse'
 require 'dircat/dircat.rb'
 
 #
-# DirCatBuild
+# Build a catalogue starting from a directory
 #
-
 class DirCatBuild
 
   def self.run
@@ -15,7 +14,10 @@ class DirCatBuild
 
     options = { :verbose => true, :force => false }
     opts = OptionParser.new
-    opts.banner = "Usage: example.rb [options]"
+    opts.banner << "Usage: dircat_build [options]\n"
+    opts.banner << "\n"
+    opts.banner << "Build a catalogue starting from a directory\n";
+    opts.banner << "\n"
 
     opts.on("-h", "--help", "Print this message") do
       puts opts

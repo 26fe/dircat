@@ -4,7 +4,6 @@ require 'dircat/dircat.rb'
 #
 #
 #
-
 class DirCatCfr
 
   def self.run
@@ -16,10 +15,10 @@ class DirCatCfr
     options = {}
     opts = OptionParser.new
     opts.banner =
-        "Usage: dircat_cfr.rb [options] <filedircat1> <filedircat2>\n" +
+        "Usage: dircat_cfr.rb [options] <filedircat1> <filedircat2>\n\n" +
         "fa la differenza fra il primo catalog e il secondo\n" +
         "<filedircat1> - <filedircat2>\n" +
-        "e stampa sull'output con un formato"
+        "e stampa sull'output con un formato\n"
 
     opts.on("-h", "--help", "Print this message") do
       puts opts

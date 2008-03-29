@@ -4,7 +4,6 @@ require 'dircat/dircat.rb'
 #
 # DirCatQuery
 #
-
 class DirCatQuery
 
   def self.run
