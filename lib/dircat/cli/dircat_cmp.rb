@@ -5,7 +5,7 @@ require 'dircat/dircat.rb'
 # MAIN
 #
 
-class DirCmp
+class DirCatCmp
 
   def self.run
     self.new.parse_args( ARGV )

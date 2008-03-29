@@ -1,0 +1,9 @@
+= Utilities per la gestione di cataloghi e di directory
+
+== dircat_build
+
+Costruisce un catalogo a partire da una directory
+
+== dircat_cfr
+== dircat_cmp
+== dircat_query

@@ -1,0 +1,6 @@
+* verbose x default, aggiungere quiet
+* stampare un report dopo la catalogazione 
+  (quanti file, quanti byte, quanto tempo per catalogare)
+* renderlo resistente agli IO error
+* controllare entry duplicate
+* unit test dei cli

@@ -5,4 +5,4 @@ $:.unshift( File.join($DIRCAT_HOME, "lib" ) )
 
 require 'dircat/cli/dircat_cfr.rb'
 
-CatCfr.run
+DirCatCfr.run
