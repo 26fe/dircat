@@ -1,8 +1,10 @@
 $DIRCAT_HOME = File.expand_path( File.join( File.dirname( __FILE__), "..", "..") )
 $:.unshift( File.join($DIRCAT_HOME, "lib" ) )
 
+# stdlib
 require 'test/unit'
 
+# dircat
 require 'dircat/dircat.rb'
 require 'dircat/cli/dircat_build.rb'
 
