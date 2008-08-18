@@ -4,6 +4,19 @@
 
 Costruisce un catalogo a partire da una directory
 
+Esempio:
+
+Per costruire un catalogo di una directory dir1
+
+DirCatBuild -o nome catalogo dir1 
+
+
 == dircat_cfr
+
+Confronta due cataloghi 
+
 == dircat_cmp
+
 == dircat_query
+
+Interroga un catalogo 
