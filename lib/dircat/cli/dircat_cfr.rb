@@ -1,4 +1,7 @@
+# stdlib
 require 'optparse'
+
+# dircat
 require 'dircat/dircat.rb'
 
 #

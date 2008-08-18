@@ -1,4 +1,7 @@
+# stdlib
 require 'optparse'
+
+# dircat
 require 'dircat/dircat.rb'
 
 #
@@ -53,6 +56,10 @@ class DirCatBuild
 
     dirname = rest[0]
     dirname = File.expand_path( dirname )
+    if not FileTest.directory?(dirname)
+      puts "directory "#{dirname} not exists or is not a directory"
+      return 
+    end
 
     #
     # option verbose
@@ -75,7 +82,7 @@ class DirCatBuild
     	  filename = "cat_" + File.basename( dirname ) + "_" + Date.today.strftime("%Y%m%d") + ".yaml"
       end
       if File.exist?(filename) and not options[:force]
-        puts "File #{filename} exists!!!"
+        puts "File #{filename} exists use --force or -f to overwrite"
         return
       end
       output = File.open(filename, "w")

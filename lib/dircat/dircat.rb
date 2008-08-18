@@ -6,26 +6,13 @@ require 'ostruct'
 
 # dircat
 require 'common/md5'
+require 'common/numeric'
 
 #
 # GLOBAL VAR
 #
 
 $VERBOSE_LEVEL = 0
-
-#
-# copiata da http://wiki.rubygarden.org/Ruby/page/show/FixNumFormat
-#
-class Numeric
-  def with_separator( separator = ',', length = 3 )
-    splitter = Regexp.compile "(\\d{#{length}})"
-    before, after = self.to_s.split('.')
-    before = before.reverse.gsub splitter, '\1' + separator
-    str = "#{ before.chomp( separator ).reverse }"
-    str += ".#{ after }" if after
-    return str
-  end
-end
 
 class EntrySer < OpenStruct
 end
@@ -132,8 +119,7 @@ class DirCat
   def self.loadfromdir( dirname )
     # puts "#{self.class.name}#loadfromdir( #{dirname} )"
     if not File.directory?( dirname )
-      puts "'#{dirname}' non e' una directory o non esiste"
-      exit
+      raise "'#{dirname}' non e' una directory o non esiste"
     end
 
     s = self.new
