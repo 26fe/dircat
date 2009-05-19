@@ -5,8 +5,9 @@ require 'yaml'
 require 'ostruct'
 
 # dircat
-require 'common/md5'
-require 'common/numeric'
+require 'rubygems'
+require 'ralbum-common/md5'
+require 'ralbum-common/numeric'
 
 #
 # GLOBAL VAR
