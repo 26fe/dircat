@@ -10,6 +10,9 @@ begin
     gem.homepage = "http://github.com/gf/tree_visitor"
     gem.authors = ["gf"]
     gem.files = Dir['lib/**/*.rb']
+    gem.executables = Dir['bin/*.rb'].map{ |e| File.basename(e) }
+    gem.add_dependency('tree_visitor')
+
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
