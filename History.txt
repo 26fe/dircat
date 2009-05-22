@@ -1,9 +1,7 @@
-=== 1.0.0 / 2009-05-18
+===  2009-05-18
 
-* 1 major enhancement
+* convertito repository da subersion a git
 
-  * Birthday!
+=== 2007 08 18
 
-
-* 2007 08 18
 - create le directory lib/dircat, test/dircat
