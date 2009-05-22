@@ -1,3 +1,8 @@
+===  2009-05-22
+
+* fissati i test
+* creata gem
+
 ===  2009-05-18
 
 * convertito repository da subersion a git

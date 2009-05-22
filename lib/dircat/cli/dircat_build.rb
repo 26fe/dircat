@@ -14,7 +14,6 @@ class DirCatBuild
   end
 
   def parse_args( argv )
-
     options = { :verbose => true, :force => false }
     opts = OptionParser.new
     opts.banner << "Usage: dircat_build [options]\n"
