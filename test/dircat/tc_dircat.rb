@@ -36,13 +36,13 @@ class TC_DirCat < Test::Unit::TestCase
   def test_dircat1
     dircat1 = DirCat.loadfromdir( File.join(@data_dir, "dir1") )
     assert_equal(2, dircat1.size )
-    assert_equal(5, dircat1.bytes )
+    assert_equal(4, dircat1.bytes )
   end
 
   def test_dircat2
     dircat2 = DirCat.loadfromdir( File.join(@data_dir, "dir2") )
     assert_equal(3, dircat2.size )
-    assert_equal(8, dircat2.bytes )
+    assert_equal(6, dircat2.bytes )
   end
 
   def test_diff_dir1_dir2
@@ -64,7 +64,13 @@ class TC_DirCat < Test::Unit::TestCase
 
   def test_dir1_ser
     dircat1  = DirCat.loadfromdir( File.join(@data_dir, "dir1") )
+    not_existent_file = File.join(@tmp_dir, "not_existent", "dircat1.yaml")
     tmp_file = File.join(@tmp_dir, "dircat1.yaml")
+
+    assert_raise DirCatException do
+      dircat1.savetofile( not_existent_file )
+    end
+
     dircat1.savetofile( tmp_file )
 
     dircat1_bis = DirCat.loadfromfile( tmp_file )

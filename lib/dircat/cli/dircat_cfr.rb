@@ -14,7 +14,6 @@ class DirCatCfr
   end
 
   def parse_args( args )
-
     options = {}
     opts = OptionParser.new
     opts.banner =

@@ -1,13 +1,13 @@
 # stdlib
-require 'ftools'
+require 'fileutils'
 require 'tmpdir'
 require 'yaml'
 require 'ostruct'
 
 # dircat
 require 'rubygems'
-require 'ralbum-common/md5'
-require 'ralbum-common/numeric'
+require 'tree_visitor/utility/md5'
+require 'tree_visitor/utility/numeric'
 
 #
 # GLOBAL VAR
@@ -72,6 +72,11 @@ class Entry
 end
 
 class DirCatSer < OpenStruct
+end
+
+
+class DirCatException < RuntimeError
+
 end
 
 #
@@ -145,8 +150,7 @@ class DirCat
 
   def self.loadfromfile( filename )
     if not File.exist?( filename )
-      puts "'#{filename}' non esiste"
-      return
+      raise DirCatException.new, "'#{filename}' not exists"
     end
     dircat_ser = YAML::load( File.open( filename ) )
     DirCat.new.from_ser( dircat_ser )
@@ -154,8 +158,12 @@ class DirCat
 
   def savetofile( file )
     if file.kind_of?(String)
-      File.open( file, "w" ) do |f|
-        f.puts to_ser.to_yaml
+      begin
+        File.open( file, "w" ) do |f|
+          f.puts to_ser.to_yaml
+        end
+      rescue Errno::ENOENT
+        raise DirCatException.new, "DirCat: cannot write into '#{file}'", caller
       end
     else
       file.puts to_ser.to_yaml
@@ -173,8 +181,8 @@ class DirCat
   def report
     dups = duplicates
     s = "Directory base: #@dirname\n" +
-        "Nr. file #{size}\n" +
-        "Bytes #{bytes.with_separator}"
+      "Nr. file #{size}\n" +
+      "Bytes #{bytes.with_separator}"
     if duplicates.size > 0
       s+= "\n duplicates #{dups.size}"
     end
@@ -196,11 +204,11 @@ class DirCat
   end
 
   def -(s)
-     result = DirCat.new.from_dirname( @dirname )
-     @entries.each { |e|
-       result.add_entry(e) unless s.contains(e)
-     }
-     result
+    result = DirCat.new.from_dirname( @dirname )
+    @entries.each { |e|
+      result.add_entry(e) unless s.contains(e)
+    }
+    result
   end
 
   def duplicates
@@ -213,23 +221,23 @@ class DirCat
   end
 
   def fmt_simple
-     @entries.each { |e|
-       print e.to_s
-     }
+    @entries.each { |e|
+      print e.to_s
+    }
   end
 
   def fmt_ruby( dst )
-     puts "require 'fileutils'"
-     @entries.each { |entry|
-     	 src = File.join( @dirname, entry.path, entry.name );
-       puts "FileUtils.cp( \"#{src}\", \"#{dst}\" )"
-     }
+    puts "require 'fileutils'"
+    @entries.each { |entry|
+      src = File.join( @dirname, entry.path, entry.name );
+      puts "FileUtils.cp( \"#{src}\", \"#{dst}\" )"
+    }
   end
 
   def list_dup
     r = ""
     duplicates.flatten.each { |e|
-        r += e.to_s + "\n"
+      r += e.to_s + "\n"
     }
     r
   end

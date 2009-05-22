@@ -11,7 +11,7 @@ require 'dircat/cli/dircat_build.rb'
 class TC_DirCatBuild < Test::Unit::TestCase
 
   def setup
-    @testdata_dirname         = File.join( $DIRCAT_HOME, "test", "data")
+    @testdata_dirname         = File.join( $DIRCAT_HOME, "test", "dircat", "data")
     @dir1_dirname             = File.join( @testdata_dirname, "dir1" )
     @dir2_dirname             = File.join( @testdata_dirname, "dir2" )
     @certified_output_dirname = File.join( @testdata_dirname, "certified_output" )
@@ -31,6 +31,8 @@ class TC_DirCatBuild < Test::Unit::TestCase
 
     cat_expect = DirCat.loadfromfile( expect_filename )
     cat_result = DirCat.loadfromfile( result_filename )
+
+    assert_equal( 0, (cat_result - cat_result).size )
 
     assert_equal( 0, (cat_result - cat_expect).size )
     assert_equal( 0, (cat_expect - cat_result).size )
