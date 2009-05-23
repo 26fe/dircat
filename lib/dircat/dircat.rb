@@ -6,8 +6,8 @@ require 'ostruct'
 
 # dircat
 require 'rubygems'
-require 'tree_visitor/utility/md5'
-require 'tree_visitor/utility/numeric'
+require 'utility/md5'
+require 'utility/numeric'
 
 #
 # GLOBAL VAR
