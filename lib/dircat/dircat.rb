@@ -6,8 +6,8 @@ require 'ostruct'
 
 # dircat
 require 'rubygems'
-require 'utility/md5'
-require 'utility/numeric'
+require 'gf_utility/md5'
+require 'gf_utility/numeric'
 
 #
 # GLOBAL VAR
