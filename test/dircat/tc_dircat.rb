@@ -26,7 +26,7 @@ require 'dircat/dircat.rb'
 class TC_DirCat < Test::Unit::TestCase
 
   def setup
-    @data_dir = File.join($DIRCAT_HOME, "test", "dircat", "data")
+    @data_dir = File.join($DIRCAT_HOME, "test_data", "dircat", "data")
     @tmp_dir  = File.join( @data_dir, "tmp" )
   end
 

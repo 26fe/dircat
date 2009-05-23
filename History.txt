@@ -1,7 +1,13 @@
+=== 2009-05-23
+
+* spostati i dati dei test in una directory indipendente
+* creata gem 0.0.4
+* passa i test con gem install -t
+
 ===  2009-05-22
 
 * fissati i test
-* creata gem
+* creata gem 0.0.3
 
 ===  2009-05-18
 

@@ -11,7 +11,7 @@ require 'dircat/cli/dircat_build.rb'
 class TC_DirCatBuild < Test::Unit::TestCase
 
   def setup
-    @testdata_dirname         = File.join( $DIRCAT_HOME, "test", "dircat", "data")
+    @testdata_dirname         = File.join( $DIRCAT_HOME, "test_data", "dircat", "data")
     @dir1_dirname             = File.join( @testdata_dirname, "dir1" )
     @dir2_dirname             = File.join( @testdata_dirname, "dir2" )
     @certified_output_dirname = File.join( @testdata_dirname, "certified_output" )

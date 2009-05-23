@@ -14,7 +14,9 @@ begin
     gem.add_dependency('tree_visitor')
     gem.rubyforge_project = 'ralbum'
 
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    # dati per il test
+    gem.files.concat Dir['test_data/**/*.{yaml,txt}']
+
   end
 
 rescue LoadError
