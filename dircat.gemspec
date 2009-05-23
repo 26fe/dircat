@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dircat}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["gf"]
@@ -19,10 +19,21 @@ Gem::Specification.new do |s|
      "lib/dircat/cli/dircat_cfr.rb",
      "lib/dircat/cli/dircat_cmp.rb",
      "lib/dircat/cli/dircat_query.rb",
-     "lib/dircat/dircat.rb"
+     "lib/dircat/dircat.rb",
+     "test_data/dircat/data/certified_output/dircat1.yaml",
+     "test_data/dircat/data/certified_output/dircat2.yaml",
+     "test_data/dircat/data/dir1/file1.txt",
+     "test_data/dircat/data/dir1/subdir/file3.txt",
+     "test_data/dircat/data/dir2/file1.txt",
+     "test_data/dircat/data/dir2/file2.txt",
+     "test_data/dircat/data/dir2/subdir/file3.txt",
+     "test_data/dircat/data/dir3/file1.txt",
+     "test_data/dircat/data/dir3/subdir/file1.txt",
+     "test_data/dircat/data/tmp/dircat1.yaml",
+     "test_data/dircat/data/tmp/dummy.txt"
   ]
   s.has_rdoc = true
-  s.homepage = %q{http://github.com/gf/tree_visitor}
+  s.homepage = %q{http://github.com/gf/dircat}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{ralbum}
