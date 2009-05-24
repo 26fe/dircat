@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tokiro"]
-  s.date = %q{2009-05-23}
+  s.date = %q{2009-05-24}
   s.email = %q{tokiro.oyama@gmail.com}
   s.executables = ["dircat-cfr.rb", "dircat-query.rb", "dircat-cmp.rb", "dircat-build.rb"]
   s.extra_rdoc_files = [
@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
      "test_data/dircat/data/dir2/subdir/file3.txt",
      "test_data/dircat/data/dir3/file1.txt",
      "test_data/dircat/data/dir3/subdir/file1.txt",
-     "test_data/dircat/data/tmp/dircat1.yaml",
      "test_data/dircat/data/tmp/dummy.txt"
   ]
   s.has_rdoc = true

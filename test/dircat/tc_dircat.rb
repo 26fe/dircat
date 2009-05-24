@@ -76,6 +76,8 @@ class TC_DirCat < Test::Unit::TestCase
     dircat1_bis = DirCat.loadfromfile( tmp_file )
     assert_equal( 0, (dircat1 - dircat1_bis).size )
     assert_equal( 0, (dircat1_bis - dircat1).size )
+
+    FileUtils.rm( tmp_file )
   end
 
 end
