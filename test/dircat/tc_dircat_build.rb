@@ -36,6 +36,8 @@ class TC_DirCatBuild < Test::Unit::TestCase
 
     assert_equal( 0, (cat_result - cat_expect).size )
     assert_equal( 0, (cat_expect - cat_result).size )
+
+    FileUtils.rm(result_filename)
   end
 
 end
