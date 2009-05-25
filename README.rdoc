@@ -1,43 +1,35 @@
-= DIRCAT: Utilities per la gestione di cataloghi e di directory
+= DIRCAT
 
-== dircat_build
+Utilities for manage catalogs of files and directory.
+This utilities can be utilized as help to backup a directory.
 
-Costruisce un catalogo a partire da una directory
+=== dircat-build
 
-Esempio:
+Build a catalog from a directory
 
-Per costruire un catalogo di una directory dir1
+Ex.: dircat-build -o <catalog_name> dir1
 
-DirCatBuild -o nome catalogo dir1
+builds catalog from directory dir1.
 
-== dircat_cfr
+=== dircat-cfr
 
-Confronta due cataloghi
+Compare two catalogs
 
-== dircat_cmp
+=== dircat-query
 
-== dircat_query
-
-Interroga un catalogo
-
-== DESCRIPTION:
-
-== FEATURES/PROBLEMS:
-
-* FIX (list of features or problems)
-
-== SYNOPSIS:
-
-  FIX (code sample of usage)
+show the contents of catalog
 
 == REQUIREMENTS:
 
 * utilizza la libreria abstract di kwartz
-* gui: dipende da fxruby e/o wxruby
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+sudo gem install dircat
+
+or
+
+sudo gem install gf-dircat -s gems.github.com
 
 == Copyright
 

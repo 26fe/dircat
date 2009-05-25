@@ -4,19 +4,32 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
+
     gem.name = "dircat"
-    gem.summary = %Q{TODO}
+    gem.summary = "command line utilites to manage catalogs of directory"
+
+    gem.authors = ["Tokiro"]
     gem.email = "tokiro.oyama@gmail.com"
     gem.homepage = "http://github.com/tokiro/dircat"
-    gem.authors = ["Tokiro"]
+
+    #
+    # files
+    #
     gem.files = Dir['lib/**/*.rb']
     gem.executables = Dir['bin/*.rb'].map{ |e| File.basename(e) }
-    gem.add_dependency('tree_visitor')
-    gem.rubyforge_project = 'ralbum'
-
+    
     # dati per il test
     gem.files.concat Dir['test_data/**/*.{yaml,txt}']
 
+    #
+    # dependecies
+    #
+    gem.add_dependency('tree_visitor')
+
+    #
+    # rubyforge
+    #
+    gem.rubyforge_project = 'ralbum'
   end
 
 rescue LoadError
@@ -61,7 +74,9 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-# These are new tasks
+#
+# rubyforge
+#
 begin
   require 'rake/contrib/sshpublisher'
   namespace :rubyforge do
@@ -77,7 +92,7 @@ begin
         )
 
         host = "#{config['username']}@rubyforge.org"
-        remote_dir = "/var/www/gforge-projects/the-perfect-gem/"
+        remote_dir = "/var/www/gforge-projects/ralbum/dircat"
         local_dir = 'rdoc'
 
         Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
