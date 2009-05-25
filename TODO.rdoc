@@ -1,3 +1,9 @@
+= TODO
+
+* i test non devono stampare nessuna stringa!
+* scrivere un piccolo tutorial su come backupare una directory
+
+
 * verbose x default, aggiungere quiet
 * stampare un report dopo la catalogazione 
   (quanti file, quanti byte, quanto tempo per catalogare)

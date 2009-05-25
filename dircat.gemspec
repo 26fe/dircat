@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dircat}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["gf"]
-  s.date = %q{2009-05-24}
+  s.date = %q{2009-05-25}
   s.email = %q{giovanni.ferro@gmail.com}
   s.executables = ["dircat-cfr.rb", "dircat-query.rb", "dircat-cmp.rb", "dircat-build.rb"]
   s.extra_rdoc_files = [
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{ralbum}
   s.rubygems_version = %q{1.3.1}
-  s.summary = %q{TODO}
+  s.summary = %q{command line utilites to manage catalogs of directory}
   s.test_files = [
     "test/dircat/tc_dircat.rb",
      "test/dircat/tc_dircat_build.rb",

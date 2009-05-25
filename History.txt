@@ -1,3 +1,8 @@
+=== 2009-05-25
+
+* creata gem 0.0.5
+* scritto un briciolo di documentazione
+
 === 2009-05-23
 
 * spostati i dati dei test in una directory indipendente
@@ -15,4 +20,4 @@
 
 === 2007 08 18
 
-- create le directory lib/dircat, test/dircat
+* create le directory lib/dircat, test/dircat
