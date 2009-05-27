@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dircat}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["gf"]
-  s.date = %q{2009-05-25}
+  s.date = %q{2009-05-28}
   s.email = %q{giovanni.ferro@gmail.com}
   s.executables = ["dircat-cfr.rb", "dircat-query.rb", "dircat-cmp.rb", "dircat-build.rb"]
   s.extra_rdoc_files = [
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/gf/dircat}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{ralbum}
+  s.rubyforge_project = %q{dircat}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{command line utilites to manage catalogs of directory}
   s.test_files = [
@@ -49,11 +49,11 @@ Gem::Specification.new do |s|
     s.specification_version = 2
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<tree_visitor>, [">= 0"])
+      s.add_runtime_dependency(%q<treevisitor>, [">= 0"])
     else
-      s.add_dependency(%q<tree_visitor>, [">= 0"])
+      s.add_dependency(%q<treevisitor>, [">= 0"])
     end
   else
-    s.add_dependency(%q<tree_visitor>, [">= 0"])
+    s.add_dependency(%q<treevisitor>, [">= 0"])
   end
 end

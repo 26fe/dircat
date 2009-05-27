@@ -24,12 +24,12 @@ begin
     #
     # dependecies
     #
-    gem.add_dependency('tree_visitor')
+    gem.add_dependency('treevisitor')
 
     #
     # rubyforge
     #
-    gem.rubyforge_project = 'ralbum'
+    gem.rubyforge_project = 'dircat'
   end
 
 rescue LoadError
@@ -92,7 +92,7 @@ begin
         )
 
         host = "#{config['username']}@rubyforge.org"
-        remote_dir = "/var/www/gforge-projects/ralbum/dircat"
+        remote_dir = "/var/www/gforge-projects/dircat"
         local_dir = 'rdoc'
 
         Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
