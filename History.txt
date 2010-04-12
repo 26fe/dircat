@@ -1,3 +1,7 @@
+=== 2010-04-12
+
+* trasformed TestUnit tests into rspec examples
+
 === 2009-05-25
 
 * creata gem 0.0.5
