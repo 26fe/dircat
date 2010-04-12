@@ -1,6 +1,13 @@
-
+# module TreeVisitor
 class Dircat
-  VERSION = '0.0.1'
+  def self.version
+    cwd = Pathname(__FILE__).dirname.expand_path.to_s
+    yaml = YAML.load_file(cwd + '/../VERSION.yml')
+    major = (yaml['major'] || yaml[:major]).to_i
+    minor = (yaml['minor'] || yaml[:minor]).to_i
+    patch = (yaml['patch'] || yaml[:patch]).to_i
+    "#{major}.#{minor}.#{patch}"
+  end
 end
 
 # stdlib
@@ -9,10 +16,7 @@ require 'tmpdir'
 require 'yaml'
 require 'ostruct'
 
-# dircat
-require 'rubygems'
-require 'gf_utilities/extension_md5'
-require 'gf_utilities/extension_numeric'
-
+require 'dircat/extension_md5'
+require 'dircat/extension_numeric'
 require 'dircat/dircat.rb'
 require 'dircat/cli/dircat_build.rb'
