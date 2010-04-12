@@ -1,14 +1,3 @@
-# stdlib
-require 'fileutils'
-require 'tmpdir'
-require 'yaml'
-require 'ostruct'
-
-# dircat
-require 'rubygems'
-require 'gf_utility/md5'
-require 'gf_utility/numeric'
-
 #
 # GLOBAL VAR
 #
