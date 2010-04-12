@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dircat}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tokiro"]
@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
      "lib/dircat/cli/dircat_cfr.rb",
      "lib/dircat/cli/dircat_cmp.rb",
      "lib/dircat/cli/dircat_query.rb",
-     "lib/dircat/dircat.rb"
+     "lib/dircat/dircat.rb",
+     "lib/dircat/extension_md5.rb",
+     "lib/dircat/extension_numeric.rb"
   ]
   s.homepage = %q{http://github.com/tokiro/dircat}
   s.rdoc_options = ["--charset=UTF-8"]
