@@ -9,14 +9,23 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Giovanni Ferro"]
-  s.date = %q{2010-04-12}
+  s.date = %q{2010-04-14}
+  s.description = %q{
+      command line utilites to manage catalogs of directory
+    }
   s.email = %q{giovanni.ferro@gmail.com}
+  s.executables = ["dircat-cmp", "dircat-query", "dircat-cfr", "dircat-build"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
   ]
   s.files = [
-    "VERSION.yml",
+    "LICENSE",
+     "README.rdoc",
+     "Rakefile",
+     "VERSION.yml",
+     "dircat.gemspec",
+     "examples/examples.rb",
      "lib/dircat.rb",
      "lib/dircat/cli/dircat_build.rb",
      "lib/dircat/cli/dircat_cfr.rb",
@@ -29,13 +38,32 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/gf/dircat}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{dircat}
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{command line utilites to manage catalogs of directory}
   s.test_files = [
     "spec/spec_helper.rb",
      "spec/dircat/dircat_build_spec.rb",
-     "spec/dircat/dircat_spec.rb"
+     "spec/dircat/dircat_spec.rb",
+     "spec/fixtures/dircat",
+     "spec/fixtures/dircat/data",
+     "spec/fixtures/dircat/data/certified_output",
+     "spec/fixtures/dircat/data/certified_output/dircat1.yaml",
+     "spec/fixtures/dircat/data/certified_output/dircat2.yaml",
+     "spec/fixtures/dircat/data/dir1",
+     "spec/fixtures/dircat/data/dir1/subdir",
+     "spec/fixtures/dircat/data/dir1/subdir/file3.txt",
+     "spec/fixtures/dircat/data/dir1/file1.txt",
+     "spec/fixtures/dircat/data/dir2",
+     "spec/fixtures/dircat/data/dir2/subdir",
+     "spec/fixtures/dircat/data/dir2/subdir/file3.txt",
+     "spec/fixtures/dircat/data/dir2/file1.txt",
+     "spec/fixtures/dircat/data/dir2/file2.txt",
+     "spec/fixtures/dircat/data/dir3",
+     "spec/fixtures/dircat/data/dir3/subdir",
+     "spec/fixtures/dircat/data/dir3/subdir/file1.txt",
+     "spec/fixtures/dircat/data/dir3/file1.txt",
+     "spec/fixtures/dircat/data/tmp",
+     "spec/fixtures/dircat/data/tmp/dummy.txt"
   ]
 
   if s.respond_to? :specification_version then
@@ -44,14 +72,11 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_runtime_dependency(%q<treevisitor>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<treevisitor>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<treevisitor>, [">= 0"])
   end
 end
 
