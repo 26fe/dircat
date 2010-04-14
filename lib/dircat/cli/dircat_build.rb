@@ -8,7 +8,7 @@ module DirCat
   class DirCatBuild
 
     def self.run
-      self.new.parse_args( ARGV )
+      return self.new.parse_args( ARGV )
     end
 
     def parse_args( argv )
@@ -21,7 +21,7 @@ module DirCat
 
       opts.on("-h", "--help", "Print this message") do
         puts opts
-        return
+        return 0
       end
 
       opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
@@ -48,14 +48,14 @@ module DirCat
       if rest.length < 1
         puts "inserire il nome della directory di cui creare il catalogo"
         puts "-h to print help"
-        return
+        return 0
       end
 
       dirname = rest[0]
       dirname = File.expand_path( dirname )
       if not FileTest.directory?(dirname)
         puts "directory "#{dirname} not exists or is not a directory"
-        return
+        return 0
       end
 
       #
@@ -80,7 +80,7 @@ module DirCat
         end
         if File.exist?(filename) and not options[:force]
           puts "File #{filename} exists use --force or -f to overwrite"
-          return
+          return 0
         end
         output = File.open(filename, "w")
       end
@@ -98,6 +98,8 @@ module DirCat
       end
       $stderr.puts s.report
       $stderr.puts "tempo: #{end_datetime - start_datetime}"
+
+      return 0
     end
 
   end
