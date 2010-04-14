@@ -6,7 +6,7 @@ module DirCat
   class DirCatCmp
 
     def self.run
-      self.new.parse_args( ARGV )
+      return self.new.parse_args( ARGV )
     end
 
     def parse_args(args)
@@ -24,7 +24,7 @@ module DirCat
 
       if rest.length < 1
         puts "inserire il nome di due directory da confrontare"
-        return
+        return 0
       end
 
       dirname1 = rest[0]
@@ -32,12 +32,12 @@ module DirCat
 
       if dirname2
         twoset( dirname1, dirname2 )
-        return
+        return 0
       end
 
       if dirname1
         oneset( dirname1 )
-        return
+        return 0
       end
     end
 
@@ -59,6 +59,7 @@ module DirCat
       s3 = s1 - s2
 
       s3.pr
+      return 0
     end
   end
 end

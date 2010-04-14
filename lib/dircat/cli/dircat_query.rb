@@ -6,7 +6,7 @@ module DirCat
   class DirCatQuery
 
     def self.run
-      self.new.parse_args( ARGV)
+      return self.new.parse_args( ARGV)
     end
 
     def parse_args( args )
@@ -18,7 +18,7 @@ module DirCat
 
       opts.on("-h", "--help", "Print this message") do
         puts opts
-        return
+        return 0
       end
 
       opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
@@ -33,7 +33,7 @@ module DirCat
       if rest.length < 2
         puts "inserire il nome del catalogo da interrogare e il comando da eseguire"
         puts "-h to print help"
-        return
+        return 0
       end
 
       cat_filename = rest[0]
@@ -48,12 +48,13 @@ module DirCat
         end
       end
 
-      s = DirCat.loadfromfile( cat_filename )
+      s = Cat.loadfromfile( cat_filename )
 
       #case command
       #else
       puts s.send( command.to_sym )
       #end
+      return 0
     end
   end
 end

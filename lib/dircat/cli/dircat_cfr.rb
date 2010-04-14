@@ -9,7 +9,7 @@ module DirCat
   class DirCatCfr
 
     def self.run
-      self.new.parse_args( ARGV )
+      return self.new.parse_args( ARGV )
     end
 
     def parse_args( args )
@@ -23,7 +23,7 @@ module DirCat
 
       opts.on("-h", "--help", "Print this message") do
         puts opts
-        return
+        return 0
       end
 
       opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
@@ -64,6 +64,7 @@ module DirCat
       else
         s3.fmt_simple
       end
+      return 0
     end
   end
 end
