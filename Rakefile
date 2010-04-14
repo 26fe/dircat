@@ -2,7 +2,8 @@ require 'rubygems'
 require 'rake'
 require 'yaml'
 
-task :default => :test
+task :test => :check_dependencies
+task :default => :spec
 
 begin
   require 'jeweler'
@@ -10,34 +11,38 @@ begin
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.name = "dircat"
     gem.summary = "command line utilites to manage catalogs of directory"
-
+    gem.description = %Q{
+      command line utilites to manage catalogs of directory
+    }
     gem.authors = ["Tokiro"]
     gem.email = "tokiro.oyama@gmail.com"
     gem.homepage = "http://github.com/tokiro/dircat"
+
+    #
+    # dependecies
+    #
+    # gem.add_dependency('treevisitor')
     gem.add_development_dependency "rspec"
 
     #
     # files
     #
-    gem.files = Dir['lib/**/*.rb']
-    gem.executables = Dir['bin/*.rb'].map{ |e| File.basename(e) }
-    gem.files << "VERSION.yml"
-    
-    # dati per il test
-    gem.files.concat Dir['test_data/**/*.{yaml,txt}']
+    gem.files  = %w{LICENSE README.rdoc Rakefile VERSION.yml dircat.gemspec}
+    gem.files.concat Dir['lib/**/*.rb']
+    gem.files.concat Dir['examples/*.rb']
 
     #
-    # dependecies
+    # test files
     #
-    gem.add_dependency('treevisitor')
+    gem.test_files = Dir['spec/**/*.rb']
+    gem.test_files.concat Dir['spec/fixtures/**/*']
 
     #
     # rubyforge
     #
-    gem.rubyforge_project = 'dircat'
+    # gem.rubyforge_project = 'dircat'
   end
   Jeweler::GemcutterTasks.new
-
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
@@ -57,46 +62,13 @@ end
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION.yml')
-    config = YAML.load(File.read('VERSION.yml'))
-    version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
-  else
-    version = ""
-  end
+  config = YAML.load(File.read('VERSION.yml'))
+  version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
 
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "tree_visitor #{version}"
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title = "dircat #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-#
-# rubyforge
-#
-begin
-  require 'rake/contrib/sshpublisher'
-  namespace :rubyforge do
-
-    desc "Release gem and RDoc documentation to RubyForge"
-    task :release => ["rubyforge:release:gem", "rubyforge:release:docs"]
-
-    namespace :release do
-      desc "Publish RDoc to RubyForge."
-      task :docs => [:rdoc] do
-        config = YAML.load(
-            File.read(File.expand_path('~/.rubyforge/user-config.yml'))
-        )
-
-        host = "#{config['username']}@rubyforge.org"
-        remote_dir = "/var/www/gforge-projects/dircat"
-        local_dir = 'rdoc'
-
-        Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
-      end
-    end
-  end
-rescue LoadError
-  puts "Rake SshDirPublisher is unavailable or your rubyforge environment is not configured."
 end
 
 #
@@ -117,5 +89,30 @@ Spec::Rake::SpecTask.new('failing_examples_with_html') do |t|
   t.fail_on_error = false
 end
 
-task :test => :check_dependencies
-task :default => :spec
+#
+# rubyforge
+#
+#begin
+#  require 'rake/contrib/sshpublisher'
+#  namespace :rubyforge do
+#    desc "Release gem and RDoc documentation to RubyForge"
+#    task :release => ["rubyforge:release:gem", "rubyforge:release:docs"]
+#
+#    namespace :release do
+#      desc "Publish RDoc to RubyForge."
+#      task :docs => [:rdoc] do
+#        config = YAML.load(
+#            File.read(File.expand_path('~/.rubyforge/user-config.yml'))
+#        )
+#
+#        host = "#{config['username']}@rubyforge.org"
+#        remote_dir = "/var/www/gforge-projects/dircat"
+#        local_dir = 'rdoc'
+#
+#        Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
+#      end
+#    end
+#  end
+#rescue LoadError
+#  puts "Rake SshDirPublisher is unavailable or your rubyforge environment is not configured."
+#end
