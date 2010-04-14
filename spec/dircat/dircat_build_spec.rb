@@ -21,8 +21,8 @@ describe DirCat do
     args = "-f -o #{result_filename} #{@dir1_dirname}"
     DirCatBuild.new.parse_args( args.split )
 
-    cat_expect = DirCat.loadfromfile( expect_filename )
-    cat_result = DirCat.loadfromfile( result_filename )
+    cat_expect = Cat.loadfromfile( expect_filename )
+    cat_result = Cat.loadfromfile( result_filename )
 
     (cat_result - cat_result).size.should == 0
 
