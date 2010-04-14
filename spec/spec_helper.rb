@@ -2,10 +2,9 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'dircat'
-#include TreeVisitor
+include DirCat
 
 TEST_DIR = File.expand_path( File.join( File.dirname(__FILE__), "fixtures", "dircat", "data" ) )
-
 
 # Spec::Runner.configure do |config|
 # end

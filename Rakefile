@@ -60,7 +60,11 @@ rescue LoadError
   end
 end
 
+#
+# rdoc
+#
 require 'rake/rdoctask'
+require 'sdoc'
 Rake::RDocTask.new do |rdoc|
   config = YAML.load(File.read('VERSION.yml'))
   version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
@@ -69,6 +73,11 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "dircat #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+
+  # sdoc
+  rdoc.options << '--fmt' << 'shtml' # explictly set shtml generator
+  rdoc.template = 'direct' # lighter template used on railsapi.com
+
 end
 
 #
