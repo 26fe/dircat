@@ -25,6 +25,11 @@ begin
     gem.add_development_dependency "rspec"
 
     #
+    # bin
+    #
+    gem.executables = %w{ dircat-build dircat-cfr dircat-cmp dircat-query }
+
+    #
     # files
     #
     gem.files  = %w{LICENSE README.rdoc Rakefile VERSION.yml dircat.gemspec}
@@ -71,6 +76,7 @@ Rake::RDocTask.new do |rdoc|
 
   rdoc.rdoc_dir = 'doc'
   rdoc.title = "dircat #{version}"
+  rdoc.main = "README.rdoc" # page to start on
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 
