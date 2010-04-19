@@ -5,6 +5,26 @@ require 'yaml'
 task :test => :check_dependencies
 task :default => :spec
 
+#
+# rdoc
+#
+require 'rake/rdoctask'
+require 'sdoc'
+Rake::RDocTask.new do |rdoc|
+  config = YAML.load(File.read('VERSION.yml'))
+  version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
+
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title = "dircat #{version}"
+  rdoc.main = "README.rdoc" # page to start on
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+
+  # sdoc
+  rdoc.options << '--fmt' << 'shtml' # explictly set shtml generator
+  rdoc.template = 'direct' # lighter template used on railsapi.com
+end
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -65,26 +85,6 @@ rescue LoadError
   end
 end
 
-#
-# rdoc
-#
-require 'rake/rdoctask'
-require 'sdoc'
-Rake::RDocTask.new do |rdoc|
-  config = YAML.load(File.read('VERSION.yml'))
-  version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
-
-  rdoc.rdoc_dir = 'doc'
-  rdoc.title = "dircat #{version}"
-  rdoc.main = "README.rdoc" # page to start on
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-
-  # sdoc
-  rdoc.options << '--fmt' << 'shtml' # explictly set shtml generator
-  rdoc.template = 'direct' # lighter template used on railsapi.com
-
-end
 
 #
 # spec
