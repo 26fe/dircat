@@ -1,6 +1,3 @@
-require 'optparse'
-require 'dircat'
-
 module DirCat
   #
   # Build a catalogue starting from a directory
@@ -14,7 +11,7 @@ module DirCat
     def parse_args( argv )
       options = { :verbose => true, :force => false }
       opts = OptionParser.new
-      opts.banner << "Usage: dircat_build [options]\n"
+      opts.banner << "Usage: dircat-build [options]\n"
       opts.banner << "\n"
       opts.banner << "Build a catalogue starting from a directory\n";
       opts.banner << "\n"
@@ -46,15 +43,17 @@ module DirCat
       # p ARGV
 
       if rest.length < 1
-        puts "inserire il nome della directory di cui creare il catalogo"
+        puts "directory (from which build catalog) is missing"
         puts "-h to print help"
         return 0
       end
 
       dirname = rest[0]
       dirname = File.expand_path( dirname )
+      cat_opts = {}
+
       if not FileTest.directory?(dirname)
-        puts "directory "#{dirname} not exists or is not a directory"
+        puts "'#{dirname}' not exists or is not a directory"
         return 0
       end
 
@@ -64,7 +63,7 @@ module DirCat
 
       if options.has_key?(:verbose)
         if options[:verbose]
-          $VERBOSE_LEVEL = 1
+          cat_opts[:verbose_level] = 1
         end
       end
 
@@ -79,19 +78,19 @@ module DirCat
           filename = "cat_" + File.basename( dirname ) + "_" + Date.today.strftime("%Y%m%d") + ".yaml"
         end
         if File.exist?(filename) and not options[:force]
-          puts "File #{filename} exists use --force or -f to overwrite"
+          puts "catalog '#{filename}' exists use --force or -f to overwrite"
           return 0
         end
         output = File.open(filename, "w")
       end
 
       start_datetime = DateTime.now
-      s = Cat.loadfromdir(dirname)
+      s = Cat.build_cat(dirname)
       end_datetime = DateTime.now
 
       # s.pr
       # f.puts s.to_yaml
-      s.savetofile( output )
+      s.save_to( output )
 
       if output != $stdout
         output.close

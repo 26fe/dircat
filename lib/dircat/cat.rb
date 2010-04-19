@@ -1,17 +1,17 @@
 module DirCat
-  #
-  # GLOBAL VAR
-  #
-
-  $VERBOSE_LEVEL = 0
 
   class Cat
 
     attr_reader :dirname
+
     # data di creazione
     attr_reader :ctime
     attr_writer :ctime
-    # attr_reader :entries
+
+
+    def initialize( options = {} )
+      @verbose_level = options.delete(:verbose) || 0
+    end
 
     def from_dirname( dirname )
       # puts "#{self.class.name}#initialize"
@@ -21,8 +21,13 @@ module DirCat
       @md5ToEntries = Hash.new
       self
     end
+    
+    def from_file( filename )
+      if not File.exist?( filename )
+        raise DirCatException.new, "'#{filename}' not exists"
+      end
+      dircat_ser = YAML::load( File.open( filename ) )
 
-    def from_ser( dircat_ser )
       @dirname = dircat_ser.dirname
       @ctime   = dircat_ser.ctime
       @entries = Array.new
@@ -45,13 +50,12 @@ module DirCat
       dircat_ser
     end
 
-    def self.loadfromdir( dirname )
-      # puts "#{self.class.name}#loadfromdir( #{dirname} )"
+    def self.build_cat( dirname, options = {} )
       if not File.directory?( dirname )
-        raise "'#{dirname}' non e' una directory o non esiste"
+        raise "'#{dirname}' is not a directory or doesn't exists"
       end
 
-      s = self.new
+      s = self.new( options )
       s.from_dirname( File.expand_path( dirname ) )
       s._loadfromdir
     end
@@ -60,26 +64,25 @@ module DirCat
       old_dirname = Dir.pwd
       Dir.chdir( @dirname )
       Dir["**/*"].each { |f|
-        # puts "#{self.class.name}#loadfromdir #{f}"
         next if File.directory?( f )
+
+        if @verbose_level > 0
+          cr = "\r"
+          clear = "\e[K"
+          print "#{cr}#{filename}#{clear}"
+
+        end
+
         add_entry( Entry.new.from_filename( f ) )
       }
-      if $VERBOSE_LEVEL > 0
+      if @verbose_level > 0
         print "\n"
       end
       Dir.chdir( old_dirname )
       self
     end
 
-    def self.loadfromfile( filename )
-      if not File.exist?( filename )
-        raise DirCatException.new, "'#{filename}' not exists"
-      end
-      dircat_ser = YAML::load( File.open( filename ) )
-      Cat.new.from_ser( dircat_ser )
-    end
-
-    def savetofile( file )
+    def save_to( file )
       if file.kind_of?(String)
         begin
           File.open( file, "w" ) do |f|

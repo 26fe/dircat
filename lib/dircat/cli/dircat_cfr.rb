@@ -1,11 +1,5 @@
-require 'optparse'
-require 'dircat'
-
 module DirCat
 
-  #
-  #
-  #
   class DirCatCfr
 
     def self.run
@@ -48,10 +42,10 @@ module DirCat
       cat_filename2 = rest[1]
 
       puts "build first set"
-      s1 = Cat.loadfromfile(cat_filename1)
+      s1 = Cat.new.from_file(cat_filename1)
 
       puts "build second set"
-      s2 = Cat.loadfromfile(cat_filename2)
+      s2 = Cat.new.from_file(cat_filename2)
 
       puts "build difference"
       s3 = s1 - s2

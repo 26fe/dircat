@@ -5,6 +5,6 @@ include DirCat
 
 dir = File.join( File.dirname(__FILE__), "..")
 
-cat  = Cat.loadfromdir( dir )
+cat  = Cat.build_cat( dir )
 cat.fmt_report
 

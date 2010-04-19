@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), "..", "spec_helper")
+require File.expand_path( File.join(File.dirname(__FILE__), "..", "..", "spec_helper") )
 
-describe DirCat do
+describe DirCatBuild do
 
   before do
     @testdata_dirname         = TEST_DIR
@@ -10,19 +10,27 @@ describe DirCat do
     @tmp_output_dirname       = File.join( @testdata_dirname, "tmp" )
   end
 
-  it "test_help" do
-    args = "-h"
-    DirCatBuild.new.parse_args( args.split )
+  it "should accept -h (help) option" do
+    out = with_stdout_captured do
+      args = %w{-h}
+      DirCatBuild.new.parse_args(args)
+    end
+    out.should match /Usage:/
   end
+
 
   it "test_dir1" do
     expect_filename = File.join( @certified_output_dirname, "dircat1.yaml" )
     result_filename = File.join( @tmp_output_dirname,       "dircat1.yaml")
-    args = "-f -o #{result_filename} #{@dir1_dirname}"
-    DirCatBuild.new.parse_args( args.split )
 
-    cat_expect = Cat.loadfromfile( expect_filename )
-    cat_result = Cat.loadfromfile( result_filename )
+    out = with_stdout_captured do
+      args = "-f -o #{result_filename} #{@dir1_dirname}"
+      DirCatBuild.new.parse_args( args.split )
+    end
+    # out.should match /Usage:/
+
+    cat_expect = Cat.new.from_file( expect_filename )
+    cat_result = Cat.new.from_file( result_filename )
 
     (cat_result - cat_result).size.should == 0
 
