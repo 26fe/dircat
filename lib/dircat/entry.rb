@@ -15,12 +15,6 @@ module DirCat
     attr_reader :mtime
 
     def from_filename( filename )
-      # puts "Entry::initialize #f"
-      if $VERBOSE_LEVEL > 0
-        cr = "\r"
-        clear = "\e[K"
-        print "#{cr}#{filename}#{clear}"
-      end
       @name = File.basename(filename)
       @path = File.dirname(filename)
       stat = File.stat(filename)

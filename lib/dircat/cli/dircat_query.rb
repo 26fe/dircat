@@ -1,6 +1,3 @@
-require 'optparse'
-require 'dircat'
-
 module DirCat
 
   class DirCatQuery
@@ -13,8 +10,8 @@ module DirCat
       options = {}
       opts = OptionParser.new
       opts.banner =
-        "Usage: dircat_query [options] <filedircat> <command>\n" +
-        "mostra informazioni su un dircat\n"
+        "Usage: dircat-query [options] <filedircat> [<command>]\n" +
+        "show info on dircat catalogs\n"
 
       opts.on("-h", "--help", "Print this message") do
         puts opts
@@ -30,30 +27,33 @@ module DirCat
       # p options
       # p ARGV
 
-      if rest.length < 2
-        puts "inserire il nome del catalogo da interrogare e il comando da eseguire"
+      if rest.length < 1
+        puts "missing dir catalog!"
         puts "-h to print help"
         return 0
       end
 
+      cat_opts = {}
       cat_filename = rest[0]
-      command = rest[1]
+
+      if rest.length > 1
+        command = rest[1]
+      else 
+        command = "report"
+      end
 
       #
       # option verbose
       #
       if options.has_key?(:verbose)
         if options[:verbose]
-          $VERBOSE_LEVEL = 1
+          cat_opts[:verbose_level] = 1
         end
       end
 
-      s = Cat.loadfromfile( cat_filename )
+      s = Cat.new(cat_opts).from_file( cat_filename )
 
-      #case command
-      #else
       puts s.send( command.to_sym )
-      #end
       return 0
     end
   end

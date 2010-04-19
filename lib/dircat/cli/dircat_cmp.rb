@@ -1,6 +1,3 @@
-require 'optparse'
-require 'dircat'
-
 module DirCat
 
   class DirCatCmp
@@ -43,17 +40,17 @@ module DirCat
 
     def oneset( dirname )
       puts "build set"
-      s = DirCat.loadfromdir(dirname)
+      s = DirCat.build_cat(dirname)
       # s.pr
       puts s.to_yaml
     end
 
     def twoset( dirname1, dirname2 )
       puts "build first set"
-      s1 = DirCat.loadfromdir(dirname1)
+      s1 = DirCat.build_cat(dirname1)
 
       puts "build second set"
-      s2 = DirCat.loadfromdir(dirname2)
+      s2 = DirCat.build_cat(dirname2)
 
       puts "build difference"
       s3 = s1 - s2

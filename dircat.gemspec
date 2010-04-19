@@ -9,12 +9,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tokiro"]
-  s.date = %q{2010-04-14}
+  s.date = %q{2010-04-19}
   s.description = %q{
       command line utilites to manage catalogs of directory
     }
   s.email = %q{tokiro.oyama@gmail.com}
-  s.executables = ["dircat-cmp", "dircat-query", "dircat-cfr", "dircat-build"]
+  s.executables = ["dircat-build", "dircat-cfr", "dircat-cmp", "dircat-query"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -43,31 +43,30 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{command line utilites to manage catalogs of directory}
   s.test_files = [
-    "spec/spec_helper.rb",
-     "spec/dircat/dircat_build_spec.rb",
-     "spec/dircat/dircat_spec.rb",
+    "spec/dircat/cat_spec.rb",
      "spec/dircat/md5_spec.rb",
      "spec/dircat/numeric_spec.rb",
-     "spec/fixtures/dircat",
-     "spec/fixtures/dircat/data",
-     "spec/fixtures/dircat/data/certified_output",
-     "spec/fixtures/dircat/data/certified_output/dircat1.yaml",
-     "spec/fixtures/dircat/data/certified_output/dircat2.yaml",
-     "spec/fixtures/dircat/data/dir1",
-     "spec/fixtures/dircat/data/dir1/subdir",
-     "spec/fixtures/dircat/data/dir1/subdir/file3.txt",
-     "spec/fixtures/dircat/data/dir1/file1.txt",
-     "spec/fixtures/dircat/data/dir2",
-     "spec/fixtures/dircat/data/dir2/subdir",
-     "spec/fixtures/dircat/data/dir2/subdir/file3.txt",
-     "spec/fixtures/dircat/data/dir2/file1.txt",
-     "spec/fixtures/dircat/data/dir2/file2.txt",
-     "spec/fixtures/dircat/data/dir3",
-     "spec/fixtures/dircat/data/dir3/subdir",
-     "spec/fixtures/dircat/data/dir3/subdir/file1.txt",
-     "spec/fixtures/dircat/data/dir3/file1.txt",
-     "spec/fixtures/dircat/data/tmp",
-     "spec/fixtures/dircat/data/tmp/dummy.txt"
+     "spec/dircat/cli/dircat_build_spec.rb",
+     "spec/dircat/cli/dircat_query_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/fixtures/certified_output",
+     "spec/fixtures/certified_output/dircat1.yaml",
+     "spec/fixtures/certified_output/dircat2.yaml",
+     "spec/fixtures/dir1",
+     "spec/fixtures/dir1/subdir",
+     "spec/fixtures/dir1/subdir/file3.txt",
+     "spec/fixtures/dir1/file1.txt",
+     "spec/fixtures/dir2",
+     "spec/fixtures/dir2/subdir",
+     "spec/fixtures/dir2/subdir/file3.txt",
+     "spec/fixtures/dir2/file1.txt",
+     "spec/fixtures/dir2/file2.txt",
+     "spec/fixtures/dir3",
+     "spec/fixtures/dir3/subdir",
+     "spec/fixtures/dir3/subdir/file1.txt",
+     "spec/fixtures/dir3/file1.txt",
+     "spec/fixtures/tmp",
+     "spec/fixtures/tmp/dummy.txt"
   ]
 
   if s.respond_to? :specification_version then

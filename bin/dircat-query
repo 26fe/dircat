@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-$:.unshift  File.join( File.dirname( __FILE__), "..", "lib"  )
+$:.unshift(File.join( File.dirname( __FILE__), "..", "lib"  ))
 
-require 'dircat/cli/dircat_query'
+require 'dircat'
 include DirCat
 exit DirCatQuery.run
