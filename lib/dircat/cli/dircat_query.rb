@@ -13,6 +13,11 @@ module DirCat
         "Usage: dircat-query [options] <filedircat> [<command>]\n" +
         "show info on dircat catalogs\n"
 
+      opts.on("--version", "show the dircat version") do
+        puts "dircat version #{DirCat::version}"
+        return 0
+      end
+
       opts.on("-h", "--help", "Print this message") do
         puts opts
         return 0
@@ -28,17 +33,21 @@ module DirCat
       # p ARGV
 
       if rest.length < 1
-        puts "missing dir catalog!"
+        puts "missing catalog!"
         puts "-h to print help"
         return 0
       end
 
       cat_opts = {}
       cat_filename = rest[0]
+      unless File.exists?(cat_filename)
+        puts "first args must be a catalogue"
+        return 1
+      end
 
       if rest.length > 1
         command = rest[1]
-      else 
+      else
         command = "report"
       end
 
@@ -51,7 +60,7 @@ module DirCat
         end
       end
 
-      s = Cat.new(cat_opts).from_file( cat_filename )
+      s = Cat.from_file( cat_filename, cat_opts )
 
       puts s.send( command.to_sym )
       return 0

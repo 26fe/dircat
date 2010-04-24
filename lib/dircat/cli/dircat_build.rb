@@ -21,6 +21,11 @@ module DirCat
         return 0
       end
 
+      opts.on("--version", "show the dircat version") do
+        puts "dircat version #{DirCat::version}"
+        return 0
+      end
+
       opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
         options[:verbose] = v
       end
@@ -34,6 +39,10 @@ module DirCat
       end
 
       opts.on("-o [FILE]", "--output [FILE]",String) do |v|
+        if options[:output]
+          puts "only one file of output can be used"
+          return 1
+        end
         options[:output] = v
       end
 
@@ -85,7 +94,7 @@ module DirCat
       end
 
       start_datetime = DateTime.now
-      s = Cat.build_cat(dirname)
+      s = Cat.from_dir(dirname)
       end_datetime = DateTime.now
 
       # s.pr

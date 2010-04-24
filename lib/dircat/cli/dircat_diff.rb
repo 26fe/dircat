@@ -1,6 +1,6 @@
 module DirCat
 
-  class DirCatCfr
+  class DirCatDiff
 
     def self.run
       return self.new.parse_args( ARGV )
@@ -20,6 +20,11 @@ module DirCat
         return 0
       end
 
+      opts.on("--version", "show the dircat version") do
+        puts "dircat version #{DirCat::version}"
+        return 0
+      end
+
       opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
         options[:verbose] = v
       end
@@ -33,7 +38,7 @@ module DirCat
       # p ARGV
 
       if rest.length < 2
-        puts "inserire il nome di due cataloghi da confrontare"
+        puts "you must provide two args (catalogs or directory)"
         puts "dircat_cfr -h to print help"
         exit
       end
@@ -41,11 +46,27 @@ module DirCat
       cat_filename1 = rest[0]
       cat_filename2 = rest[1]
 
-      puts "build first set"
-      s1 = Cat.new.from_file(cat_filename1)
+      if File.exists?( cat_filename1 )
+        puts "load catalog #{cat_filename1}"
+        s1 = Cat.from_file(cat_filename1)
+      elsif File.directory?(cat_filename1)
+        puts "build first set from directory #{cat_filename1}"
+        s1 = Cat.from_dir(cat_filename1)
+      else
+        puts "#{cat_filename1} is not a catalog file or directory"
+        return 1
+      end
 
-      puts "build second set"
-      s2 = Cat.new.from_file(cat_filename2)
+      if File.exists?( cat_filename2 )
+        puts "load catalog #{cat_filename2}"
+        s2 = Cat.from_file(cat_filename2)
+      elsif File.directory?(cat_filename2)
+        puts "build first set from directory #{cat_filename2}"
+        s2 = Cat.from_dir(cat_filename2)
+      else
+        puts "#{cat_filename2} is not a catalog file or directory"
+        return 1
+      end
 
       puts "build difference"
       s3 = s1 - s2

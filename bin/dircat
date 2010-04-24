@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+$:.unshift  File.join( File.dirname( __FILE__), "..", "lib"  )
+
+msg <<EOFS
+Simple set of command to build catalogs of files.
+The commands are:
+  dircat-build
+  dircat-cfr
+  dircat-cmp
+  dircat-query
+
+HOWTO:
+
+To find duplicates into a directory:
+
+EOFS
+
+put msg

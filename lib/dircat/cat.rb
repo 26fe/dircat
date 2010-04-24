@@ -8,18 +8,26 @@ module DirCat
     attr_reader :ctime
     attr_writer :ctime
 
-
     def initialize( options = {} )
       @verbose_level = options.delete(:verbose) || 0
-    end
-
-    def from_dirname( dirname )
-      # puts "#{self.class.name}#initialize"
-      @dirname = dirname
-      @ctime = DateTime.now
+      @dirname = ""
+      @ctime   = DateTime.now
       @entries = Array.new
       @md5ToEntries = Hash.new
+    end
+
+    def from_dir( dirname )
+      if not File.directory?( dirname )
+        raise "'#{dirname}' is not a directory or doesn't exists"
+      end
+      @dirname = File.expand_path dirname
+      @ctime   = DateTime.now
+      _loadfromdir
       self
+    end
+
+    def self.from_dir( dirname, options = {} )
+      new(options).from_dir(dirname)
     end
     
     def from_file( filename )
@@ -27,15 +35,16 @@ module DirCat
         raise DirCatException.new, "'#{filename}' not exists"
       end
       dircat_ser = YAML::load( File.open( filename ) )
-
       @dirname = dircat_ser.dirname
       @ctime   = dircat_ser.ctime
-      @entries = Array.new
-      @md5ToEntries = Hash.new
       dircat_ser.entries.each{ |entry_ser|
         add_entry( Entry.new.from_ser( entry_ser ) )
       }
       self
+    end
+
+    def self.from_file( filename, options = {} )
+      new(options).from_file(filename)
     end
 
     def to_ser
@@ -50,16 +59,6 @@ module DirCat
       dircat_ser
     end
 
-    def self.build_cat( dirname, options = {} )
-      if not File.directory?( dirname )
-        raise "'#{dirname}' is not a directory or doesn't exists"
-      end
-
-      s = self.new( options )
-      s.from_dirname( File.expand_path( dirname ) )
-      s._loadfromdir
-    end
-
     def _loadfromdir()
       old_dirname = Dir.pwd
       Dir.chdir( @dirname )
@@ -70,7 +69,6 @@ module DirCat
           cr = "\r"
           clear = "\e[K"
           print "#{cr}#{filename}#{clear}"
-
         end
 
         add_entry( Entry.new.from_filename( f ) )
@@ -130,7 +128,7 @@ module DirCat
     end
 
     def -(s)
-      result = Cat.new.from_dirname( @dirname )
+      result = Cat.new
       @entries.each { |e|
         result.add_entry(e) unless s.contains(e)
       }

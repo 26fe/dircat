@@ -47,7 +47,7 @@ begin
     #
     # bin
     #
-    gem.executables = %w{ dircat-build dircat-cfr dircat-cmp dircat-query }
+    gem.executables = %w{ dircat-build dircat-diff dircat-query }
 
     #
     # files
