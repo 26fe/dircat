@@ -3,4 +3,4 @@ $:.unshift  File.join( File.dirname( __FILE__), "..", "lib"  )
 
 require 'dircat'
 include DirCat
-exit DirCatCmp.run
+exit DirCatDiff.run

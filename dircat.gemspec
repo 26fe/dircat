@@ -5,16 +5,16 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dircat}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Giovanni Ferro"]
-  s.date = %q{2010-04-19}
+  s.date = %q{2010-04-25}
   s.description = %q{
       command line utilites to manage catalogs of directory
     }
   s.email = %q{giovanni.ferro@gmail.com}
-  s.executables = ["dircat-build", "dircat-cfr", "dircat-cmp", "dircat-query"]
+  s.executables = ["dircat-build", "dircat-diff", "dircat-query"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -29,8 +29,7 @@ Gem::Specification.new do |s|
      "lib/dircat.rb",
      "lib/dircat/cat.rb",
      "lib/dircat/cli/dircat_build.rb",
-     "lib/dircat/cli/dircat_cfr.rb",
-     "lib/dircat/cli/dircat_cmp.rb",
+     "lib/dircat/cli/dircat_diff.rb",
      "lib/dircat/cli/dircat_query.rb",
      "lib/dircat/entry.rb",
      "lib/dircat/extension_md5.rb",
@@ -48,6 +47,7 @@ Gem::Specification.new do |s|
      "spec/dircat/numeric_spec.rb",
      "spec/dircat/cli/dircat_build_spec.rb",
      "spec/dircat/cli/dircat_query_spec.rb",
+     "spec/dircat/cli/dircat_query_diff_spec.rb",
      "spec/spec_helper.rb",
      "spec/fixtures/certified_output",
      "spec/fixtures/certified_output/dircat1.yaml",
