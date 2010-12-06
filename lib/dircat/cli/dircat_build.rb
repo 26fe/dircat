@@ -93,9 +93,9 @@ module DirCat
         output = File.open(filename, "w")
       end
 
-      start_datetime = DateTime.now
+      start_time = Time.now
       s = Cat.from_dir(dirname)
-      end_datetime = DateTime.now
+      end_time = Time.now
 
       # s.pr
       # f.puts s.to_yaml
@@ -105,7 +105,7 @@ module DirCat
         output.close
       end
       $stderr.puts s.report
-      $stderr.puts "tempo: #{end_datetime - start_datetime}"
+      $stderr.puts "elapsed: #{end_time - start_time}"
 
       return 0
     end

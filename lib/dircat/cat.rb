@@ -104,9 +104,9 @@ module DirCat
 
     def report
       dups = duplicates
-      s = "Directory base: #@dirname\n" +
-        "Nr. file #{size}\n" +
-        "Bytes #{bytes.with_separator}"
+      s = "Base dir: #@dirname\n" +
+        "Nr. file: #{size}\n" +
+        "Bytes: #{bytes.with_separator}"
       if duplicates.size > 0
         s+= "\n duplicates #{dups.size}"
       end
