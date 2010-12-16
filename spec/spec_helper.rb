@@ -9,7 +9,7 @@ TEST_DIR = File.expand_path( File.join( File.dirname(__FILE__), "fixtures" ) )
 # Spec::Runner.configure do |config|
 # end
 
-require 'test/unit'
+# require 'test/unit'
 require "stringio"
 
 def with_stdout_captured

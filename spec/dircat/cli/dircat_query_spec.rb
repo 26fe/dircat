@@ -29,7 +29,7 @@ describe DirCatQuery do
       args = "#{cat_filename}"
       DirCatQuery.new.parse_args(args.split)
     end
-    out.should match /file 2/
-    out.should match /Bytes 4/
+    out.should match /file: 2/
+    out.should match /Bytes: 4/
   end
 end

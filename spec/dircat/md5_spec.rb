@@ -1,6 +1,6 @@
 require File.expand_path( File.join(File.dirname(__FILE__), "..", "spec_helper") )
 
-describe "TCMD5" do
+describe "MD5" do
 
   TEST_FILE = File.expand_path( File.join( File.dirname(__FILE__), "..", "..", "lib", "dircat", "extension_md5.rb" ) )
 
