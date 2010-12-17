@@ -107,7 +107,7 @@ module DirCat
       $stderr.puts s.report
       $stderr.puts "elapsed: #{end_time - start_time}"
 
-      return 0
+      0
     end
 
   end

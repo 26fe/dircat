@@ -63,7 +63,7 @@ module DirCat
       s = Cat.from_file( cat_filename, cat_opts )
 
       puts s.send( command.to_sym )
-      return 0
+      0
     end
   end
 end

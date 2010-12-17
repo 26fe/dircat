@@ -79,7 +79,7 @@ module DirCat
       else
         s3.fmt_simple
       end
-      return 0
+      0
     end
   end
 end

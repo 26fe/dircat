@@ -12,6 +12,6 @@ class Numeric
     before = before.reverse.gsub splitter, '\1' + separator
     str = "#{ before.chomp( separator ).reverse }"
     str += ".#{ after }" if after
-    return str
+    str
   end
 end

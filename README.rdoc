@@ -33,4 +33,4 @@ sudo gem install gf-dircat -s gems.github.com
 
 == Copyright
 
-Copyright (c) 2009 gf. See LICENSE for details.
+Copyright (c) 2009-2010 tokiro. See LICENSE for details.

@@ -1,3 +1,7 @@
+== 2010-12-17
+
+* added Gemfile
+
 === 2010-04-12
 
 * trasformed TestUnit tests into rspec examples
