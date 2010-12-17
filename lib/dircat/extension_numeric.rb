@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Numeric
   #
   # ritorna una stringa con le migliaia serparate da <separator>

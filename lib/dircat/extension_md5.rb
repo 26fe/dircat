@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # calculate md5 of big files, found on usenet
 #

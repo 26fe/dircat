@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module DirCat
 
   # From http://gist.github.com/72234
