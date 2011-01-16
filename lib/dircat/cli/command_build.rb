@@ -10,19 +10,23 @@ class CommandBuild < CliCommand
     "Build a catalogue starting from a directory"
   end
 
+  def self.usage
+    "Usage: dircat build [options]"
+  end
+
   def opt_parser(options)
     opt_parser = super(options)
 
     opt_parser.on("-o [FILE]", "--output [FILE]", String) do |v|
-      if options[:output]
+      if options.output
         puts "only one file of output can be used"
-        return 1
+        options.exit = true
       end
       options.output = v
     end
 
     opt_parser.on("-f", "--force", "force write on existent file") do |v|
-      options[:force] = true
+      options.force
     end
 
     opt_parser
@@ -57,7 +61,7 @@ class CommandBuild < CliCommand
     #
     output = $stdout
     if options.output
-      filename = options[:output]
+      filename = options.output
     else
       filename = "cat_" + File.basename(dirname) + "_" + Date.today.strftime("%Y%m%d") + ".yaml"
     end
@@ -87,10 +91,6 @@ class CommandBuild < CliCommand
 end
 
 
-
-
-
-
 #module DirCat
 #  #
 #  # Build a catalogue starting from a directory
@@ -104,7 +104,6 @@ end
 #    def parse_args( argv )
 #      options = { :verbose => true, :force => false }
 #      opts = OptionParser.new
-#      opts.banner << "Usage: dircat-build [options]\n"
 #      opts.banner << "\n"
 #      opts.banner << "Build a catalogue starting from a directory\n";
 #      opts.banner << "\n"

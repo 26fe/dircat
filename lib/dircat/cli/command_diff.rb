@@ -3,17 +3,21 @@
 class CommandDiff < CliCommand
 
   def self.command
-    "build"
+    "diff"
   end
 
   def self.description
-#    "Usage: dircat_cfr.rb [options] <filedircat1> <filedircat2>\n\n" +
-#    "fa la differenza fra il primo catalog e il secondo\n" +
-#    "<filedircat1> - <filedircat2>\n" +
-#    "e stampa sull'output con un formato\n"
     "Show diff from two catalogs"
   end
 
+  def self.usage
+    <<-EOS
+Usage: dircat diff [options] <filedircat1> <filedircat2>
+diff first catalog from second (<filedircat1> - <filedircat2>)
+and then print the difference with the format specified on output
+  EOS
+  end
+  
   def opt_parser(options)
     opt_parser = super(options)
     opt_parser.on("-f FORMAT", "--fmt FORMAT", "formato") do |v|

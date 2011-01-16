@@ -10,6 +10,10 @@ class CommandQuery < CliCommand
     "show info about dircat catalogs"
   end
 
+  def self.usage
+    "Usage: dircat-query [options] <filedircat> [<command>]"
+  end
+
   def opt_parser(options)
     opt_parser = super(options)
 
@@ -29,18 +33,13 @@ class CommandQuery < CliCommand
   end
 
   def exec(options, rest)
-    rest = opts.parse( args )
-
-    # p options
-    # p ARGV
-
     if rest.length < 1
       puts "missing catalog!"
       puts "-h to print help"
       return 0
     end
 
-    cat_opts = {}
+    cat_opts     = {}
     cat_filename = rest[0]
     unless File.exists?(cat_filename)
       puts "first args must be a catalogue"
@@ -56,15 +55,13 @@ class CommandQuery < CliCommand
     #
     # option verbose
     #
-    if options.has_key?(:verbose)
-      if options[:verbose]
-        cat_opts[:verbose_level] = 1
-      end
+    if options.verbose
+      cat_opts[:verbose_level] = 1
     end
 
-    s = Cat.from_file( cat_filename, cat_opts )
+    s = Cat.from_file(cat_filename, cat_opts)
 
-    puts s.send( command.to_sym )
+    puts s.send(command.to_sym)
     true
   end
 
@@ -83,7 +80,6 @@ end
 #      options = {}
 #      opts = OptionParser.new
 #      opts.banner =
-#        "Usage: dircat-query [options] <filedircat> [<command>]\n" +
 #        "show info on dircat catalogs\n"
 #
 #      opts.on("--version", "show the dircat version") do
