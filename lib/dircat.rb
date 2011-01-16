@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 #
-# stdlib
+# std lib
 #
 require 'fileutils'
 require 'tmpdir'
 require 'yaml'
 require 'ostruct'
 require 'optparse'
+
+#
+# rubygems
+#
+require 'optparse-command'
 
 module DirCat
   def self.version
@@ -26,6 +31,7 @@ require 'dircat/cat'
 require 'dircat/entry'
 require 'dircat/report'
 
-require 'dircat/cli/dircat_build'
-require 'dircat/cli/dircat_diff'
-require 'dircat/cli/dircat_query'
+require 'dircat/cli/cli_dircat'
+require 'dircat/cli/command_build'
+require 'dircat/cli/command_diff'
+require 'dircat/cli/command_query'

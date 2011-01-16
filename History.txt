@@ -1,3 +1,8 @@
+== 2011-01-15
+
+* add dependency to treevisitor
+* add dependency to optparse-command
+
 == 2010-12-17
 
 * added Gemfile

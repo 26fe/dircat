@@ -6,7 +6,7 @@ describe "MD5" do
 
   it "test_simple_md5" do
     file_name = File.join( TEST_FILE )
-    MD5.file( file_name ).to_s.should  ==  "8777d9d35da17496e21dcc8a4f9f8191"
+    MD5.file( file_name ).to_s.should  ==  "eb29e47aba9693862895688422171221"
   end
 
 end

@@ -17,15 +17,13 @@ begin
     gem.homepage = "http://github.com/tokiro/dircat"
 
     #
-    # dependecies
+    # dependencies, automatically loaded from Gemfile
     #
-    # gem.add_dependency('treevisitor')
-    gem.add_development_dependency "rspec"
 
     #
     # bin
     #
-    gem.executables = %w{ dircat-build dircat-diff dircat-query }
+    gem.executables = %w{ dircat }
 
     #
     # files
@@ -40,15 +38,7 @@ begin
     gem.test_files = Dir['spec/**/*.rb']
     gem.test_files.concat Dir['spec/fixtures/**/*']
 
-    #
-    # rubyforge
-    #
-    # gem.rubyforge_project = 'dircat'
   end
-
-  # Jeweler::RubyforgeTasks.new do |rubyforge|
-  #   rubyforge.doc_task = "rdoc"
-  # end
 
   Jeweler::GemcutterTasks.new
 rescue LoadError

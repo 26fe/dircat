@@ -4,10 +4,10 @@
 #
 
 if RUBY_VERSION =~ /1\.8/
-  # stdlib
+  # std lib
   require 'md5'
 else
-  # stdlib
+  # std lib
   require 'digest/md5'
   include Digest
 end

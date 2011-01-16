@@ -1,22 +1,26 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    abstract (1.0.0)
     diff-lcs (1.1.2)
     git (1.2.5)
-    jeweler (1.5.1)
+    jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
+    optparse-command (0.1.0)
     rake (0.8.7)
-    rspec (2.3.0)
-      rspec-core (~> 2.3.0)
-      rspec-expectations (~> 2.3.0)
-      rspec-mocks (~> 2.3.0)
-    rspec-core (2.3.1)
-    rspec-expectations (2.3.0)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.3.0)
-    yard (0.6.3)
+    rspec-mocks (2.4.0)
+    treevisitor (0.1.5)
+      abstract
+    yard (0.6.4)
 
 PLATFORMS
   java
@@ -25,6 +29,8 @@ PLATFORMS
 DEPENDENCIES
   bundler
   jeweler
+  optparse-command (= 0.1.0)
   rake
   rspec
+  treevisitor
   yard
