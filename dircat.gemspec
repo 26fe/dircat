@@ -33,9 +33,6 @@ Gem::Specification.new do |s|
     "lib/dircat/cli/command_build.rb",
     "lib/dircat/cli/command_diff.rb",
     "lib/dircat/cli/command_query.rb",
-    "lib/dircat/cli/dircat_build.rb",
-    "lib/dircat/cli/dircat_diff.rb",
-    "lib/dircat/cli/dircat_query.rb",
     "lib/dircat/entry.rb",
     "lib/dircat/extension_md5.rb",
     "lib/dircat/extension_numeric.rb",
@@ -47,9 +44,10 @@ Gem::Specification.new do |s|
   s.summary = %q{command line utilites to manage catalogs of directory}
   s.test_files = [
     "spec/dircat/cat_spec.rb",
-    "spec/dircat/cli/dircat_build_spec.rb",
-    "spec/dircat/cli/dircat_query_diff_spec.rb",
-    "spec/dircat/cli/dircat_query_spec.rb",
+    "spec/dircat/cli/cli_dircat_spec.rb",
+    "spec/dircat/cli/command_build_spec.rb",
+    "spec/dircat/cli/command_diff_spec.rb",
+    "spec/dircat/cli/command_query_spec.rb",
     "spec/dircat/md5_spec.rb",
     "spec/dircat/numeric_spec.rb",
     "spec/fixtures/certified_output/dircat1.yaml",
@@ -61,7 +59,6 @@ Gem::Specification.new do |s|
     "spec/fixtures/dir2/subdir/file3.txt",
     "spec/fixtures/dir3/file1.txt",
     "spec/fixtures/dir3/subdir/file1.txt",
-    "spec/fixtures/tmp/cat_dir1_20110116.yaml",
     "spec/fixtures/tmp/dummy.txt",
     "spec/spec_helper.rb"
   ]
