@@ -1,16 +1,13 @@
-$:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$:.unshift(File.dirname(__FILE__))
+# -*- coding: utf-8 -*-
 
+require "stringio"
+require 'ostruct'
+
+$:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'dircat'
 include DirCat
 
 TEST_DIR = File.expand_path( File.join( File.dirname(__FILE__), "fixtures" ) )
-
-# Spec::Runner.configure do |config|
-# end
-
-# require 'test/unit'
-require "stringio"
 
 def with_stdout_captured
   old_stdout = $stdout

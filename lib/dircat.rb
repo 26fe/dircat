@@ -11,8 +11,15 @@ require 'optparse'
 #
 # rubygems
 #
+gem "optparse-command", "0.1.1"
 require 'optparse-command'
 
+gem "treevisitor", "0.1.6"
+require 'treevisitor'
+
+#
+# dircat
+#
 module DirCat
   def self.version
     cwd = File.dirname( __FILE__)

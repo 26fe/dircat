@@ -1,7 +1,7 @@
 source :gemcutter
 
-gem "treevisitor"
-gem "optparse-command", "0.1.0"
+gem "treevisitor", "0.1.6"
+gem "optparse-command", "0.1.1"
 
 group :development do
   gem "jeweler"

@@ -49,14 +49,3 @@ module DirCat
     puts "#{items.length} rows in set\n"
   end
 end
-
-if __FILE__ == $0
-  require 'ostruct'
-  o1 = OpenStruct.new
-  o1.a = 1
-  o1.b = 2
-
-  o2 = OpenStruct.new :a => 2, :b => 4
-  
-  DirCat::report( [o1, o2], :a, :b )
-end

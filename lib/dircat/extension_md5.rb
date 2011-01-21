@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# calculate md5 of big files, found on usenet
+# calculate md5 of big files, snipped found on usenet
 #
 
 if RUBY_VERSION =~ /1\.8/

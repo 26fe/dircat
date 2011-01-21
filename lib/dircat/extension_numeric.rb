@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 class Numeric
   #
-  # ritorna una stringa con le migliaia serparate da <separator>
+  # returns a string separated by the thousands <separator>
   # es.: 100000 -> 1.000.000
-  #
-  #
-  # copiata da http://wiki.rubygarden.org/Ruby/page/show/FixNumFormat
   #
   def with_separator( separator = ',', length = 3 )
     splitter = Regexp.compile "(\\d{#{length}})"
