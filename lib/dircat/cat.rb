@@ -16,6 +16,18 @@ module DirCat
       @md5_to_entries = Hash.new
     end
 
+    def self.from_dir(dirname, options = {})
+      new(options).from_dir(dirname)
+    end
+
+    def self.from_file(filename, options = {})
+      new(options).from_file(filename)
+    end
+
+    def self.load(file_or_dir, options = {})
+      new(options).load(file_or_dir)
+    end
+
     def from_dir(dirname)
       if not File.directory?(dirname)
         raise "'#{dirname}' is not a directory or doesn't exists"
@@ -24,10 +36,6 @@ module DirCat
       @ctime   = DateTime.now
       _load_from_dir
       self
-    end
-
-    def self.from_dir(dirname, options = {})
-      new(options).from_dir(dirname)
     end
 
     def from_file(filename)
@@ -43,8 +51,14 @@ module DirCat
       self
     end
 
-    def self.from_file(filename, options = {})
-      new(options).from_file(filename)
+    def load(file_or_dir)
+      if File.directory?(file_or_dir)
+        from_dir(file_or_dir)
+      elsif File.exists?(file_or_dir)
+        from_file(file_or_dir)
+      else
+        raise DirCatException.new, "'#{file_or_dir}' not exists"
+      end
     end
 
     def to_ser
@@ -113,6 +127,10 @@ module DirCat
       @entries.size
     end
 
+    def empty?
+      @entries.size == 0
+    end
+
     def bytes
       @entries.inject(0) { |sum, entry| sum + entry.size }
     end
@@ -124,7 +142,7 @@ module DirCat
       if duplicates.size > 0
         s+= " (duplicates #{dups.size})"
       end
-      s    += "\nBytes: #{bytes.with_separator}"
+      s += "\nBytes: #{bytes.with_separator}"
       s
     end
 

@@ -37,7 +37,6 @@ require 'dircat/extension_numeric'
 
 require 'dircat/cat'
 require 'dircat/entry'
-require 'dircat/report'
 
 require 'dircat/cli/cli_dircat'
 require 'dircat/cli/command_build'

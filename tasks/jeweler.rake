@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-#
-# jeweler
-#
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -28,9 +25,10 @@ begin
     #
     # files
     #
-    gem.files  = %w{LICENSE README.rdoc Rakefile VERSION.yml dircat.gemspec}
+    gem.files  = %w{LICENSE.txt README.md Rakefile VERSION.yml dircat.gemspec}
     gem.files.concat Dir['lib/**/*.rb']
     gem.files.concat Dir['examples/*.rb']
+    gem.files.concat Dir['tasks/*.rake']
 
     #
     # test files

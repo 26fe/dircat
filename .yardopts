@@ -1,0 +1,4 @@
+lib/**/*.rb
+--title "dircat"
+--readme README.md
+- LICENSE.txt

@@ -3,7 +3,7 @@
 #
 # Build a catalogue starting from a directory
 #
-class CommandBuild < CliCommand
+class CommandBuild < OptParseCommand::CliCommand
 
   def self.command
     "build"

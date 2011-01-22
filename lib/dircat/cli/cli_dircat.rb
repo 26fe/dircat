@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class CliDirCat < CliMain
+class CliDirCat < OptParseCommand::CliMain
 
   def self.command
     "dircat"

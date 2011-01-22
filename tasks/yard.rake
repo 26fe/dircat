@@ -4,8 +4,7 @@ begin
   YARD::Rake::YardocTask.new do |t|
     t.files   = ['lib/**/*.rb']
     t.options = [
-        '--readme', 'README.rdoc',
-        # '--output-dir', 'doc/yardoc'
+        '--readme', 'README.md',
         '--any',
         '--extra',
         '--opts'

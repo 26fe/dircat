@@ -1,29 +1,31 @@
-= DIRCAT
+# DIRCAT
 
-Utilities for manage catalogs of files and directory.
-This utilities can be utilized as help to backup a directory.
+Dircat build, starting from a directory, a catalog with files meta information (path, timestamp, md5. ...), so it
+is possible to compare this catalog with another directory to detect duplicate, file change, and so.
+This utilities could be utilized as help to backup a directory or to find duplicates
 
-=== dircat-build
+### dircat build
 
 Build a catalog from a directory
 
-Ex.: dircat-build -o <catalog_name> dir1
+Ex.: dircat build -o <catalog_name> dir1
 
 builds catalog from directory dir1.
 
-=== dircat-cfr
+### dircat cfr
 
-Compare two catalogs
+Compare two catalogs or directories
 
-=== dircat-query
+Ex. dircat diff spec/fixtures/dir1 spec/fixtures/dir2
 
-show the contents of catalog
+### dircat query
 
-== REQUIREMENTS:
+query the contents of catalog
 
-* utilizza la libreria abstract di kwartz
+Ex.: ruby bin/dircat query cat_dir1.yaml
+Ex.: ruby bin/dircat query cat_dir1.yaml duplicates
 
-== INSTALL:
+### INSTALL:
 
 sudo gem install dircat
 
@@ -31,6 +33,6 @@ or
 
 sudo gem install gf-dircat -s gems.github.com
 
-== Copyright
+### Copyright
 
-Copyright (c) 2009-2010 tokiro. See LICENSE for details.
+Copyright (c) 2009-2010 tokiro.oyama@gmail.com See LICENSE for details.
