@@ -14,10 +14,10 @@ class CommandQuery < CliCommand
     "Usage: dircat-query [options] <filedircat> [<command>]"
   end
 
-  def opt_parser(options)
-    opt_parser = super(options)
+  def option_parser(options)
+    parser = super(options)
 
-    opt_parser.on("-o [FILE]", "--output [FILE]", String) do |v|
+    parser.on("-o [FILE]", "--output [FILE]", String) do |v|
       if options[:output]
         puts "only one file of output can be used"
         return 1
@@ -25,11 +25,11 @@ class CommandQuery < CliCommand
       options.output = v
     end
 
-    opt_parser.on("-f", "--force", "force write on existent file") do |v|
+    parser.on("-f", "--force", "force write on existent file") do |v|
       options[:force] = true
     end
 
-    opt_parser
+    parser
   end
 
   def exec(options, rest)

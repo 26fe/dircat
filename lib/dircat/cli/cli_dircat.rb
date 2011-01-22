@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 class CliDirCat < CliMain
 
   def self.command
@@ -7,11 +6,12 @@ class CliDirCat < CliMain
   end
 
   def self.description
-    "Simple set of command to build catalogs of files."
+    "Simple set of command to build catalogs of files.\n" +
+    "Code https://github.com/tokiro/dircat. Feedback to tokiro.oyama@gmail.com"
   end
 
   def self.version
-    puts DirCat::version
+    DirCat::version
   end
 
   def defaults

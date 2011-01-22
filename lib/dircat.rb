@@ -7,6 +7,7 @@ require 'tmpdir'
 require 'yaml'
 require 'ostruct'
 require 'optparse'
+require 'pp'
 
 #
 # rubygems
@@ -22,11 +23,11 @@ require 'treevisitor'
 #
 module DirCat
   def self.version
-    cwd = File.dirname( __FILE__)
-    yaml = YAML.load_file(cwd + '/../VERSION.yml')
-    major = (yaml['major'] || yaml[:major]).to_i
-    minor = (yaml['minor'] || yaml[:minor]).to_i
-    patch = (yaml['patch'] || yaml[:patch]).to_i
+    filename = File.join(File.dirname(__FILE__), %w{.. VERSION.yml})
+    yaml     = YAML.load_file(filename)
+    major    = (yaml['major'] || yaml[:major]).to_i
+    minor    = (yaml['minor'] || yaml[:minor]).to_i
+    patch    = (yaml['patch'] || yaml[:patch]).to_i
     "#{major}.#{minor}.#{patch}"
   end
 end

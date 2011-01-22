@@ -18,12 +18,12 @@ and then print the difference with the format specified on output
   EOS
   end
   
-  def opt_parser(options)
-    opt_parser = super(options)
-    opt_parser.on("-f FORMAT", "--fmt FORMAT", "formato") do |v|
+  def option_parser(options)
+    parser = super(options)
+    parser.on("-f FORMAT", "--fmt FORMAT", "formato") do |v|
       options.format = v
     end
-    opt_parser
+    parser
   end
 
   def exec(options, rest)
