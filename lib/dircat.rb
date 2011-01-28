@@ -15,7 +15,7 @@ require 'pp'
 gem "optparse-command", "0.1.1"
 require 'optparse-command'
 
-gem "treevisitor", "0.1.6"
+gem "treevisitor", "0.2.0"
 require 'treevisitor'
 
 #

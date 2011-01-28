@@ -7,8 +7,8 @@ GEM
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
-    json (1.4.6)
-    json (1.4.6-java)
+    json (1.5.1)
+    json (1.5.1-java)
     optparse-command (0.1.1)
     rake (0.8.7)
     rspec (2.4.0)
@@ -19,7 +19,7 @@ GEM
     rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.4.0)
-    treevisitor (0.1.6)
+    treevisitor (0.2.0)
       json
     yard (0.6.4)
 
@@ -33,5 +33,5 @@ DEPENDENCIES
   optparse-command (= 0.1.1)
   rake
   rspec
-  treevisitor (= 0.1.6)
+  treevisitor (= 0.2.0)
   yard

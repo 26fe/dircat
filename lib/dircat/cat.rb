@@ -3,10 +3,18 @@ module DirCat
 
   class Cat
 
+    #
+    # Directory name
+    #
     attr_reader :dirname
 
+    #
     # creation date
+    #
     attr_accessor :ctime
+
+
+    attr_reader :verbose_level
 
     def initialize(options = {})
       @verbose_level  = options.delete(:verbose) || 0
@@ -73,36 +81,37 @@ module DirCat
       dircat_ser
     end
 
+#    def _load_from_dir
+#      old_dirname = Dir.pwd
+#      Dir.chdir(@dirname)
+#      Dir["**/*"].each { |f|
+#        next if File.directory?(f)
+#
+#        if @verbose_level > 0
+#          cr    = "\r"
+#          clear = "\e[K"
+#          print "#{cr}#{filename}#{clear}"
+#        end
+#
+#        add_entry(Entry.new.from_filename(f))
+#      }
+#      if @verbose_level > 0
+#        print "\n"
+#      end
+#      Dir.chdir(old_dirname)
+#      self
+#    end
+
+    CR    = "\r"
+    CLEAR = "\e[K"
+
     def _load_from_dir
-      old_dirname = Dir.pwd
-      Dir.chdir(@dirname)
-      Dir["**/*"].each { |f|
-        next if File.directory?(f)
-
-        if @verbose_level > 0
-          cr    = "\r"
-          clear = "\e[K"
-          print "#{cr}#{filename}#{clear}"
-        end
-
-        add_entry(Entry.new.from_filename(f))
-      }
-      if @verbose_level > 0
-        print "\n"
-      end
-      Dir.chdir(old_dirname)
-      self
-    end
-
-    def _load_from_dir_with_tree_visitor
-      dtw = DirTreeWalker.new("..")
-      dtw.run do
-        visit_leaf_node do |filename|
-          add_entry(Entry.new.from_filename(f))
-          if @verbose_level > 0
-            cr    = "\r"
-            clear = "\e[K"
-            print "#{cr}#{filename}#{clear}"
+      me = self
+      TreeVisitor::DirTreeWalker.new.run @dirname  do
+        on_leaf do |filename|
+          me.add_entry(Entry.new.from_filename(filename))
+          if me.verbose_level > 0
+            print "#{CR}#{filename}#{CLEAR}"
           end
         end
       end
