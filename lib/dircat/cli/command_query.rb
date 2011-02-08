@@ -14,7 +14,7 @@ class CommandQuery < OptParseCommand::CliCommand
     "Usage: query [options] <catalog> [<method>]"
   end
 
-  def exec(options, rest)
+  def exec(main, options, rest)
     if rest.length < 1
       puts "missing catalog!"
       puts "-h to print help"

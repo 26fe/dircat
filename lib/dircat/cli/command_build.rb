@@ -38,7 +38,7 @@ class CommandBuild < OptParseCommand::CliCommand
     parser
   end
 
-  def exec(options, rest)
+  def exec(main, options, rest)
     if rest.length < 1
       $stderr.puts "directory (from which build catalog) is missing"
       $stderr.puts "-h to print help"

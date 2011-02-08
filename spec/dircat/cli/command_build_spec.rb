@@ -31,7 +31,7 @@ describe CommandBuild do
     expect_filename = File.join(@certified_output_dirname, "dircat1.yaml")
     result_filename = File.join(@tmp_output_dirname, "dircat1.yaml")
 
-    out             = with_stdout_captured do
+    capture_out do
       args = "build -f -o #{result_filename} #{@dir1_dirname}"
       CliDirCat.new.parse_and_execute(args.split)
     end
