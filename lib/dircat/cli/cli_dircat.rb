@@ -1,29 +1,28 @@
 # -*- coding: utf-8 -*-
-class CliDirCat < OptParseCommand::CliMain
+module DirCat
 
-  def self.command
-    "dircat"
-  end
+  class CliDirCat < OptParseCommand::CliMain
 
-  def self.description
-    "Simple set of command to build catalogs of files.\n" +
-    "Code https://github.com/tokiro/dircat. Feedback to tokiro.oyama@gmail.com"
-  end
+    def self.command
+      "dircat"
+    end
 
-  def self.version
-    DirCat::version
-  end
+    def self.description
+      "Simple set of command to build catalogs of files.\n" +
+          "Code https://github.com/tokiro/dircat. Feedback to tokiro.oyama@gmail.com"
+    end
 
-  def defaults
-    OpenStruct.new(
-        :verbose => true,
-        :force   => false
-    )
-  end
+    def self.version
+      DirCat::version
+    end
 
-  def opt_parser(options)
-    opt_parser = super(options)
-    opt_parser
+    def defaults
+      OpenStruct.new(
+          :verbose => true,
+          :force   => false
+      )
+    end
+
   end
 
 end

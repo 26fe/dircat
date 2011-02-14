@@ -12,18 +12,12 @@ describe CliDirCat do
 
   context "common args" do
     it "should accept -h (-help) option" do
-      out = with_stdout_captured do
-        args = %w{-h}
-        CliDirCat.new.parse_and_execute(args)
-      end
+      out = capture_out { CliDirCat.run(%w{-h}) }.out
       out.should match /Usage:/
     end
 
     it "should accept --version option" do
-      out = with_stdout_captured do
-        args = %w{--version}
-        CliDirCat.new.parse_and_execute(args)
-      end
+      out = capture_out { CliDirCat.run(%w{--version}) }.out
       out.should match /#{DirCat::version}/
     end
   end

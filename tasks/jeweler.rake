@@ -25,7 +25,7 @@ begin
     #
     # files
     #
-    gem.files  = %w{LICENSE.txt README.md Rakefile VERSION.yml dircat.gemspec}
+    gem.files  = %w{LICENSE.txt README.md Rakefile VERSION.yml dircat.gemspec .gemtest}
     gem.files.concat Dir['lib/**/*.rb']
     gem.files.concat Dir['examples/*.rb']
     gem.files.concat Dir['tasks/*.rake']

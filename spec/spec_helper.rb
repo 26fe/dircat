@@ -21,14 +21,14 @@ def capture_out
   OpenStruct.new(:out => out.string, :err => err.string)
 end
 
-def with_stdout_captured
-  old_stdout = $stdout
-  out        = StringIO.new
-  $stdout    = out
-  begin
-    yield
-  ensure
-    $stdout = old_stdout
-  end
-  out.string
-end
+#def with_stdout_captured
+#  old_stdout = $stdout
+#  out        = StringIO.new
+#  $stdout    = out
+#  begin
+#    yield
+#  ensure
+#    $stdout = old_stdout
+#  end
+#  out.string
+#end

@@ -12,7 +12,7 @@ require 'pp'
 #
 # rubygems
 #
-gem "optparse-command", "0.1.4"
+gem "optparse-command", "0.1.5"
 require 'optparse-command'
 
 gem "treevisitor", "0.2.1"

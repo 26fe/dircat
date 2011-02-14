@@ -11,18 +11,12 @@ describe CommandBuild do
   end
 
   it "should accept -h (-help) option" do
-    out = with_stdout_captured do
-      args = %w{build -h}
-      CliDirCat.new.parse_and_execute(args)
-    end
+    out = capture_out { CliDirCat.run(%w{build -h}) }.out
     out.should match /Usage:/
   end
 
   it "should not accept more then -o options" do
-    out = with_stdout_captured do
-      args = "build -f -o filename -o filename1"
-      CliDirCat.new.parse_and_execute(args.split)
-    end
+    out = capture_out { CliDirCat.run("build -f -o filename -o filename1".split) }.out
     out.should match /only one file/
   end
 
@@ -31,10 +25,7 @@ describe CommandBuild do
     expect_filename = File.join(@certified_output_dirname, "dircat1.yaml")
     result_filename = File.join(@tmp_output_dirname, "dircat1.yaml")
 
-    capture_out do
-      args = "build -f -o #{result_filename} #{@dir1_dirname}"
-      CliDirCat.new.parse_and_execute(args.split)
-    end
+    capture_out { CliDirCat.run("build -f -o #{result_filename} #{@dir1_dirname}".split) }
 
     cat_expect      = Cat.from_file(expect_filename)
     cat_result      = Cat.from_file(result_filename)
