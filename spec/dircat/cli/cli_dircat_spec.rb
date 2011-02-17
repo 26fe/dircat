@@ -18,7 +18,7 @@ describe CliDirCat do
 
     it "should accept --version option" do
       out = capture_out { CliDirCat.run(%w{--version}) }.out
-      out.should match /#{DirCat::version}/
+      out.should match /#{DirCat::VERSION}/
     end
   end
 

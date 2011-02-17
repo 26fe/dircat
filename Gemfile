@@ -1,12 +1,17 @@
-source :gemcutter
+source "http://rubygems.org"
 
-gem "treevisitor", "0.2.1"
-gem "optparse-command", "0.1.5"
+# Specify your gem's dependencies in lorem.gemspec
+gemspec
 
-group :development do
-  gem "jeweler"
-  gem "rake"
-  gem "yard"
-  gem "bundler"  # funny!
-  gem "rspec"
-end
+#source :gemcutter
+
+#gem "treevisitor", "0.2.1"
+#gem "optparse-command", "0.1.5"
+#
+#group :development do
+#  gem "jeweler"
+#  gem "rake"
+#  gem "yard"
+#  gem "bundler"  # funny!
+#  gem "rspec"
+#end

@@ -15,23 +15,13 @@ require 'pp'
 gem "optparse-command", "0.1.5"
 require 'optparse-command'
 
-gem "treevisitor", "0.2.1"
+gem "treevisitor", "0.2.2"
 require 'treevisitor'
 
 #
 # dircat
 #
-module DirCat
-  def self.version
-    filename = File.join(File.dirname(__FILE__), %w{.. VERSION.yml})
-    yaml     = YAML.load_file(filename)
-    major    = (yaml['major'] || yaml[:major]).to_i
-    minor    = (yaml['minor'] || yaml[:minor]).to_i
-    patch    = (yaml['patch'] || yaml[:patch]).to_i
-    "#{major}.#{minor}.#{patch}"
-  end
-end
-
+require 'dircat/version'
 require 'dircat/extension_md5'
 require 'dircat/extension_numeric'
 

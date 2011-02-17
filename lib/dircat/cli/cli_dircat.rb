@@ -13,7 +13,7 @@ module DirCat
     end
 
     def self.version
-      DirCat::version
+      DirCat::VERSION
     end
 
     def defaults
