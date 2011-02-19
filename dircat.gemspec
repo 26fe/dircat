@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   # dependencies
   #
   gem.add_runtime_dependency(%q<treevisitor>, ["= 0.2.2"])
-  gem.add_runtime_dependency(%q<optparse-command>, ["= 0.1.5"])
+  gem.add_runtime_dependency(%q<optparse-command>, ["= 0.1.6"])
   gem.add_development_dependency(%q<rake>, [">= 0"])
   gem.add_development_dependency(%q<yard>, [">= 0"])
   gem.add_development_dependency(%q<bundler>, [">= 0"])
@@ -54,4 +54,3 @@ Gem::Specification.new do |gem|
   # s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
 end
-

@@ -4,7 +4,9 @@ module DirCat
 #
 # Build a catalogue starting from a directory
 #
-  class CommandBuild < OptParseCommand::CliCommand
+  class CommandBuild < OptParseCommand::Command
+
+    CliDirCat.register_command(self)
 
     def self.command
       "build"

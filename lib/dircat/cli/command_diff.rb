@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 module DirCat
-  class CommandDiff < OptParseCommand::CliCommand
+  class CommandDiff < OptParseCommand::Command
+
+    CliDirCat.register_command(self)
 
     def self.command
       "diff"

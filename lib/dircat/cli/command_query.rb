@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 module DirCat
-  class CommandQuery < OptParseCommand::CliCommand
+  class CommandQuery < OptParseCommand::Command
+
+    CliDirCat.register_command(self)
 
     def self.command
       "query"
@@ -21,7 +23,7 @@ module DirCat
         return 0
       end
 
-      cat_opts     = {}
+      cat_opts = {}
       cat_filename = rest[0]
       if !File.exists?(cat_filename) or File.directory?(cat_filename)
         puts "first args must be a catalogue"

@@ -16,7 +16,7 @@ module DirCat
       DirCat::VERSION
     end
 
-    def defaults
+    def defaults(options)
       OpenStruct.new(
           :verbose => true,
           :force   => false
