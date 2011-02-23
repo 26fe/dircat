@@ -4,10 +4,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "spec_hel
 describe CommandBuild do
 
   before do
-    @dir1_dirname             = File.join(TEST_DIR, "dir1")
-    @dir2_dirname             = File.join(TEST_DIR, "dir2")
+    @dir1_dirname = File.join(TEST_DIR, "dir1")
+    @dir2_dirname = File.join(TEST_DIR, "dir2")
     @certified_output_dirname = File.join(TEST_DIR, "certified_output")
-    @tmp_output_dirname       = File.join(TEST_DIR, "tmp")
+    @tmp_output_dirname = Dir.tmpdir
   end
 
   it "should accept -h (-help) option" do
@@ -27,8 +27,8 @@ describe CommandBuild do
 
     capture_out { CliDirCat.run("build -f -o #{result_filename} #{@dir1_dirname}".split) }
 
-    cat_expect      = Cat.from_file(expect_filename)
-    cat_result      = Cat.from_file(result_filename)
+    cat_expect = Cat.from_file(expect_filename)
+    cat_result = Cat.from_file(result_filename)
 
     (cat_result - cat_result).size.should == 0
 
