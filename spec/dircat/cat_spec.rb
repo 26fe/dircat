@@ -79,15 +79,17 @@ describe Cat do
     cat1.size.should == 2
     cat1.bytes.should == 4
 
-    puts cat1.fmt_report
+    out = capture_out { cat1.fmt_report(:md5, :name, :size) }.out
+
     str =<<-EOS
-+----------------------------------+-----------+-----------------------------------------------------+------+
-| md5                              | name      | path                                                | size |
-+----------------------------------+-----------+-----------------------------------------------------+------+
-| 60b725f10c9c85c70d97880dfe8191b3 | file1.txt | E:/local/ruby_test/dircat/spec/fixtures/dir1        | 2    |
-| 4124bc0a9335c27f086f24ba207a4912 | file3.txt | E:/local/ruby_test/dircat/spec/fixtures/dir1/subdir | 2    |
-+----------------------------------+-----------+-----------------------------------------------------+------+
++----------------------------------+-----------+------+
+| md5                              | name      | size |
++----------------------------------+-----------+------+
+| 60b725f10c9c85c70d97880dfe8191b3 | file1.txt | 2    |
+| 4124bc0a9335c27f086f24ba207a4912 | file3.txt | 2    |
++----------------------------------+-----------+------+
+2 rows in set
     EOS
-    cat1.fmt_report.should == str
+    out.should == str
   end
 end

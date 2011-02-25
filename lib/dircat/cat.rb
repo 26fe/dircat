@@ -205,17 +205,17 @@ module DirCat
     # list of entries on stdout
     # @return[String]
     def fmt_simple
-      @entries.inject('') { |s, e| s << e.to_s << "\n"}
+      @entries.inject('') { |s, e| s << e.to_s << "\n" }
     end
 
     alias :to_s :fmt_simple
 
     #
-    # return complex report
-    # @return [String]  report
+    # print a complex report on stdout
     #
-    def fmt_report
-      OptParseCommand::report(@entries, :md5, :name, :path, :size)
+    def fmt_report(*columns)
+      columns = [:md5, :name, :path, :size] unless columns
+      OptParseCommand::report(@entries, *columns)
     end
 
     def fmt_ruby(dst)
