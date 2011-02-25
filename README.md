@@ -25,6 +25,11 @@ query the contents of catalog
 Ex.: ruby bin/dircat query cat_dir1.yaml
 Ex.: ruby bin/dircat query cat_dir1.yaml duplicates
 
+### Rubies
+
+see [gem-testers][http://gem-testers.org/gems/dircat/]
+and contribute to the test :-)
+
 ### INSTALL:
 
 sudo gem install dircat
