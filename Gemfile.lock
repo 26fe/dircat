@@ -9,7 +9,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.1.2)
-    json (1.5.1)
+    json (1.5.1-x86-mingw32)
     optparse-command (0.1.6)
     rake (0.8.7)
     rspec (2.5.0)
@@ -27,6 +27,7 @@ GEM
 PLATFORMS
   java
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   bundler

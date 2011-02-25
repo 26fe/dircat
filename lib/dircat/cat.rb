@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 module DirCat
 
+  #
+  # Catalog of files (contained into directory :-))
+  #
   class Cat
 
     #
@@ -13,21 +16,35 @@ module DirCat
     #
     attr_accessor :ctime
 
-
+    #
+    # verbose level used to print message on $stdout
+    #
     attr_reader :verbose_level
 
+    # @param [Hash] options
+    #   @option options [Number] :verbose list of ignore pattern
     def initialize(options = {})
-      @verbose_level  = options.delete(:verbose) || 0
-      @dirname        = ""
-      @ctime          = DateTime.now
-      @entries        = Array.new
+      @verbose_level = options.delete(:verbose) || 0
+      @dirname = ""
+      @ctime = DateTime.now
+      @entries = Array.new
       @md5_to_entries = Hash.new
     end
 
+    #
+    # Build catalog from a directory
+    # @param [String] dirname directory path
+    # @param options (see #initialize)
+    #
     def self.from_dir(dirname, options = {})
       new(options).from_dir(dirname)
     end
 
+    #
+    # Load catalog from a serialize file
+    # @param [String] filename
+    # @param options (see #initialize)
+    #
     def self.from_file(filename, options = {})
       new(options).from_file(filename)
     end
@@ -36,26 +53,28 @@ module DirCat
       new(options).load(file_or_dir)
     end
 
+    # Build a catalog from a directory
     def from_dir(dirname)
       if not File.directory?(dirname)
         raise "'#{dirname}' is not a directory or doesn't exists"
       end
       @dirname = File.expand_path dirname
-      @ctime   = DateTime.now
+      @ctime = DateTime.now
       _load_from_dir
       self
     end
 
+    # Load catalog from a file
     def from_file(filename)
       if not File.exist?(filename)
         raise DirCatException.new, "'#{filename}' not exists"
       end
-      dircat_ser = YAML::load(File.open(filename))
-      @dirname   = dircat_ser.dirname
-      @ctime     = dircat_ser.ctime
-      dircat_ser.entries.each { |entry_ser|
+      dircat_ser = File.open(filename) { |f| YAML::load(f) }
+      @dirname = dircat_ser.dirname
+      @ctime = dircat_ser.ctime
+      dircat_ser.entries.each do |entry_ser|
         add_entry(Entry.new.from_ser(entry_ser))
-      }
+      end
       self
     end
 
@@ -69,45 +88,29 @@ module DirCat
       end
     end
 
+    # serialize catalog
+    # @return [DirCatSer] serialized catalog
     def to_ser
-      dircat_ser         = DirCatSer.new
+      dircat_ser = DirCatSer.new
       dircat_ser.version = 0.1
       dircat_ser.dirname = @dirname
-      dircat_ser.ctime   = @ctime
+      dircat_ser.ctime = @ctime
       dircat_ser.entries = []
-      @entries.each { |entry|
+      @entries.each do |entry|
         dircat_ser.entries << entry.to_ser
-      }
+      end
       dircat_ser
     end
 
-#    def _load_from_dir
-#      old_dirname = Dir.pwd
-#      Dir.chdir(@dirname)
-#      Dir["**/*"].each { |f|
-#        next if File.directory?(f)
-#
-#        if @verbose_level > 0
-#          cr    = "\r"
-#          clear = "\e[K"
-#          print "#{cr}#{filename}#{clear}"
-#        end
-#
-#        add_entry(Entry.new.from_filename(f))
-#      }
-#      if @verbose_level > 0
-#        print "\n"
-#      end
-#      Dir.chdir(old_dirname)
-#      self
-#    end
-
-    CR    = "\r"
+    CR = "\r"
     CLEAR = "\e[K"
 
+    #
+    # @private
+    #
     def _load_from_dir
       me = self
-      TreeVisitor::DirTreeWalker.new.run @dirname  do
+      TreeVisitor::DirTreeWalker.new.run @dirname do
         on_leaf do |filename|
           me.add_entry(Entry.new.from_filename(filename))
           if me.verbose_level > 0
@@ -118,6 +121,9 @@ module DirCat
       self
     end
 
+    #
+    # Save serialized catalog to file
+    # @param [String,File] file
     def save_to(file)
       if file.kind_of?(String)
         begin
@@ -132,29 +138,44 @@ module DirCat
       end
     end
 
+    #
+    # number of entries (files)
+    # @return [Number]
     def size
       @entries.size
     end
 
+    #
+    # number of entries == 0
+    #
     def empty?
       @entries.size == 0
     end
 
+    #
+    # total size number of file cataloged
+    # @return [Number]
     def bytes
       @entries.inject(0) { |sum, entry| sum + entry.size }
     end
 
+    #
+    # simple report with essential information about this catalog
+    # @return [String] report
     def report
       dups = duplicates
-      s    = "Base dir: #{@dirname}\n"
-      s    += "Nr. file: #{size}"
-      if duplicates.size > 0
+      s = "Base dir: #{@dirname}\n"
+      s += "Nr. file: #{size}"
+      if dups.size > 0
         s+= " (duplicates #{dups.size})"
       end
       s += "\nBytes: #{bytes.with_separator}"
       s
     end
 
+    #
+    # add entry to this catalog
+    # @private
     def add_entry(e)
       @entries.push(e)
       if @md5_to_entries.has_key?(e.md5)
@@ -168,31 +189,33 @@ module DirCat
       @md5_to_entries.has_key?(e.md5)
     end
 
-    def -(s)
+    #
+    # return differences from this catalog and right catalog
+    # param [Cat] right
+    # @return [Cat]
+    def -(right)
       result = Cat.new
-      @entries.each { |e|
-        result.add_entry(e) unless s.contains(e)
-      }
+      @entries.each do |e|
+        result.add_entry(e) unless right.contains(e)
+      end
       result
     end
 
-    def duplicates
-      list = []
-      @md5_to_entries.each_value do |ee|
-        next if ee.size < 2
-        list.push(ee)
-      end
-      list
-    end
-
+    #
+    # list of entries on stdout
+    # @return[String]
     def fmt_simple
-      @entries.each { |e|
-        print e.to_s
-      }
+      @entries.inject('') { |s, e| s << e.to_s << "\n"}
     end
 
+    alias :to_s :fmt_simple
+
+    #
+    # return complex report
+    # @return [String]  report
+    #
     def fmt_report
-      DirCat::report(@entries, :md5, :name, :path)
+      OptParseCommand::report(@entries, :md5, :name, :path, :size)
     end
 
     def fmt_ruby(dst)
@@ -203,29 +226,45 @@ module DirCat
       }
     end
 
+    #
+    # @return [Array] entries representing duplicate files
+    #
+    def duplicates
+      list = []
+      @md5_to_entries.each_value do |ee|
+        next if ee.size < 2
+        list.push(ee)
+      end
+      list
+    end
+
     def list_dup
       r = ""
-      duplicates.flatten.each { |e|
+      duplicates.flatten.each do |e|
         r += e.to_s + "\n"
-      }
+      end
       r
     end
 
+    #
+    # return ruby script to eliminate duplicated
+    # @return [String] ruby script
+    #
     def script_dup
       r = "require 'fileutils'\n"
-      duplicates.each { |entries|
+      duplicates.each do |entries|
         flg_first = true
-        r         += "\n"
-        entries.each { |entry|
-          src = File.join(@dirname, entry.path, entry.name);
+        r += "\n"
+        entries.each do |entry|
+          src = File.join(@dirname, entry.path, entry.name)
           if flg_first
             flg_first = false
-            r         += "# FileUtils.mv( \"#{src}\", \"#{Dir.tmpdir}\" )\n"
+            r += "# FileUtils.mv( \"#{src}\", \"#{Dir.tmpdir}\" )\n"
           else
             r += "FileUtils.mv( \"#{src}\", \"#{Dir.tmpdir}\" )\n"
           end
-        }
-      }
+        end
+      end
       r
     end
 

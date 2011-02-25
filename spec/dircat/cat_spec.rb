@@ -18,7 +18,7 @@ describe Cat do
   it "should build catalog from dir1" do
     cat1 = Cat.from_dir(File.join(@data_dir, "dir1"))
     cat1.size.should == 2
-    cat1.bytes.size.should == 8
+    cat1.bytes.should == 4
   end
 
   it "should load catalog from dir2" do
@@ -44,7 +44,6 @@ describe Cat do
     cat_diff.size.should == 1
   end
 
-
   it "should detect duplicates" do
     cat1 = Cat.from_dir(File.join(@data_dir, "dir3"))
     cat1.duplicates.should have(1).files
@@ -56,7 +55,7 @@ describe Cat do
     end
 
     after do
-      FileUtils.rm(@tmp_file)   if File.exist? @tmp_file
+      FileUtils.rm(@tmp_file) if File.exist? @tmp_file
     end
 
     it "saving to a file" do
@@ -73,5 +72,22 @@ describe Cat do
       not_existent_file = File.join(Dir.tmpdir, "not_existent", "dircat1.yaml")
       lambda { cat1.save_to(not_existent_file) }.should raise_exception(DirCatException)
     end
+  end
+
+  it "should print a report" do
+    cat1 = Cat.from_dir(File.join(@data_dir, "dir1"))
+    cat1.size.should == 2
+    cat1.bytes.should == 4
+
+    puts cat1.fmt_report
+    str =<<-EOS
++----------------------------------+-----------+-----------------------------------------------------+------+
+| md5                              | name      | path                                                | size |
++----------------------------------+-----------+-----------------------------------------------------+------+
+| 60b725f10c9c85c70d97880dfe8191b3 | file1.txt | E:/local/ruby_test/dircat/spec/fixtures/dir1        | 2    |
+| 4124bc0a9335c27f086f24ba207a4912 | file3.txt | E:/local/ruby_test/dircat/spec/fixtures/dir1/subdir | 2    |
++----------------------------------+-----------+-----------------------------------------------------+------+
+    EOS
+    cat1.fmt_report.should == str
   end
 end
