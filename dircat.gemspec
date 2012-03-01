@@ -47,11 +47,4 @@ Gem::Specification.new do |gem|
   gem.files.concat Dir['tasks/*.rake']
   # s.files = `git ls-files`.split("\n")
 
-  #
-  # test files
-  #
-  gem.test_files = Dir['spec/**/*.rb']
-  gem.test_files.concat Dir['spec/fixtures/**/*']
-  # s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
-
 end
