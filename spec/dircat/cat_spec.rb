@@ -48,6 +48,13 @@ describe Cat do
     cat1 = Cat.from_dir(File.join(@data_dir, "dir3"))
     cat1.duplicates.should have(1).files
   end
+  
+  # dir4 has an broken symlink, otherwise is identical to dir1
+  it "should build catalog from dir4" do
+    cat1 = Cat.from_dir(File.join(@data_dir, "dir4"))
+    cat1.size.should == 3
+    cat1.bytes.should == 20
+  end
 
   context "save to a file" do
     before do
