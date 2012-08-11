@@ -19,7 +19,8 @@ Gem::Specification.new do |gem|
   #
   # dependencies
   #
-  gem.add_runtime_dependency(%q<treevisitor>, ["= 0.2.2"])
+  gem.add_runtime_dependency(%q<ansi>, [">= 0"])
+  gem.add_runtime_dependency(%q<treevisitor>)
   gem.add_runtime_dependency(%q<optparse-command>, ["= 0.1.6"])
 
   gem.add_development_dependency(%q<rake>, [">= 0"])
@@ -30,13 +31,14 @@ Gem::Specification.new do |gem|
   #
   # bin
   #
+  # s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   gem.require_paths = ["lib"]
   gem.executables = %w{ dircat }
-  # s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   #
   # files
   #
+  # s.files = `git ls-files`.split("\n")
   gem.files = %w{LICENSE.txt README.md Rakefile dircat.gemspec .gemtest}
   gem.extra_rdoc_files = [
       "LICENSE.txt",
@@ -45,13 +47,12 @@ Gem::Specification.new do |gem|
   gem.files.concat Dir['lib/**/*.rb']
   gem.files.concat Dir['examples/*.rb']
   gem.files.concat Dir['tasks/*.rake']
-  # s.files = `git ls-files`.split("\n")
 
   #
   # test files
   #
+  # s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.test_files = Dir['spec/**/*.rb']
   gem.test_files.concat Dir['spec/fixtures/**/*']
-  # s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
 end

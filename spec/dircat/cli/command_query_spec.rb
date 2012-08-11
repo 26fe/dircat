@@ -13,7 +13,7 @@ describe CommandQuery do
   end
 
   it "should show catalogs info" do
-    cat_filename = File.join( @certified_output_dirname, "dircat1.yaml" )
+    cat_filename = File.join( @certified_output_dirname, "cat_dir1_20120811.yaml" )
     out = capture_out { CliDirCat.run "query #{cat_filename}".split }.out
     out.should match /file: 2/
     out.should match /Bytes: 4/

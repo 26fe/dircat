@@ -1,0 +1,25 @@
+--- !ruby/object:DirCat::DirCatSer
+table:
+  :dircat_version: 0.1.13
+  :dirname: /home/gf/GioPrj/dircat/spec/fixtures/dir1
+  :ctime: !ruby/object:DateTime 2012-08-11 16:40:01.124490762 +02:00
+  :entries:
+  - !ruby/object:DirCat::EntrySer
+    table:
+      :md5: !binary |-
+        NjBiNzI1ZjEwYzljODVjNzBkOTc4ODBkZmU4MTkxYjM=
+      :name: file1.txt
+      :path: /home/gf/GioPrj/dircat/spec/fixtures/dir1
+      :size: 2
+      :mtime: 2010-04-19 23:00:12.000000000 +02:00
+    modifiable: true
+  - !ruby/object:DirCat::EntrySer
+    table:
+      :md5: !binary |-
+        NDEyNGJjMGE5MzM1YzI3ZjA4NmYyNGJhMjA3YTQ5MTI=
+      :name: file3.txt
+      :path: /home/gf/GioPrj/dircat/spec/fixtures/dir1/subdir
+      :size: 2
+      :mtime: 2010-04-19 23:00:12.000000000 +02:00
+    modifiable: true
+modifiable: true

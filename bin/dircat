@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
+require 'rubygems'
 cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)
 
 require 'dircat'
-DirCat::CliDirCat.run!
+include DirCat
+exit DirCat::CliDirCat.run!
+

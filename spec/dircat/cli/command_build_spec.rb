@@ -22,8 +22,8 @@ describe CommandBuild do
 
 
   it "should build a catalog from a directory" do
-    expect_filename = File.join(@certified_output_dirname, "dircat1.yaml")
-    result_filename = File.join(@tmp_output_dirname, "dircat1.yaml")
+    expect_filename = File.join(@certified_output_dirname, "cat_dir1_20120811.yaml")
+    result_filename = File.join(@tmp_output_dirname, "cat_dir1.yaml")
 
     capture_out { CliDirCat.run("build -f -o #{result_filename} #{@dir1_dirname}".split) }
 

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 module DirCat
-#
-# Build a catalogue starting from a directory
-#
+  #
+  # Build a catalogue starting from a directory
+  #
   class CommandBuild < OptParseCommand::Command
 
     CliDirCat.register_command(self)
@@ -38,10 +38,20 @@ module DirCat
         options.output = v
       end
 
+      parser.on("--find", "try to find a catalog from this directory to path") do |v|
+        options.find = true
+      end
+
       parser
     end
 
     def exec(main, options, rest)
+      if options.find
+
+        exit
+      end
+
+
       if rest.length < 1
         $stderr.puts "directory (from which build catalog) is missing"
         $stderr.puts "-h to print help"
@@ -50,7 +60,7 @@ module DirCat
 
       dirname  = rest[0]
       dirname  = File.expand_path(dirname)
-      cat_opts = {}
+      cat_opts = { }
 
       if not FileTest.directory?(dirname)
         $stderr.puts "'#{dirname}' not exists or is not a directory"
@@ -81,14 +91,14 @@ module DirCat
 
       output     = File.open(filename, "w")
       start_time = Time.now
-      s          = Cat.from_dir(dirname)
+      cat        = Cat.from_dir(dirname)
       end_time   = Time.now
-      s.save_to(output)
+      cat.save_to(output)
 
       if output != $stdout
         output.close
       end
-      $stderr.puts s.report
+      $stderr.puts cat.report
       $stderr.puts "elapsed: #{end_time - start_time}"
       $stderr.puts "written to #{filename}" if output != $stdout
 

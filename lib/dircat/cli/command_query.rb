@@ -43,7 +43,12 @@ module DirCat
         cat_opts[:verbose_level] = 1
       end
 
-      s = Cat.from_file(cat_filename, cat_opts)
+      begin
+        s = Cat.from_file(cat_filename, cat_opts)
+      rescue Exception => e
+        $stderr.put "cannot read catalog '#{cat_filename}' maybe it is an old version?"
+        return false
+      end
 
       if s.respond_to? command.to_sym
         puts s.send(command.to_sym)

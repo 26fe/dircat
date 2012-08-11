@@ -92,7 +92,7 @@ module DirCat
     # @return [DirCatSer] serialized catalog
     def to_ser
       dircat_ser = DirCatSer.new
-      dircat_ser.version = 0.1
+      dircat_ser.dircat_version = DirCat::VERSION
       dircat_ser.dirname = @dirname
       dircat_ser.ctime = @ctime
       dircat_ser.entries = []
