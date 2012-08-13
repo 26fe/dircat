@@ -10,8 +10,6 @@
 #end
 
 require 'sinatra/base'
-
-gem 'sinatra-group-items', "0.0.1"
 require 'sinatra/group_items'
 
 require 'haml'
@@ -28,7 +26,6 @@ require 'simple_cataloger/server/web_server'
 #
 # cli
 #
-gem "optparse-command", "0.1.7"
 require 'optparse-command'
 
 require 'simple_cataloger/cli/cli_cat'

@@ -10,7 +10,6 @@ require 'ostruct'
 #
 # rubygems
 #
-gem "treevisitor", "0.2.2"
 require 'treevisitor'
 
 require 'active_record'
@@ -20,7 +19,7 @@ require 'active_record'
 #
 # simple catalog
 #
-require 'simple_cataloger/version'
+require 'version'
 require 'simple_cataloger/core/simple_cataloger_error'
 require 'simple_cataloger/core/extensions'
 

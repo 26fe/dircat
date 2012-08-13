@@ -7,11 +7,31 @@ require "stringio"
 require 'ostruct'
 require 'tmpdir'
 
+#
+# rubygems
+#
+#require 'rubygems'
+
+
+require 'sinatra'
+require 'rack/test'
+# set test environment
+set :environment, :test
+set :run, false
+set :raise_errors, true
+set :logging, false
+
+require 'rspec'
+#require 'rspec/autorun'
+#require 'rspec/interop/test'
+
 $:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 # $LOAD_PATH.unshift(File.dirname(__FILE__))
 # $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'dircat'
+require 'simple_cataloger_core'
+require 'simple_cataloger_cli'
 include DirCat
 
 TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), "fixtures"))
@@ -28,21 +48,3 @@ def capture_out
   OpenStruct.new(:out => out.string, :err => err.string)
 end
 
-
-
-
-#require 'rubygems'
-require 'sinatra'
-require 'rack/test'
-require 'rspec'
-#require 'rspec/autorun'
-#require 'rspec/interop/test'
-
-require 'simple_cataloger_ar/core'
-require 'simple_cataloger_ar/cli'
-
-# set test environment
-set :environment, :test
-set :run, false
-set :raise_errors, true
-set :logging, false

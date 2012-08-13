@@ -11,7 +11,7 @@ module SimpleCataloger
 
     it "should respond to /" do
       get '/'
-      pp last_response
+      # pp last_response
       last_response.should be_ok
     end
 
