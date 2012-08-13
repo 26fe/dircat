@@ -1,13 +1,18 @@
-# DIRCAT
+# DIRCAT & Simple Cataloger (merging Simple Cataloger in progress)
 
-Dircat build, starting from a directory, a catalog with files meta information (path, timestamp, md5. ...), so it
-is possible to compare this catalog with another directory to detect duplicate, file change, and so.
-This utilities could be utilized as help to backup a directory or to find duplicates
+## DIRCAT 
 
-= Simple Cataloger
+Dircat build, starting from a directory, a catalog with files 
+meta information (path, timestamp, md5. ...), so it is possible to compare 
+this catalog with another directory to detect duplicate, file change, and so.
+This utilities could be utilized as help to backup a directory 
+or to find duplicates
+
+## Simple Cataloger
 
 An extremly simple cataloging tool. You can use it to index files stored on
-hard disks and create searchable catalogs that can be used without having access to original media.
+hard disks and create searchable catalogs that can be used without 
+having access to original media.
 
 ### dircat build
 
@@ -43,7 +48,7 @@ or
 
 sudo gem install gf-dircat -s gems.github.com
 
-== Note on Patches/Pull Requests
+## Note on Patches/Pull Requests
 
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -53,6 +58,11 @@ sudo gem install gf-dircat -s gems.github.com
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+
+## Contributor
+
+2012-08: merging with mstrauss branch (not following symlinks)
+
+## Copyright
 
 Copyright (c) 2009-2012 Tokyro (tokyro.oyama@gmail.com). See LICENSE for details.
