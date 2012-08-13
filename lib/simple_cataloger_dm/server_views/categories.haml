@@ -1,0 +1,17 @@
+- if @categories.empty?
+  Empty DB!!
+
+- unless @categories.empty?
+  .span-12.last
+    %h2= "Categories"
+    %table
+      - @categories.each_with_index do |category,index|
+        %tr{:class => if index % 2 == 0 then "even" else "" end}
+          %td
+            %a{:href=>"/category/#{category.id}"}
+              %b= category.name
+            %ul
+              - category.tags.each do |tag|
+                %li
+                  %a{:href=>"/tag/#{tag.id}"}= "#{tag.name} (c:#{tag.items.count})"
+
