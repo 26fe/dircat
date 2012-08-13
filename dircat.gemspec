@@ -80,6 +80,7 @@ Gem::Specification.new do |gem|
   gem.files.concat Dir['web/**/*']
   gem.files.concat Dir['tasks/*.rake']
 
+<<<<<<< HEAD
   #
   # test files
   #
@@ -87,4 +88,6 @@ Gem::Specification.new do |gem|
   gem.test_files = Dir['spec/**/*.rb']
   gem.test_files.concat Dir['spec/fixtures/**/*']
 
+=======
+>>>>>>> mstrauss/symlinkfix
 end

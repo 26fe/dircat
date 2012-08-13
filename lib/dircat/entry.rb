@@ -18,11 +18,11 @@ module DirCat
     def from_filename( filename )
       @name = File.basename(filename)
       @path = File.dirname(filename)
-      stat = File.stat(filename)
+      stat = File.lstat(filename)
       @size = stat.size
       @mtime = stat.mtime
       # self.md5 = Digest::MD5.hexdigest(File.read( f ))
-      @md5 = MD5.file( filename ).hexdigest
+      @md5 = MD5.file( filename ).hexdigest unless stat.symlink?
       self
     end
 
