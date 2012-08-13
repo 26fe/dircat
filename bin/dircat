@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 require 'rubygems'
 cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)

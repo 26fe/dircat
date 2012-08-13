@@ -23,7 +23,7 @@ module SimpleCataloger
     # turns on static file serving for Sinatra::Base apps
     enable :static
 
-    set :public, File.join(File.dirname(__FILE__), %w{.. server_public})
+    set :public_folder, File.join(File.dirname(__FILE__), %w{.. server_public})
     set :views, File.join(File.dirname(__FILE__), %w{.. server_views})
 
     helpers do

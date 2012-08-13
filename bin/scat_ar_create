@@ -1,10 +1,12 @@
+#!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-#!/usr/bin/env ruby -w
+require 'rubygems'
+
 cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{.. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)
+
 require 'simple_cataloger/core'
 include SimpleCataloger
-
 
 Catalog.new("test_ar").create
 
