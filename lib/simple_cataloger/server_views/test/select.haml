@@ -1,0 +1,65 @@
+.demo
+  .ui-widget
+    %label Your preferred programming language:
+    %select{:id =>"combobox"}
+      %option{:value=>""} Select one...
+      %option{:value=>"ActionScript"} ActionScript
+      %option{:value=>"AppleScript"} AppleScript
+      %option{:value=>"Asp"} Asp
+      %option{:value=>"BASIC"} BASIC
+      %option{:value=>"C"} C
+      %option{:value=>"C++"} C++
+      %option{:value=>"Clojure"} Clojure
+  %button{:id=>"toggle"} Show underlying select
+
+%select.editable-select
+  %option{:value=>""} Select one...
+  %option{:value=>"ActionScript"} ActionScript
+  %option{:value=>"AppleScript"} AppleScript
+  %option{:value=>"Asp"} Asp
+  %option{:value=>"BASIC"} BASIC
+  %option{:value=>"C"} C
+  %option{:value=>"C++"} C++
+  %option{:value=>"Clojure"} Clojure
+
+:css
+  .ui-button {
+      margin-left: -1px;
+  }
+
+  .ui-button-icon-only .ui-button-text {
+      padding: 0.35em;
+  }
+
+  .ui-autocomplete-input {
+      margin: 0;
+      padding: 0.48em 0 0.47em 0.45em;
+  }
+
+:javascript
+    $(function() {
+        $("#combobox").combobox();
+        $("#toggle").click(function() {
+            $("#combobox").toggle();
+        });
+    });
+
+:javascript
+  $(function() {
+    $('.editable-select').editableSelect(
+      {
+        bg_iframe: true,
+        onSelect: function(list_item) {
+          // alert('List item text: '+ list_item.text());
+          // 'this' is a reference to the instance of EditableSelect
+          // object, so you have full access to everything there
+          // alert('Input value: '+ this.text.val());
+        },
+        case_sensitive: false,
+        items_then_scroll: 10
+      }
+    );
+    var select = $('.editable-select:first');
+    var instances = select.editableSelectInstances();
+    instances[0].addOption('Germany, value added programmatically');
+  });

@@ -1,0 +1,57 @@
+%h3= "Category: #{@category.name}"
+.span-10
+  %ul
+    - @category.tags.each do |tag|
+      %li
+        %a{:href=>"/tag/#{tag.id}"}= "#{tag.name} (c:#{tag.items.count})"
+.span-14.last
+  %script{:type=>"text/javascript"}
+    - rdata = @category.tags.collect{ |tag| tag.items.count }
+    = "var data=#{rdata.to_json}"
+    = "var labels=#{@category.tags.collect{ |tag| tag.name }.to_json}"
+    = "var data_max= #{rdata.max}"
+
+  :javascript
+    /* Sizing and scales. */
+    var w = 450,
+        h = 15 * data.length,
+        x = pv.Scale.linear(0, data_max).range(0, w),
+        y = pv.Scale.ordinal(pv.range(data.length)).splitBanded(0, h, 4/5);
+
+    /* The root panel. */
+    var vis = new pv.Panel()
+        .width(w)
+        .height(h)
+        .bottom(20)
+        .left(20)
+        .right(40)
+        .top(5);
+
+    /* The bars. */
+    var bar = vis.add(pv.Bar)
+        .data(data)
+        .top(function() y(this.index))
+        .height(y.range().band)
+        .left(0)
+        .width(x)
+        .text(function(d) d.toFixed(1));
+
+    /* The variable label. */
+    bar.anchor("left").add(pv.Label)
+        .textMargin(0)
+        .textAlign("right")
+        .text(function() labels[this.index]);
+
+    /* X-axis ticks. */
+    vis.add(pv.Rule)
+        .data(x.ticks(10))
+        .left(x)
+        .strokeStyle(function(d) d ? "rgba(255,255,255,.3)" : "#000")
+      .add(pv.Rule)
+        .bottom(0)
+        .height(5)
+        .strokeStyle("#000")
+      .anchor("bottom").add(pv.Label)
+        .text(x.tickFormat);
+
+    vis.render();

@@ -1,0 +1,67 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang"=>"en", :lang=>"en"}
+  %head
+    %title
+      = @title || 'Simple Catalog'
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html;charset=utf-8"}
+
+    -# **********************************************
+    -# blueprint
+    %link{:rel => 'stylesheet', :href => "/css/blueprint-1.0.1/screen.css", :media => "screen, projection"}
+    %link{:rel => 'stylesheet', :href => "/css/blueprint-1.0.1/print.css", :media => "print"}
+    /[if lt IE 8]
+      %link{:rel => 'stylesheet', :href => "/css/blueprint-1.0.1/ie.css", :media => "screen, projection"}
+
+    -# **********************************************
+    -# jquery
+    %link{:type=>"text/css",         :href=>"/js/jquery-ui-1.8.13/css/smoothness/jquery-ui-1.8.13.custom.css", :rel=>"Stylesheet"}
+    %script{:type=>"text/javascript", :src=>"/js/jquery-ui-1.8.13/js/jquery-1.5.1.min.js"}
+    %script{:type=>"text/javascript", :src=>"/js/jquery-ui-1.8.13/js/jquery-ui-1.8.13.custom.min.js"}
+
+    %script{:type=>"text/javascript", :src=>"/js/jquery-image-resize/jquery.ae.image.resize.min.js"}
+
+    %link{:rel => "stylesheet",      :href=>"/js/jquery.editable-select.1.3.2/jquery.editable-select.css", :type => "text/css", :media => "all"}
+    %script{:type=>"text/javascript", :src=>"/js/jquery.editable-select.1.3.2/jquery.editable-select.js"}
+
+    -# http://leandrovieira.com/projects/jquery/lightbox/
+    %script{:type=>"text/javascript", :src=>"/js/jquery-lightbox-0.5/js/jquery.lightbox-0.5.min.js"}
+    %link{:rel => "stylesheet",      :href=>"/js/jquery-lightbox-0.5/css/jquery.lightbox-0.5.css", :media=>"screen"}
+
+    -# http://craigsworks.com/projects/qtip/
+    %script{:type=>"text/javascript", :src=>"/js/jquery.qtip-1.0.0-rc3/jquery.qtip-1.0.0-rc3.min.js"}
+
+    -# **********************************************
+    -# protovis
+    %script{:type=>"text/javascript", :src=>"/js/protovis-3.2/protovis-r3.2.js"}
+
+    -# **********************************************
+    -# simple_catalog
+
+    %link{:rel => "stylesheet", :href => "/js/simple_catalog/tooltips.css", :type => "text/css", :media => "all"}
+    %script{:type=>"text/javascript", :src=>"/js/simple_catalog/tooltips.js"}
+
+    %link{:rel => "stylesheet", :href => "/app.css", :type => "text/css", :media => "all"}
+  %body
+    .container{:class => "showgrid"}
+      .span-24.header.last
+        Catalog:
+        = @catalog.name
+      .span-24.menu.last
+        Films:
+        %a{:href=>"/"}="by alpha"
+        %a{:href=>"/?o=time"}="by time"
+        %br
+        Categories:
+        %a{:href=>"/categories"}="all"
+        %nbs
+        - Category.all.each do |c|
+          %a{:href=>"/category/#{c.id}"}= c.name
+          %nbs
+        %br
+        %a{:href => '/random'}Random
+      .span-24.last
+        = yield
+      .footer.span-24.last
+        .span-10
+          Powered by:
+          %a{:href => "github.com/tokiro/simple_cataloger"} Simple Cataloger
