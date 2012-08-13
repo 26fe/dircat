@@ -10,5 +10,3 @@ begin
 rescue LoadError
   puts "rspec (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
-
-

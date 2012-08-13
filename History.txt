@@ -1,3 +1,12 @@
+== 2011-08-11
+
+* start merge with simple cataloger
+
+== 2011-08-11
+
+* update gem dependecies
+* fix on rspec fixures
+
 == 2011-01-15
 
 * add dependency to treevisitor

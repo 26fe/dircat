@@ -46,10 +46,6 @@ module DirCat
     end
 
     def exec(main, options, rest)
-      if options.find
-
-        exit
-      end
 
 
       if rest.length < 1
@@ -58,8 +54,24 @@ module DirCat
         return false
       end
 
-      dirname  = rest[0]
-      dirname  = File.expand_path(dirname)
+      dirname = rest[0]
+      dirname = File.expand_path(dirname)
+
+
+      if options.find
+        f = File.join(dirname, ".dircat.yml")
+        until File.exist?(f) or dirname == "/"
+          dirname = File.split(dirname)[0]
+        end
+        if File.exist?(f)
+          puts "file exists!!"
+        else
+          puts "don't exists"
+        end
+        exit
+      end
+
+
       cat_opts = { }
 
       if not FileTest.directory?(dirname)

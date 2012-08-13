@@ -6,3 +6,8 @@ doc
 nbproject
 .idea
 .yardoc
+*.sqlite3
+*.log
+.bundle
+.sass-cache
+
