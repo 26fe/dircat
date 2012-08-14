@@ -4,7 +4,7 @@ module DirCat
   #
   # Catalog of files (contained into directory :-))
   #
-  class Cat
+  class CatOnYamlFile
 
     #
     # Directory name
@@ -110,7 +110,7 @@ module DirCat
     #
     def _load_from_dir
       me = self
-      TreeVisitor::DirTreeWalker.new.run @dirname do
+      TreeRb::DirTreeWalker.new.run @dirname do
         on_leaf do |filename|
           me.add_entry(Entry.new.from_filename(filename))
           if me.verbose_level > 0
@@ -192,9 +192,9 @@ module DirCat
     #
     # return differences from this catalog and right catalog
     # param [Cat] right
-    # @return [Cat]
+    # @return [CatOnYamlFile]
     def -(right)
-      result = Cat.new
+      result = CatOnYamlFile.new
       @entries.each do |e|
         result.add_entry(e) unless right.contains(e)
       end

@@ -44,7 +44,7 @@ module DirCat
       end
 
       begin
-        s = Cat.from_file(cat_filename, cat_opts)
+        s = CatOnYamlFile.from_file(cat_filename, cat_opts)
       rescue Exception => e
         $stderr.put "cannot read catalog '#{cat_filename}' maybe it is an old version?"
         return false

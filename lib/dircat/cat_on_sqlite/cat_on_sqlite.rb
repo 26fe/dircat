@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 module SimpleCataloger
 
-  class Catalog
+  class CatOnSqlite
 
     attr_reader :name
 
@@ -59,7 +59,11 @@ module SimpleCataloger
       # TODO: drop tables!
       ActiveRecord::Base.establish_connection(@ar_config)
       ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : false
-      ActiveRecord::Migrator.migrate(File.join(File.dirname(__FILE__), %w{.. migration}), ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
+      migration_dir = File.join(File.dirname(__FILE__), %w{.. cat_on_sqlite_migration})
+      unless Dir.exist? migration_dir
+        raise "migration dir '#{migration_dir}' not exists"
+      end
+      ActiveRecord::Migrator.migrate(migration_dir, ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
       require_models
     end
 
@@ -150,7 +154,11 @@ module SimpleCataloger
     end
 
     def require_models
-      Dir[File.join(File.dirname(__FILE__), %w{.. model *.rb})].each do |f|
+      model_dir = File.join(File.dirname(__FILE__), %w{.. cat_on_sqlite_model *.rb})
+      if Dir.exist? model_dir
+        raise "model directory '#{model_dir}' not exists"
+      end
+      Dir[model_dir].each do |f|
         # puts f
         require f
       end

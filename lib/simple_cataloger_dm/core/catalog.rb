@@ -73,7 +73,7 @@ module SimpleCataloger
       # read catalog root
       #
       @config[:roots].each do |root|
-        dtw = TreeVisitor::DirTreeWalker.new(root)
+        dtw = TreeRb::DirTreeWalker.new(root)
         dtw.ignore /^\./
         @config[:ignore].each do |i|
           dtw.ignore i

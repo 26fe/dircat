@@ -55,7 +55,7 @@ module SimpleCataloger
       # main
       #
 
-      catalog = Catalog.new(catalog_name)
+      catalog = CatOnSqlite.new(catalog_name)
       WebServer.run! :host => 'localhost', :port => 9091, :catalog => catalog
 
       0

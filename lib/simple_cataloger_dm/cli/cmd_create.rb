@@ -43,7 +43,7 @@ module SimpleCataloger
       end
 
       begin
-        catalog = SimpleCataloger::Catalog.new(catalog_name)
+        catalog = SimpleCataloger::CatOnSqlite.new(catalog_name)
         catalog.create(catalog_dirname)
       rescue SimpleCataloger::SimpleCatalogerError => e
         puts e.message

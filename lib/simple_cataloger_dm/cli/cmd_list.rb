@@ -38,7 +38,7 @@ module SimpleCataloger
       cat_opts = {}
 
       begin
-        catalog = Catalog.new(catalog_name)
+        catalog = CatOnSqlite.new(catalog_name)
         puts "list film contained into '#{catalog.name}'"
         Item.all.each do |f|
           puts f.name

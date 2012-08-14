@@ -38,7 +38,7 @@ module SimpleCataloger
       cat_opts = {}
 
 #      begin
-        catalog = Catalog.new(catalog_name).open
+        catalog = CatOnSqlite.new(catalog_name).open
         puts "contains of '#{catalog.name}'"
         puts "categories"
         Category.all.each do |c|

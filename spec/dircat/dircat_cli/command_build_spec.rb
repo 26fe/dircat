@@ -27,8 +27,8 @@ describe CommandBuild do
 
     capture_out { CliDirCat.run("build -f -o #{result_filename} #{@dir1_dirname}".split) }
 
-    cat_expect = Cat.from_file(expect_filename)
-    cat_result = Cat.from_file(result_filename)
+    cat_expect = CatOnYamlFile.from_file(expect_filename)
+    cat_result = CatOnYamlFile.from_file(result_filename)
 
     (cat_result - cat_result).size.should == 0
 

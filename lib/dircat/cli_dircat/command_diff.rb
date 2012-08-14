@@ -43,10 +43,10 @@ and then print the difference with the format specified on output
       #
       if File.directory?(cat_filename1)
         puts "build first set from directory #{cat_filename1}"
-        s1 = Cat.from_dir(cat_filename1)
+        s1 = CatOnYamlFile.from_dir(cat_filename1)
       elsif File.exists?(cat_filename1)
         puts "load catalog #{cat_filename1}"
-        s1 = Cat.from_file(cat_filename1)
+        s1 = CatOnYamlFile.from_file(cat_filename1)
       else
         puts "#{cat_filename1} is not a catalog file or directory"
         return 1
@@ -57,10 +57,10 @@ and then print the difference with the format specified on output
       #
       if File.directory?(cat_filename2)
         puts "build first set from directory #{cat_filename2}"
-        s2 = Cat.from_dir(cat_filename2)
+        s2 = CatOnYamlFile.from_dir(cat_filename2)
       elsif File.exists?(cat_filename2)
         puts "load catalog #{cat_filename2}"
-        s2 = Cat.from_file(cat_filename2)
+        s2 = CatOnYamlFile.from_file(cat_filename2)
       else
         puts "#{cat_filename2} is not a catalog file or directory"
         return 1

@@ -3,7 +3,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "spec_helper"))
 include SimpleCataloger
 
 def create_test_catalog
-  Catalog.new("test_ar").create
+  CatOnSqlite.new("test_ar").create
 
   #
   # category
@@ -64,7 +64,7 @@ def create_test_catalog
 end
 
 def read_test_catalog
-  Catalog.new("./test_ar").open
+  CatOnSqlite.new("./test_ar").open
 
   puts "category"
   Category.all.each do |c|
@@ -114,7 +114,7 @@ def read_test_catalog
 end
 
 
-describe Catalog do
+describe CatOnSqlite do
   it "should write and read catalog" do
     create_test_catalog
     read_test_catalog

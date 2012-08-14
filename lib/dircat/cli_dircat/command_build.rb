@@ -103,7 +103,7 @@ module DirCat
 
       output     = File.open(filename, "w")
       start_time = Time.now
-      cat        = Cat.from_dir(dirname)
+      cat        = CatOnYamlFile.from_dir(dirname)
       end_time   = Time.now
       cat.save_to(output)
 

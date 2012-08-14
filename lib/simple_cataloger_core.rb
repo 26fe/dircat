@@ -22,10 +22,10 @@ require 'active_record'
 require 'dircat/version'
 require 'dircat/extensions'
 require 'dircat/config'
-require 'simple_cataloger/core/simple_cataloger_error'
+require 'dircat/cat_on_sqlite/simple_cataloger_error'
 
 #
 # app
 #
-require 'simple_cataloger/core/directory_visitor'
-require 'simple_cataloger/core/catalog'
+require 'dircat/cat_on_sqlite/directory_visitor'
+require 'dircat/cat_on_sqlite/cat_on_sqlite'

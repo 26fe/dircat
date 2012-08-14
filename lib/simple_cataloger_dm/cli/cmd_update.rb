@@ -39,7 +39,7 @@ module SimpleCataloger
 
       catalog_name = rest[0]
 
-      catalog = Catalog.new(catalog_name)
+      catalog = CatOnSqlite.new(catalog_name)
       catalog.update
 
       0
