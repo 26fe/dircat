@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
 module SimpleCataloger
+
   class Catalog
 
     attr_reader :name
 
     def initialize(name)
       @name = name
+      @catalogs_dir = DirCat::Config.user_config_dir
 
-      # find directory where to store catalog data
-      # depends on OS
-      home_dir = ENV['HOME'] || ENV['APPDATA']
-      if RUBY_PLATFORM =~ /linux/
-        @catalogs_dir = File.expand_path(File.join(home_dir, ".simple_cataloger"))
-      else
-        @catalogs_dir = File.expand_path(File.join(home_dir, "simple_cataloger"))
-      end
-      Dir.mkdir(@catalogs_dir) unless File.directory?(@catalogs_dir)
-
+      #
       # path db, config, etc...
+      #
       @db_filepath     = File.join(@catalogs_dir, "#{name}.sqlite3")
       @db_log_filepath = File.join(@catalogs_dir, "#{name}.log")
       @config_filepath = File.join(@catalogs_dir, "#{name}.yml")
@@ -55,7 +49,7 @@ module SimpleCataloger
       @config = {
           :roots   => catalog_roots,
           :ignore  => ['sub', 'subtitles', 'images'],
-          :version => SimpleCataloger::VERSION
+          :version => DirCat::VERSION
       }
       write_config
 

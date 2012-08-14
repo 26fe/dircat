@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "spec_helper"))
 
 #
@@ -48,7 +47,7 @@ describe Cat do
     cat1 = Cat.from_dir(File.join(@data_dir, "dir3"))
     cat1.duplicates.should have(1).files
   end
-  
+
   # dir4 has an broken symlink, otherwise is identical to dir1
   it "should build catalog from dir4" do
     cat1 = Cat.from_dir(File.join(@data_dir, "dir4"))

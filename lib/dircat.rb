@@ -18,7 +18,7 @@ require 'treevisitor'
 #
 # dircat
 #
-require 'version'
+require 'dircat/version'
 require 'dircat/extension_md5'
 require 'dircat/extension_numeric'
 

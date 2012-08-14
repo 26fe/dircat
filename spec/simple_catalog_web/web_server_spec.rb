@@ -1,4 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+# -*- coding: utf-8 -*-
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "spec_helper"))
 
 module SimpleCataloger
   describe WebServer do
@@ -10,6 +11,7 @@ module SimpleCataloger
     end
 
     it "should respond to /" do
+      pending "need integrate all code"
       get '/'
       # pp last_response
       last_response.should be_ok

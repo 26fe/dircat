@@ -19,9 +19,10 @@ require 'active_record'
 #
 # simple catalog
 #
-require 'version'
+require 'dircat/version'
+require 'dircat/extensions'
+require 'dircat/config'
 require 'simple_cataloger/core/simple_cataloger_error'
-require 'simple_cataloger/core/extensions'
 
 #
 # app

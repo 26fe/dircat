@@ -6,7 +6,7 @@ class CliCat < OptParseCommand::CliMain
   end
 
   def self.description
-    "descr"
+    "description"
   end
 
   def self.version

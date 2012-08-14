@@ -33,6 +33,7 @@ require 'dircat'
 require 'simple_cataloger_core'
 require 'simple_cataloger_cli'
 include DirCat
+include SimpleCataloger
 
 TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), "fixtures"))
 
