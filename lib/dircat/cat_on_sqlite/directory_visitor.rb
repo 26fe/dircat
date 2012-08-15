@@ -6,7 +6,6 @@ module SimpleCataloger
   class DirectoryVisitor
 
     def initialize(catalog_root)
-      super
       @stack        = []
       @files        = []
       @nr           = 0

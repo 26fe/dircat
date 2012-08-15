@@ -13,7 +13,16 @@ module DirCat
     end
 
     def self.usage
-      "Usage: query [options] <catalog> [<method>]"
+      <<-EOS
+      Usage: query [options] <catalog> [<method>]
+      where method can be:
+        report: show info on catalog
+        duplicates: list duplicates into catalog
+        list_dup
+        script_dup
+        fmt_simple
+
+      EOS
     end
 
     def exec(main, options, rest)
@@ -44,7 +53,7 @@ module DirCat
       end
 
       begin
-        s = CatOnYamlFile.from_file(cat_filename, cat_opts)
+        s = CatOnYaml.from_file(cat_filename, cat_opts)
       rescue Exception => e
         $stderr.put "cannot read catalog '#{cat_filename}' maybe it is an old version?"
         return false

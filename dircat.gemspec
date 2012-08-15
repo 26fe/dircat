@@ -32,7 +32,7 @@ Gem::Specification.new do |gem|
   # dependencies
   #
 
-  gem.add_runtime_dependency(%q<treevisitor>)
+  gem.add_runtime_dependency(%q<tree.rb>)
   gem.add_runtime_dependency(%q<optparse-command>)
   gem.add_runtime_dependency(%q<sinatra-group-items>)
 
@@ -71,10 +71,10 @@ Gem::Specification.new do |gem|
   #
   # s.files = `git ls-files`.split("\n")
   gem.files = %w{LICENSE.txt README.md Rakefile dircat.gemspec .gemtest}
-  gem.extra_rdoc_files = [
-      "LICENSE.txt",
-      "README.md"
-  ]
+  gem.extra_rdoc_files = %w{
+      LICENSE.txt
+      README.md
+  }
   gem.files.concat Dir['lib/**/*.rb']
   gem.files.concat Dir['examples/*.rb']
   gem.files.concat Dir['web/**/*']

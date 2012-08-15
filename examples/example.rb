@@ -5,6 +5,6 @@ include DirCat
 
 dir = File.join( File.dirname(__FILE__), "..")
 
-cat  = CatOnYamlFile.from_dir( dir )
+cat  = CatOnYaml.from_dir( dir )
 cat.fmt_report
 

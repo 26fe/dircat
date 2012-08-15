@@ -59,7 +59,7 @@ module SimpleCataloger
       # TODO: drop tables!
       ActiveRecord::Base.establish_connection(@ar_config)
       ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : false
-      migration_dir = File.join(File.dirname(__FILE__), %w{.. cat_on_sqlite_migration})
+      migration_dir = File.join(File.dirname(__FILE__), %w{migration})
       unless Dir.exist? migration_dir
         raise "migration dir '#{migration_dir}' not exists"
       end
@@ -97,7 +97,7 @@ module SimpleCataloger
       # read catalog root
       #
       @config[:roots].each do |root|
-        dtw = TreeVisitor::DirTreeWalker.new(root)
+        dtw = TreeRb::DirTreeWalker.new(root)
         dtw.ignore /^\./
         @config[:ignore].each do |i|
           dtw.ignore i
@@ -136,7 +136,7 @@ module SimpleCataloger
     def load_categories_in_config
       h = { }
       Category.all.each do |category|
-        next if ["rating", "year", "unknown"].include?(category.name)
+        next if %w{rating year unknown}.include?(category.name)
         h[category.name] = category.tags.collect { |tag| tag.name }
       end
       @config[:categories] = h
@@ -154,11 +154,11 @@ module SimpleCataloger
     end
 
     def require_models
-      model_dir = File.join(File.dirname(__FILE__), %w{.. cat_on_sqlite_model *.rb})
-      if Dir.exist? model_dir
+      model_dir = File.join(File.dirname(__FILE__), %w{ model })
+      unless Dir.exist? model_dir
         raise "model directory '#{model_dir}' not exists"
       end
-      Dir[model_dir].each do |f|
+      Dir[File.join(model_dir, '*.rb')].each do |f|
         # puts f
         require f
       end

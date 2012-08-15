@@ -28,5 +28,9 @@ require 'simple_cataloger/server/web_server'
 #
 require 'optparse-command'
 
-require 'simple_cataloger/cli/cli_cat'
-Dir[ File.join(File.dirname(__FILE__), "cli", "cmd*.rb") ].each { |f|require f }
+command_dir = File.join(File.dirname(__FILE__), "dircat", "cat_on_sqlite_cli")
+require File.join(command_dir, 'cli_cat')
+unless Dir.exist? command_dir
+  raise "cannot found directory '#{command_dir}'"
+end
+Dir[ File.join(command_dir, "cmd*.rb") ].each { |f|require f }

@@ -4,7 +4,7 @@ module DirCat
   #
   # Catalog of files (contained into directory :-))
   #
-  class CatOnYamlFile
+  class CatOnYaml
 
     #
     # Directory name
@@ -192,9 +192,9 @@ module DirCat
     #
     # return differences from this catalog and right catalog
     # param [Cat] right
-    # @return [CatOnYamlFile]
+    # @return [CatOnYaml]
     def -(right)
-      result = CatOnYamlFile.new
+      result = CatOnYaml.new
       @entries.each do |e|
         result.add_entry(e) unless right.contains(e)
       end
