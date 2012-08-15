@@ -10,9 +10,9 @@ module DirCat
       user_home_dir = ENV['HOME'] || ENV['APPDATA']
       if user_home_dir
         if RUBY_PLATFORM =~ /linux/
-          config_dir = File.expand_path(File.join(user_home_dir, ".futils"))
+          config_dir = File.expand_path(File.join(user_home_dir, "." + DirCat::NAME))
         else
-          config_dir = File.expand_path(File.join(user_home_dir, "futils"))
+          config_dir = File.expand_path(File.join(user_home_dir, DirCat::NAME))
         end
         Dir.mkdir(config_dir) unless File.directory?(config_dir)
         config_dir

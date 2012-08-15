@@ -5,30 +5,34 @@ module SimpleCataloger
 
     attr_reader :name
 
-    def initialize(name)
-      @name = name
-      @catalogs_dir = DirCat::Config.user_config_dir
+    def initialize(path)
+      @path = File.expand_path(path)
+      @name = File.basename(path)
+      catalogs_dir = File.dirname(path)
 
       #
       # path db, config, etc...
       #
-      @db_filepath     = File.join(@catalogs_dir, "#{name}.sqlite3")
-      @db_log_filepath = File.join(@catalogs_dir, "#{name}.log")
-      @config_filepath = File.join(@catalogs_dir, "#{name}.yml")
+      @db_filepath     = File.join(catalogs_dir, "#{name}.sqlite3")
+      @db_log_filepath = File.join(catalogs_dir, "#{name}.log")
+      @config_filepath = File.join(catalogs_dir, "#{name}.yml")
 
       #TODO: logger usabile per loggare altri eventi oltre a quelli del db
 
-      database_filename = File.join(File.dirname(__FILE__), %w{database.yml})
-      @ar_config        = YAML.load(File.open(database_filename))
+      database_filename = File.join(File.dirname(__FILE__), %w{default_database_config.yml})
+      @active_record_config        = YAML.load(File.open(database_filename))
       # pp config
       # ActiveRecord::Base.connection.create_database(catalog_dbname)
       # ActiveRecord::Base.establish_connection(config['films_mysql'])
-      @ar_config['films_sqlite']['database'] = @db_filepath # File.join( File.dirname(__FILE__), "test.sqlite" )
-      @ar_config                             = @ar_config['films_sqlite']
+      @active_record_config['films_sqlite']['database'] = @db_filepath
+      @active_record_config                             = @active_record_config['films_sqlite']
+
+      puts "create database in '#{@db_filepath}'"
+
     end
 
     def open
-      ActiveRecord::Base.establish_connection(@ar_config)
+      ActiveRecord::Base.establish_connection(@active_record_config)
       require_models
       self
     end
@@ -48,7 +52,7 @@ module SimpleCataloger
       end
       @config = {
           :roots   => catalog_roots,
-          :ignore  => ['sub', 'subtitles', 'images'],
+          :ignore  => %w{sub subtitles images},
           :version => DirCat::VERSION
       }
       write_config
@@ -57,7 +61,7 @@ module SimpleCataloger
       # migrate db
       #
       # TODO: drop tables!
-      ActiveRecord::Base.establish_connection(@ar_config)
+      ActiveRecord::Base.establish_connection(@active_record_config)
       ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : false
       migration_dir = File.join(File.dirname(__FILE__), %w{migration})
       unless Dir.exist? migration_dir

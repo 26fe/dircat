@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration
       t.date :added_at, :null => false
       t.string :path, :null => false
       t.string :path_from_catalog_root, :null => false
+      t.string :md5
       t.integer :rating
       t.date :flagged_at
     end

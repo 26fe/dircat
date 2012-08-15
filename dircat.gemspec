@@ -4,7 +4,7 @@ require "dircat/version"
 
 Gem::Specification.new do |gem|
 
-  gem.name = "dircat"
+  gem.name = DirCat::NAME
   gem.version = DirCat::VERSION
   gem.platform = Gem::Platform::RUBY
 

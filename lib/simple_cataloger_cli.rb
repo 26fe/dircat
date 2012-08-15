@@ -16,6 +16,8 @@ require 'haml'
 require 'sass'
 require 'json'
 
+require 'simple_cataloger_core'
+
 #
 # server
 #
