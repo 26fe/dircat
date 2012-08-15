@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class CreateCategories < ActiveRecord::Migration
+class CreateDircatProperties < ActiveRecord::Migration
   def self.up
     create_table :dircat_properties do |t|
       t.string :name, :null => false

@@ -20,11 +20,13 @@ module DirCat
     # verbose level used to print message on $stdout
     #
     attr_reader :verbose_level
+    attr_reader :show_progress
 
     # @param [Hash] options
     #   @option options [Number] :verbose list of ignore pattern
     def initialize(options = {})
       @verbose_level = options.delete(:verbose) || 0
+      @show_progress = options.delete(:show_progress)
       @dirname = ""
       @ctime = DateTime.now
       @entries = Array.new
@@ -55,7 +57,7 @@ module DirCat
 
     # Build a catalog from a directory
     def from_dir(dirname)
-      if not File.directory?(dirname)
+      unless File.directory?(dirname)
         raise "'#{dirname}' is not a directory or doesn't exists"
       end
       @dirname = File.expand_path dirname
@@ -66,14 +68,14 @@ module DirCat
 
     # Load catalog from a file
     def from_file(filename)
-      if not File.exist?(filename)
+      unless File.exist?(filename)
         raise DirCatException.new, "'#{filename}' not exists"
       end
       dircat_ser = File.open(filename) { |f| YAML::load(f) }
       @dirname = dircat_ser.dirname
       @ctime = dircat_ser.ctime
       dircat_ser.entries.each do |entry_ser|
-        add_entry(Entry.new.from_ser(entry_ser))
+        add_entry(Entry.from_ser(entry_ser))
       end
       self
     end
@@ -109,12 +111,20 @@ module DirCat
     # @private
     #
     def _load_from_dir
+      start = Time.now
       me = self
+      bytes = 0
       TreeRb::DirTreeWalker.new.run @dirname do
         on_leaf do |filename|
-          me.add_entry(Entry.new.from_filename(filename))
+          entry = Entry.from_filename(filename)
+          me.add_entry(entry)
+          bytes += entry.size
           if me.verbose_level > 0
             print "#{CR}#{filename}#{CLEAR}"
+          end
+          if me.show_progress
+            sec = Time.now - start
+            print "#{CR}bytes: #{bytes.to_human} time: #{sec} bytes/sec #{bytes/sec} #{CLEAR}"
           end
         end
       end

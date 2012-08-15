@@ -4,35 +4,44 @@ module DirCat
   class EntrySer < OpenStruct
   end
 
+  class DirCatSer < OpenStruct
+  end
+
+  class DirCatException < RuntimeError
+  end
+
   #
   # Entry
   #
   class Entry
 
-    attr_reader :md5
-    attr_reader :name
-    attr_reader :path
-    attr_reader :size
-    attr_reader :mtime
+    # TODO: must be attr_reader
+    attr_accessor :md5
+    attr_accessor :name
+    attr_accessor :path
+    attr_accessor :size
+    attr_accessor :mtime
 
-    def from_filename( filename )
-      @name = File.basename(filename)
-      @path = File.dirname(filename)
+    def self.from_filename( filename )
+      entry = new
+      entry.name = File.basename(filename)
+      entry.path = File.dirname(filename)
       stat = File.lstat(filename)
-      @size = stat.size
-      @mtime = stat.mtime
+      entry.size = stat.size
+      entry.mtime = stat.mtime
       # self.md5 = Digest::MD5.hexdigest(File.read( f ))
-      @md5 = MD5.file( filename ).hexdigest unless stat.symlink?
-      self
+      entry.md5 = MD5.file( filename ).hexdigest unless stat.symlink?
+      entry
     end
 
-    def from_ser( entry_ser )
-      @md5   = entry_ser.md5
-      @name  = entry_ser.name
-      @path  = entry_ser.path
-      @size  = entry_ser.size
-      @mtime = entry_ser.mtime
-      self
+    def self.from_ser( entry_ser )
+      entry = new
+      entry.md5   = entry_ser.md5
+      entry.name  = entry_ser.name
+      entry.path  = entry_ser.path
+      entry.size  = entry_ser.size
+      entry.mtime = entry_ser.mtime
+      entry
     end
 
     def to_ser
@@ -51,11 +60,5 @@ module DirCat
 
   end
 
-  class DirCatSer < OpenStruct
-  end
-
-
-  class DirCatException < RuntimeError
-  end
 
 end

@@ -24,7 +24,7 @@ def create_test_catalog
   #
   # films
   #
-  play_again_sam = Item.new(:name => "Play It Again, Sam", :added_at => Time.new, :path => "path", :path_from_catalog_root => "path_from_catalog_root")
+  play_again_sam = Item.new(:name => "Play It Again, Sam", :size => 10, :added_at => Time.new, :path => "path", :path_from_catalog_root => "path_from_catalog_root")
   play_again_sam.tags << keaton
   play_again_sam.tags << allen
   play_again_sam.save
@@ -33,7 +33,7 @@ def create_test_catalog
   i.item = play_again_sam
   i.save
 
-  annie_hall = Item.new(:name => "Annie Hall", :added_at => Time.new, :path => "path", :path_from_catalog_root => "path_from_catalog_root")
+  annie_hall = Item.new(:name => "Annie Hall", :size => 10, :added_at => Time.new, :path => "path", :path_from_catalog_root => "path_from_catalog_root")
   annie_hall.tags << allen
   annie_hall.tags << keaton
   annie_hall.save

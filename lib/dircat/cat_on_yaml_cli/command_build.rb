@@ -38,7 +38,13 @@ module DirCat
         options.output = v
       end
 
-      parser.on("--find", "try to find a catalog from this directory to path") do |v|
+      # TODO: progress is true for default
+      options.show_progress = true
+      parser.on("-p", "--show-progress", "show progress during catalog building") do
+        options.show_progress = true
+      end
+
+      parser.on("--find", "try to find a catalog from this directory to path") do
         options.find = true
       end
 
@@ -46,7 +52,6 @@ module DirCat
     end
 
     def exec(main, options, rest)
-
 
       if rest.length < 1
         $stderr.puts "directory (from which build catalog) is missing"
@@ -57,7 +62,9 @@ module DirCat
       dirname = rest[0]
       dirname = File.expand_path(dirname)
 
-
+      #
+      # experimental find
+      #
       if options.find
         f = File.join(dirname, ".dircat.yml")
         until File.exist?(f) or dirname == "/"
@@ -70,22 +77,26 @@ module DirCat
         end
         exit
       end
+      #
+      # end experimental find
+      #
 
-
-      cat_opts = { }
-
-      if not FileTest.directory?(dirname)
+      unless FileTest.directory?(dirname)
         $stderr.puts "'#{dirname}' not exists or is not a directory"
         return 0
       end
 
-      #
-      # option verbose
-      #
+      cat_opts = { }
 
+      #
+      # option verbose, progress
+      #
+      cat_opts[:verbose_level] = 0
       if options.verbose
         cat_opts[:verbose_level] = 1
       end
+
+      cat_opts[:show_progress] = options.show_progress
 
       #
       # option: output, force
@@ -101,9 +112,17 @@ module DirCat
         return 0
       end
 
+      #
+      # go!
+      #
+
+      Signal.trap('INT') { puts "intercepted ctr+c"; exit }
+
+      $stderr.puts "Writing file '#{filename}'"
+
       output     = File.open(filename, "w")
       start_time = Time.now
-      cat        = CatOnYaml.from_dir(dirname)
+      cat        = CatOnYaml.from_dir(dirname, cat_opts)
       end_time   = Time.now
       cat.save_to(output)
 
