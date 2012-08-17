@@ -115,6 +115,7 @@ module DirCat
       me = self
       bytes = 0
       TreeRb::DirTreeWalker.new.run @dirname do
+
         on_leaf do |filename|
           entry = Entry.from_filename(filename)
           me.add_entry(entry)
@@ -127,6 +128,7 @@ module DirCat
             print "#{CR}bytes: #{bytes.to_human} time: #{sec} bytes/sec #{bytes/sec} #{CLEAR}"
           end
         end
+
       end
       self
     end
