@@ -19,8 +19,6 @@ require 'treevisitor'
 # dircat
 #
 require 'dircat/version'
-require 'dircat/extension_md5'
-require 'dircat/extension_numeric'
 
 require 'dircat/cat_on_yaml/cat_on_yaml'
 require 'dircat/cat_on_yaml/entry'
