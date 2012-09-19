@@ -20,6 +20,9 @@ set :logging, false
 
 require 'rspec'
 
+#
+#
+#
 $:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'dircat'
@@ -29,6 +32,10 @@ include DirCat
 include SimpleCataloger
 
 TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), "fixtures"))
+TMP_DIR = File.join(TEST_DIR, "tmp")
+
+require 'generate_directories_to_catalog'
+require 'generate_mysql_catalog'
 
 def capture_out
   old_stdout, old_stderr = $stdout, $stderr

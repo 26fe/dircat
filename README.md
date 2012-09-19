@@ -1,17 +1,17 @@
 # DIRCAT & Simple Cataloger (merging Simple Cataloger in progress)
 
-## DIRCAT 
+## DIRCAT
 
-Dircat build, starting from a directory, a catalog with files 
-meta information (path, timestamp, md5. ...), so it is possible to compare 
+Dircat build, starting from a directory, a catalog with files
+meta information (path, timestamp, md5. ...), so it is possible to compare
 this catalog with another directory to detect duplicate, file change, and so.
-This utilities could be utilized as help to backup a directory 
+This utilities could be utilized as help to backup a directory
 or to find duplicates
 
 ## Simple Cataloger
 
-An extremly simple cataloging tool. You can use it to index files stored on
-hard disks and create searchable catalogs that can be used without 
+An extremely simple cataloging tool. You can use it to index files stored on
+hard disks and create searchable catalogs that can be used without
 having access to original media.
 
 ### dircat build

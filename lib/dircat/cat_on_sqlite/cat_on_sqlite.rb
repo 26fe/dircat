@@ -5,7 +5,9 @@ module SimpleCataloger
 
     attr_reader :name
 
-    def initialize(path)
+    # @param [Object] path
+    def initialize(path, options = {})
+      @verbose ||= options[:verbose]
       @path = File.expand_path(path)
       @name = File.basename(path)
       catalogs_dir = File.dirname(path)
@@ -27,8 +29,7 @@ module SimpleCataloger
       @active_record_config['films_sqlite']['database'] = @db_filepath
       @active_record_config                             = @active_record_config['films_sqlite']
 
-      puts "create database in '#{@db_filepath}'"
-
+      puts "database in '#{@db_filepath}'" if @verbose
     end
 
     def open
@@ -157,6 +158,9 @@ module SimpleCataloger
       @config = YAML.load(File.open(@config_filepath))
     end
 
+    #
+    # model must be loaded after the connection is established
+    #
     def require_models
       model_dir = File.join(File.dirname(__FILE__), %w{ model })
       unless Dir.exist? model_dir

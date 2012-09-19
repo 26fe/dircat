@@ -1,10 +1,16 @@
+# -*- coding: utf-8 -*-
+
 require 'fileutils'
 require 'rubygems'
 require 'RMagick'
 
+#
+# Generate a example directory structure to catalog
+#
 class Generator
 
-  def initialize
+  def initialize(verbose = true)
+    @verbose     = verbose
     @catalog_dir = File.expand_path File.join(File.dirname(__FILE__), %w{.. spec fixtures films})
   end
 
@@ -47,11 +53,11 @@ class Generator
     gc.draw(canvas)
 
     canvas.write(folder_filename)
-    puts "write '#{folder_filename}'"
+    puts "write '#{folder_filename}'" if @verbose
   end
 
   def generate(dirname)
-    dirname  = File.join(@catalog_dir, dirname)
+    dirname = File.join(@catalog_dir, dirname)
     FileUtils.mkdir_p(dirname) unless File.exists?(dirname)
     folder_filename = File.join(dirname, "folder.jpg")
     generate_folder_jpg(File.basename(dirname), folder_filename)
@@ -69,4 +75,6 @@ class Generator
 
 end
 
-Generator.new.run
+if __FILE__ == $0
+  Generator.new.run
+end

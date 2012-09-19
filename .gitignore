@@ -10,4 +10,5 @@ nbproject
 *.log
 .bundle
 .sass-cache
-
+spec/fixtures/films
+spec/fixtures/tmp/*.yml

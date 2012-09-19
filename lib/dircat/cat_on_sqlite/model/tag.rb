@@ -47,7 +47,7 @@ module SimpleCataloger
               convert.call(tag_name),
               category.id
           )
-          return tag
+          return category
         end
       end
       nil
