@@ -10,7 +10,7 @@ require 'ostruct'
 #
 # rubygems
 #
-require 'treevisitor'
+require 'tree_rb'
 
 require 'active_record'
 # gem 'mysql2', "<= 0.3"

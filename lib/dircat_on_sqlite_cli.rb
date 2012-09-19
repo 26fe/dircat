@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 #
 # rubygems
 #
@@ -16,14 +15,14 @@ require 'haml'
 require 'sass'
 require 'json'
 
-require 'simple_cataloger_core'
+require 'dircat_on_sqlite'
 
 #
 # server
 #
-require 'simple_cataloger/server/helpers'
-require 'simple_cataloger/server/my_static'
-require 'simple_cataloger/server/web_server'
+require 'dircat/server/helpers'
+require 'dircat/server/my_static'
+require 'dircat/server/web_server'
 
 #
 # cli

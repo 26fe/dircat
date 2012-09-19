@@ -226,7 +226,7 @@ module DirCat
     # print a complex report on stdout
     #
     def fmt_report(*columns)
-      columns = [:md5, :name, :path, :size] unless columns
+      columns = [:md5, :name, :path, :size] if columns.empty?
       OptParseCommand::report(@entries, *columns)
     end
 

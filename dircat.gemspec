@@ -38,11 +38,11 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency(%q<ansi>, [">= 0"])
 
-  gem.add_runtime_dependency(%q<data_mapper>, [">= 0"])
-  gem.add_runtime_dependency(%q<dm-sqlite-adapter>, [">= 0"])
+  # gem.add_runtime_dependency(%q<data_mapper>, [">= 0"])
+  # gem.add_runtime_dependency(%q<dm-sqlite-adapter>, [">= 0"])
 
   gem.add_runtime_dependency(%q<activerecord>, [">= 0"])
-  gem.add_runtime_dependency(%q<mysql2>, ["<= 0.2"])
+  # gem.add_runtime_dependency(%q<mysql2>, ["<= 0.2"])
   gem.add_runtime_dependency(%q<sqlite3>, [">= 0"])
 
   gem.add_runtime_dependency(%q<sinatra>, [">= 0"])

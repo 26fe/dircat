@@ -13,7 +13,7 @@ require 'pp'
 # rubygems
 #
 require 'optparse-command'
-require 'treevisitor'
+require 'tree_rb'
 
 #
 # dircat

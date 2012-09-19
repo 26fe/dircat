@@ -10,28 +10,21 @@ require 'tmpdir'
 #
 # rubygems
 #
-#require 'rubygems'
-
-
 require 'sinatra'
 require 'rack/test'
-# set test environment
+
 set :environment, :test
 set :run, false
 set :raise_errors, true
 set :logging, false
 
 require 'rspec'
-#require 'rspec/autorun'
-#require 'rspec/interop/test'
 
 $:.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-# $LOAD_PATH.unshift(File.dirname(__FILE__))
-# $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
 require 'dircat'
-require 'simple_cataloger_core'
-require 'simple_cataloger_cli'
+require 'dircat_on_sqlite'
+require 'dircat_on_sqlite_cli'
 include DirCat
 include SimpleCataloger
 
