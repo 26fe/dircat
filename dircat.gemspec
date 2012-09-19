@@ -70,7 +70,7 @@ Gem::Specification.new do |gem|
   # files
   #
   # s.files = `git ls-files`.split("\n")
-  gem.files = %w{LICENSE.txt README.md Rakefile dircat.gemspec .gemtest}
+  gem.files = %w{LICENSE.txt README.md Rakefile dircat.gemspec}
   gem.extra_rdoc_files = %w{
       LICENSE.txt
       README.md
