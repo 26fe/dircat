@@ -19,23 +19,23 @@
     /* The bars. */
     var bar = vis.add(pv.Bar)
         .data(data)
-        .top(function() y(this.index))
+        .top(function() { return y(this.index);} )
         .height(y.range().band)
         .left(0)
         .width(x)
-        .text(function(d) d.toFixed(1));
+        .text(function(d) {return d.toFixed(1)});
 
     /* The variable label. */
     bar.anchor("left").add(pv.Label)
         .textMargin(5)
         .textAlign("right")
-        .text(function() "ABCDEFGHIJK".charAt(this.index));
+        .text(function() {return "ABCDEFGHIJK".charAt(this.index)});
 
     /* X-axis ticks. */
     vis.add(pv.Rule)
         .data(x.ticks(5))
         .left(x)
-        .strokeStyle(function(d) d ? "rgba(255,255,255,.3)" : "#000")
+        .strokeStyle(function(d) {return d ? "rgba(255,255,255,.3)" : "#000"})
       .add(pv.Rule)
         .bottom(0)
         .height(5)
