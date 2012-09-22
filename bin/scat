@@ -4,6 +4,6 @@ require 'rubygems'
 cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{.. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)
 
-require 'simple_cataloger_cli'
-# TODO: we need exit befor run?
+require 'dircat_on_sqlite_cli'
+# TODO: we need exit before run?
 CliCat.run!

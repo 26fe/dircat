@@ -14,8 +14,8 @@ module SimpleCataloger
     end
 
     def self.usage
-      "#{command} <catalog name> <directory>"
-      "Create a catalog with name <catalog name> starting from structure of <directory>"
+      "#{command}  <catalog name>\n" +
+      "launch a webs server to browse the content of <catalog name>\n"
     end
 
     def defaults(options)

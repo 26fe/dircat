@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name, :null => false
       t.string :path, :null => false
       t.string :path_from_catalog_root, :null => false
-      t.integer :size, :null => false
+      t.integer :size
 
       t.date :added_at, :null => false
 

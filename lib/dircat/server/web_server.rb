@@ -34,6 +34,10 @@ module SimpleCataloger
     helpers Sinatra::GroupItems
     helpers Helpers
 
+    after do
+      ActiveRecord::Base.clear_active_connections!
+    end
+
     get '/app.css' do
       content_type 'text/css', :charset => 'utf-8'
       sass :app
