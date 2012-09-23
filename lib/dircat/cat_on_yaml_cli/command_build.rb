@@ -116,7 +116,7 @@ module DirCat
       # go!
       #
 
-      Signal.trap('INT') { puts "intercepted ctr+c"; exit }
+      Signal.trap('INT') { puts "intercepted ctrl+c"; exit }
 
       $stderr.puts "Writing file '#{filename}'"
 
