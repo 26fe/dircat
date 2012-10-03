@@ -24,8 +24,7 @@ module SimpleCataloger
     end
 
     def option_parser(options)
-      parser = super(options)
-      parser
+      super(options)
     end
 
     def exec(main, options, rest)
