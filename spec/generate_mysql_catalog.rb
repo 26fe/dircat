@@ -2,7 +2,7 @@ class TestCatalogHelper
 
   def self.create_test_catalog(verbose = false)
 
-    filename = File.join(TMP_DIR, "test_ar")
+    filename = File.join(TMP_DIR, 'test_ar')
     if File.exist?(filename)
       puts "catalog already exists"
       return
@@ -78,7 +78,7 @@ class TestCatalogHelper
       puts "\t #{c.name}"
     end
 
-    Category.find_by_name("Actor").items.each do |i|
+    Category.find_by_name('Actor').items.each do |i|
       pp i
     end
 
@@ -91,12 +91,12 @@ class TestCatalogHelper
     end
 
     puts "\nTag -> Item"
-    Tag.find_by_name("Woody Allen").items.each do |i|
+    Tag.find_by_name('Woody Allen').items.each do |i|
       puts "\t #{i}"
     end
 
-    puts "extract"
-    dir_name = "Broadway Danny Rose [Woody Allen][Mia Farrow][1984]"
+    puts 'extract'
+    dir_name = 'Broadway Danny Rose [Woody Allen][Mia Farrow][1984]'
     puts Tag.extract_tags(dir_name)
     puts Tag.extract_name(dir_name)
     Tag.match_category("1984")

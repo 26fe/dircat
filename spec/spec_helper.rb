@@ -3,13 +3,15 @@
 #
 # std lib
 #
-require "stringio"
+require 'stringio'
 require 'ostruct'
 require 'tmpdir'
 
 #
 # rubygems
 #
+require 'rspec/collection_matchers'
+
 require 'sinatra'
 require 'rack/test'
 
@@ -31,8 +33,8 @@ require 'dircat_on_sqlite_cli'
 include DirCat
 include SimpleCataloger
 
-TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), "fixtures"))
-TMP_DIR = File.join(TEST_DIR, "tmp")
+TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), 'fixtures'))
+TMP_DIR = File.join(TEST_DIR, 'tmp')
 
 require 'generate_directories_to_catalog'
 require 'generate_mysql_catalog'
