@@ -8,10 +8,10 @@ Gem::Specification.new do |gem|
   gem.version = DirCat::VERSION
   gem.platform = Gem::Platform::RUBY
 
-  gem.summary = %Q{
+  gem.summary = '
     command line utilities to manage catalogs of directory
     and damn simple cataloger using directory convention
-  }
+  '
 
   gem.description = <<-EOS
     command line utilities to manage catalogs of directory
@@ -51,13 +51,14 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency(%q<json>, [">= 0"])
 
 
-  gem.add_development_dependency(%q<rake>, [">= 0"])
-  gem.add_development_dependency(%q<yard>, [">= 0"])
-  gem.add_development_dependency(%q<bundler>, [">= 0"])
-  gem.add_development_dependency(%q<rspec>, [">= 0"])
-  gem.add_development_dependency(%q<webrat>, [">= 0"])
-  gem.add_development_dependency(%q<sinatra>, [">= 0"])
-  gem.add_development_dependency(%q<rmagick>, [">= 0"])
+  gem.add_development_dependency(%q<rake>, ['>= 0'])
+  gem.add_development_dependency(%q<yard>, ['>= 0'])
+  gem.add_development_dependency(%q<bundler>, ['>= 0'])
+  gem.add_development_dependency(%q<rspec>, ['>= 0'])
+  gem.add_development_dependency(%q<webrat>, ['>= 0'])
+  gem.add_development_dependency(%q<sinatra>, ['>= 0'])
+  gem.add_development_dependency(%q<rmagick>, ['>= 0'])
+  gem.add_development_dependency(%q<rspec-collection_matchers>, ['>= 0'])
 
   #
   # bin
