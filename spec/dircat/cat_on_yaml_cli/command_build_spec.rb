@@ -10,30 +10,30 @@ describe CommandBuild do
     @tmp_output_dirname = Dir.tmpdir
   end
 
-  it "should accept -h (-help) option" do
+  it 'should accept -h (-help) option' do
     out = capture_out { CliDirCat.run(%w{build -h}) }.out
-    out.should match /Usage:/
+    expect(out).to match(/Usage:/)
   end
 
-  it "should not accept more then -o options" do
-    out = capture_out { CliDirCat.run("build -f -o filename -o filename1".split) }.out
-    out.should match /only one file/
+  it 'should not accept more then -o options' do
+    out = capture_out { CliDirCat.run('build -f -o filename -o filename1'.split) }.out
+    expect(out).to match(/only one file/)
   end
 
 
-  it "should build a catalog from a directory" do
-    expect_filename = File.join(@certified_output_dirname, "cat_dir1_20120811.yaml")
-    result_filename = File.join(@tmp_output_dirname, "cat_dir1.yaml")
+  it 'should build a catalog from a directory' do
+    expect_filename = File.join(@certified_output_dirname, 'cat_dir1_20120811.yaml')
+    result_filename = File.join(@tmp_output_dirname, 'cat_dir1.yaml')
 
     capture_out { CliDirCat.run("build -f -o #{result_filename} #{@dir1_dirname}".split) }
 
     cat_expect = CatOnYaml.from_file(expect_filename)
     cat_result = CatOnYaml.from_file(result_filename)
 
-    (cat_result - cat_result).size.should == 0
+    expect((cat_result - cat_result)).to be == 0
 
-    (cat_result - cat_expect).size.should == 0
-    (cat_expect - cat_result).size.should == 0
+    expect((cat_result - cat_expect).size).to be == 0
+    expect((cat_expect - cat_result).size).to be == 0
 
     FileUtils.rm(result_filename)
   end

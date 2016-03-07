@@ -29,7 +29,7 @@ require 'dircat/server/web_server'
 #
 require 'optparse-command'
 
-command_dir = File.join(File.dirname(__FILE__), "dircat", "cat_on_sqlite_cli")
+command_dir = File.join(File.dirname(__FILE__), 'dircat', 'cat_on_sqlite_cli')
 require File.join(command_dir, 'cli_cat')
 unless Dir.exist? command_dir
   raise "cannot found directory '#{command_dir}'"

@@ -29,8 +29,8 @@ module SimpleCataloger
 
     def exec(main, options, rest)
       if rest.length < 1
-        puts "too few arguments"
-        puts "-h to print help"
+        puts 'too few arguments'
+        puts '-h to print help'
         return 0
       end
 

@@ -10,9 +10,9 @@ module SimpleCataloger
       # find directory where to store catalog data
       home_dir = ENV['HOME'] || ENV['APPDATA']
       if RUBY_PLATFORM =~ /linux/
-        catalogs_dir = File.expand_path(File.join(home_dir, ".simple_cataloger"))
+        catalogs_dir = File.expand_path(File.join(home_dir, '.simple_cataloger'))
       else
-        catalogs_dir = File.expand_path(File.join(home_dir, "simple_cataloger"))
+        catalogs_dir = File.expand_path(File.join(home_dir, 'simple_cataloger'))
       end
       Dir.mkdir(catalogs_dir) unless File.directory?(catalogs_dir)
 
@@ -32,7 +32,7 @@ module SimpleCataloger
       end
       @config = {
           :roots => catalog_roots,
-          :ignore => ['sub', 'subtitles', 'images'],
+          :ignore => %w(sub subtitles images),
           :version => SimpleCataloger::VERSION
       }
       write_config
@@ -85,7 +85,7 @@ module SimpleCataloger
       #
       # cache rating tag
       #
-      rating = Category.first(:name => "rating")
+      rating = Category.first(:name => 'rating')
       if rating
         Item.all.each do |item|
           t = item.tags.find { |t| t.category == rating }
@@ -119,14 +119,14 @@ module SimpleCataloger
     def update_categories
       h = {}
       Category.all.each do |category|
-        next if ["rating", "year", "unknown"].include?(category.name)
+        next if %w(rating year unknown).include?(category.name)
         h[category.name] = category.tags.collect { |tag| tag.name }
       end
       @config[:categories] = h
     end
 
     def write_config
-      File.open(@config_filepath, "w") { |f| f.write @config.to_yaml }
+      File.open(@config_filepath, 'w') { |f| f.write @config.to_yaml }
     end
 
     private

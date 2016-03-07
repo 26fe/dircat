@@ -4,12 +4,12 @@ module DirCat
   class CliDirCat < OptParseCommand::CliMain
 
     def self.command
-      "dircat"
+      'dircat'
     end
 
     def self.description
       "Simple set of command to build catalogs of files.\n" +
-          "Code https://github.com/tokiro/dircat. Feedback to tokiro.oyama@gmail.com"
+          'Code https://github.com/tokiro/dircat. Feedback to tokiro.oyama@gmail.com'
     end
 
     def self.version

@@ -5,7 +5,7 @@ module SimpleCataloger
     belongs_to :category
 
     has_many :taggings
-    has_many :items, :through => :taggings, :order => "name"
+    has_many :items, -> { order 'name' }, :through => :taggings
     has_many :images
 
     ##################################################
@@ -32,8 +32,8 @@ module SimpleCataloger
     RE_YEAR   = /^\d\d\d\d$/
 
     MATCHES = [
-        [RE_RATING, "rating", proc { |tag_name| tag_name.to_i }],
-        [RE_YEAR, "year", proc { |tag_name| tag_name.to_i }]
+        [RE_RATING, 'rating', proc { |tag_name| tag_name.to_i }],
+        [RE_YEAR, 'year', proc { |tag_name| tag_name.to_i }]
     ]
 
     #

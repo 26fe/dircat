@@ -10,11 +10,11 @@ module SimpleCataloger
       @app ||= WebServer
     end
 
-    it "should respond to /" do
-      pending "need integrate all code"
+    it 'should respond to /' do
+      pending 'need integrate all code'
       get '/'
       # pp last_response
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
 
