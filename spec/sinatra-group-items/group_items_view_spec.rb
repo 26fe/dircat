@@ -1,8 +1,8 @@
 # f_spec_helper = File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 # require f_spec_helper
 
-$:.unshift(File.join(File.dirname(__FILE__), '..'))
-$:.unshift(File.join(File.dirname(__FILE__), '..', '..', 'lib'))
+# $:.unshift(File.join(File.dirname(__FILE__), '..'))
+# $:.unshift(File.join(File.dirname(__FILE__), '..', '..', 'lib'))
 
 
 # test

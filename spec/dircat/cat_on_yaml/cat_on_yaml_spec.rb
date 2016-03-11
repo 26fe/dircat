@@ -35,8 +35,8 @@ describe CatOnYaml do
   end
 
   it '(dir2 - dir1): the difference from dir2 and dir1 is a file' do
-    cat1 = CatOnYaml.from_dir(File.join(@data_dir, "dir1"))
-    cat2 = CatOnYaml.from_dir(File.join(@data_dir, "dir2"))
+    cat1 = CatOnYaml.from_dir(File.join(@data_dir, 'dir1'))
+    cat2 = CatOnYaml.from_dir(File.join(@data_dir, 'dir2'))
 
     # dir2 contains one file more than dir1
     cat_diff = cat2 - cat1
@@ -50,14 +50,14 @@ describe CatOnYaml do
 
   # dir4 has an broken symlink, otherwise is identical to dir1
   it 'should build catalog from dir4' do
-    cat1 = CatOnYaml.from_dir(File.join(@data_dir, "dir4"))
+    cat1 = CatOnYaml.from_dir(File.join(@data_dir, 'dir4'))
     expect(cat1.size).to be == 3
     expect(cat1.bytes).to be == 20
   end
 
   context 'save to a file' do
     before do
-      @tmp_file = File.join(Dir.tmpdir, "dircat1.yaml")
+      @tmp_file = File.join(Dir.tmpdir, 'dircat1.yaml')
     end
 
     after do
