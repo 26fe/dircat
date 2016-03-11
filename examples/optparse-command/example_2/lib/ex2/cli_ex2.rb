@@ -6,7 +6,7 @@ class CliEx2 < OptParseCommand::CliMain
   end
 
   def self.description
-    "example of optparse-command gem"
+    'example of optparse-command gem'
   end
 
   def self.version
@@ -27,7 +27,7 @@ class CliEx2 < OptParseCommand::CliMain
     #
     # Logging
     #
-    parser.separator ""
+    parser.separator ''
     parser.separator "logging options:"
     parser.separator ""
 

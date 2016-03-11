@@ -11,12 +11,6 @@ require 'rack/test'
 require 'sinatra/base'
 
 
-# test
-require 'item'
-require 'sinatra/group_items'
-include Sinatra::GroupItems
-require 'test_app'
-# set :environment, :test
 
 RSpec.configure do |config|
 end

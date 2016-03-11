@@ -4,11 +4,10 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 
 describe 'example 1' do
-  #
+
   # load examples
-  #
-  d = File.join(File.dirname(__FILE__), %w{.. .. examples example_2 lib})
-  $:.unshift(d) unless $:.include? d
+  ex_path = File.realpath(File.join(File.dirname(__FILE__), %w{.. .. examples optparse-command example_2 lib}))
+  $:.unshift(ex_path) unless $:.include? ex_path
   require 'ex2'
 
   it 'ex2 -h' do

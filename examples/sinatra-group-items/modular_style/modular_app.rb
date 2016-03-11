@@ -1,4 +1,4 @@
-cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. .. lib}))
+cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. .. .. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)
 
 require 'sinatra/base'
@@ -20,4 +20,4 @@ class MyApp < Sinatra::Base
   end
 end
 
-MyApp.run!
+# MyApp.run!

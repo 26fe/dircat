@@ -2,15 +2,12 @@
 
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
-
 describe 'example 1' do
 
-  #
   # load examples
-  #
-  $:.unshift(File.join(File.dirname(__FILE__), %w{.. .. examples example_1}))
+  ex_path = File.realpath(File.join(File.dirname(__FILE__), %w{.. .. examples optparse-command example_1}))
+  $:.unshift(ex_path)
   require 'ex1'
-
 
   it 'ex1 -h' do
     out = capture_out { CliEx1.run %w{ -h } }.out

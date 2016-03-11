@@ -6,7 +6,7 @@ require 'pp'
 #
 # optparse-command
 #
-cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. .. lib}))
+cwd = File.expand_path(File.join(File.dirname(__FILE__), %w{ .. .. .. lib}))
 $:.unshift(cwd) unless $:.include?(cwd)
 require 'optparse-command'
 require 'optparse-command/extensions_open_struct'
