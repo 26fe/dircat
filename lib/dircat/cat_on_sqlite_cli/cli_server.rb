@@ -16,12 +16,12 @@ module SimpleCataloger
       opts.banner << "launch a webs server to browse the content of <catalog name>\n";
       opts.banner << "\n"
 
-      opts.on("-h", "--help", "Print this message") do
+      opts.on("-h", "--help", 'Print this message') do
         puts opts
         return 0
       end
 
-      opts.on("--version", "show the simple catalog version") do
+      opts.on("--version", 'show the simple catalog version') do
         puts "simple catalog version #{SimpleCatalog::version}"
         return 0
       end

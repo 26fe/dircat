@@ -22,7 +22,7 @@ and then print the difference with the format specified on output
 
     def option_parser(options)
       parser = super(options)
-      parser.on("-f FORMAT", "--fmt FORMAT", "format (simple, ruby)") do |v|
+      parser.on('-f FORMAT', '--fmt FORMAT', 'format (simple, ruby)') do |v|
         options.format = v
       end
       parser
@@ -30,8 +30,8 @@ and then print the difference with the format specified on output
 
     def exec(main, options, rest)
       if rest.length < 2
-        puts "you must provide two args (catalogs or directory)"
-        puts "-h to print help"
+        puts 'you must provide two args (catalogs or directory)'
+        puts '-h to print help'
         return false
       end
 

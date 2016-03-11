@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-#
 # std lib
-#
 require 'fileutils'
 require 'tmpdir'
 require 'yaml'
@@ -9,15 +7,12 @@ require 'ostruct'
 require 'optparse'
 require 'pp'
 
-#
 # rubygems
-#
-require 'optparse-command'
 require 'tree_rb'
 
-#
 # dircat
-#
+require 'optparse-command'
+
 require 'dircat/version'
 
 require 'dircat/cat_on_yaml/cat_on_yaml'

@@ -27,7 +27,7 @@ module DirCat
 
     def exec(main, options, rest)
       if rest.length < 1
-        puts "missing catalog!"
+        puts 'missing catalog!'
         puts "-h to print help"
         return 0
       end

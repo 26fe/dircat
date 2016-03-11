@@ -10,7 +10,7 @@ module SimpleCataloger
     end
 
     def self.description
-      "start server"
+      'start server'
     end
 
     def self.usage

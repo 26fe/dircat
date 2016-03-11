@@ -34,9 +34,9 @@ module SimpleCataloger
       days = (Time.now - time) / (60 * 60 * 24)
       case days.to_i
       when 0
-        "today"
+        'today'
       when 1
-        "yesterday"
+        'yesterday'
       else
         "#{sprintf("%i", days) } days ago"
       end

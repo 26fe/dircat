@@ -26,7 +26,7 @@ module DirCat
 
     def option_parser(options)
       parser = super(options)
-      parser.on("-f", "--force", "force write on existent file") do |v|
+      parser.on('-f', '--force', 'force write on existent file') do |v|
         options.force = true
       end
 

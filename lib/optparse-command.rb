@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 
-#
 # std lib
-#
 require 'ostruct'
 require 'yaml'
 require 'optparse'
 
-#
 # OptParseCommand
-#
-require 'optparse-command/version'
 require 'optparse-command/command_register'
 require 'optparse-command/runnable'
 require 'optparse-command/cli_main'

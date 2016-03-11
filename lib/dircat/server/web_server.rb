@@ -45,7 +45,7 @@ module SimpleCataloger
 
     get "/js/tooltips/tooltips.css" do
       content_type 'text/css', :charset => 'utf-8'
-      sass "/js/tooltips/tooltips".to_sym
+      sass '/js/tooltips/tooltips'.to_sym
     end
 
     get '/' do

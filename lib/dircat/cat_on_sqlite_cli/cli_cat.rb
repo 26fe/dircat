@@ -2,11 +2,11 @@
 class CliCat < OptParseCommand::CliMain
 
   def self.command
-    "simple_cataloger"
+    'simple_cataloger'
   end
 
   def self.description
-    "description"
+    'description'
   end
 
   def self.version

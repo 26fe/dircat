@@ -68,7 +68,7 @@ module OptParseCommand
           options.exit_value = 0
         end
 
-        parser.on("-v", "--[no-]verbose", "run verbosely") do |v|
+        parser.on('-v', '--[no-]verbose', 'run verbosely') do |v|
           options.verbose = v
         end
 
