@@ -1,7 +1,7 @@
 # require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 
-require (File.join(File.dirname(__FILE__), %w{ .. examples classic_style classic_app}))
+require (File.join(File.dirname(__FILE__), %w{ .. examples_sinatra_group_items classic_style classic_app}))
 require 'rspec'
 require 'rack/test'
 

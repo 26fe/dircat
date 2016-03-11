@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "dircat/version"
+require 'dircat/version'
 
 Gem::Specification.new do |gem|
 
@@ -24,8 +24,8 @@ Gem::Specification.new do |gem|
 
 
   gem.authors = %w{ Tokiro }
-  gem.email = "tokiro.oyama@gmail.com"
-  gem.homepage = "http://github.com/tokiro/dircat"
+  gem.email = 'tokiro.oyama@gmail.com'
+  gem.homepage = 'http://github.com/tokiro/dircat'
 
 
   #
@@ -34,21 +34,17 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency(%q<tree.rb>)
   gem.add_runtime_dependency(%q<optparse-command>)
-  gem.add_runtime_dependency(%q<sinatra-group-items>)
 
-  gem.add_runtime_dependency(%q<ansi>, [">= 0"])
+  gem.add_runtime_dependency(%q<ansi>, ['>= 0'])
 
-  # gem.add_runtime_dependency(%q<data_mapper>, [">= 0"])
-  # gem.add_runtime_dependency(%q<dm-sqlite-adapter>, [">= 0"])
-
-  gem.add_runtime_dependency(%q<activerecord>, [">= 0"])
+  gem.add_runtime_dependency(%q<activerecord>, ['>= 0'])
   # gem.add_runtime_dependency(%q<mysql2>, ["<= 0.2"])
-  gem.add_runtime_dependency(%q<sqlite3>, [">= 0"])
+  gem.add_runtime_dependency(%q<sqlite3>, ['>= 0'])
 
-  gem.add_runtime_dependency(%q<sinatra>, [">= 0"])
-  gem.add_runtime_dependency(%q<haml>, [">= 0"])
-  gem.add_runtime_dependency(%q<sass>, [">= 0"])
-  gem.add_runtime_dependency(%q<json>, [">= 0"])
+  gem.add_runtime_dependency(%q<sinatra>, ['>= 0'])
+  gem.add_runtime_dependency(%q<haml>, ['>= 0'])
+  gem.add_runtime_dependency(%q<sass>, ['>= 0'])
+  gem.add_runtime_dependency(%q<json>, ['>= 0'])
 
 
   gem.add_development_dependency(%q<rake>, ['>= 0'])
@@ -56,7 +52,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency(%q<bundler>, ['>= 0'])
   gem.add_development_dependency(%q<rspec>, ['>= 0'])
   gem.add_development_dependency(%q<webrat>, ['>= 0'])
-  gem.add_development_dependency(%q<sinatra>, ['>= 0'])
   gem.add_development_dependency(%q<rmagick>, ['>= 0'])
   gem.add_development_dependency(%q<rspec-collection_matchers>, ['>= 0'])
 
