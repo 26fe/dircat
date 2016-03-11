@@ -33,8 +33,6 @@ Gem::Specification.new do |gem|
   #
 
   gem.add_runtime_dependency(%q<tree.rb>)
-  gem.add_runtime_dependency(%q<optparse-command>)
-
   gem.add_runtime_dependency(%q<ansi>, ['>= 0'])
 
   gem.add_runtime_dependency(%q<activerecord>, ['>= 0'])

@@ -1,3 +1,7 @@
+== 2016-03-11
+
+* merging project optparse_command and sinatra_group_items
+
 == 2011-08-11
 
 * start merge with simple cataloger

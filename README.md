@@ -1,4 +1,6 @@
-# DIRCAT & Simple Cataloger (merging Simple Cataloger in progress)
+# DIRCAT & Simple Cataloger
+
+WARNING: never updated this sources from the 2011. I'm trying to put build it:-)
 
 ## DIRCAT
 
@@ -8,11 +10,6 @@ this catalog with another directory to detect duplicate, file change, and so.
 This utilities could be utilized as help to backup a directory
 or to find duplicates
 
-## Simple Cataloger
-
-An extremely simple cataloging tool. You can use it to index files stored on
-hard disks and create searchable catalogs that can be used without
-having access to original media.
 
 ### dircat build
 
@@ -57,6 +54,13 @@ sudo gem install gf-dircat -s gems.github.com
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
+
+### Simple Cataloger
+
+An extremely simple cataloging tool. You can use it to index files stored on
+hard disks and create searchable catalogs that can be used without
+having access to original media.
 
 
 ## Contributor
