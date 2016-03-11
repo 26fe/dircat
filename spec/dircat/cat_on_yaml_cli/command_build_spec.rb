@@ -30,7 +30,7 @@ describe CommandBuild do
     cat_expect = CatOnYaml.from_file(expect_filename)
     cat_result = CatOnYaml.from_file(result_filename)
 
-    expect((cat_result - cat_result)).to be == 0
+    expect((cat_result - cat_result).size).to be == 0
 
     expect((cat_result - cat_expect).size).to be == 0
     expect((cat_expect - cat_result).size).to be == 0
