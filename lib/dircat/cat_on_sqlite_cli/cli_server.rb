@@ -26,14 +26,14 @@ module SimpleCataloger
         return 0
       end
 
-      opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+      opts.on('-v', '--[no-]verbose', "Run verbosely") do |v|
         options[:verbose] = v
       end
 
       rest = opts.parse(argv)
 
       if rest.length < 1
-        puts "too few arguments"
+        puts 'too few arguments'
         puts "-h to print help"
         return 0
       end

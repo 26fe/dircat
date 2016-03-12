@@ -9,7 +9,7 @@ module SimpleCataloger
     end
 
     def self.description
-      "list items in catalog"
+      'list items in catalog'
     end
 
     def self.usage

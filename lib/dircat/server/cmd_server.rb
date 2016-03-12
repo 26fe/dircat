@@ -6,7 +6,7 @@ module SimpleCataloger
     CliCat.register_command(self)
 
     def self.command
-      "server"
+      'server'
     end
 
     def self.description

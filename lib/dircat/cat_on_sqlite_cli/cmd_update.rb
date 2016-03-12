@@ -12,7 +12,7 @@ module SimpleCataloger
     end
 
     def self.description
-      "update the content of catalog"
+      'update the content of catalog'
     end
 
     def self.usage
