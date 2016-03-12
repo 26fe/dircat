@@ -1,0 +1,56 @@
+%div
+  %h3
+    tag:
+    %b=@tag.name
+    %span.select-tags
+      category
+      %select.editable-select
+        - Category.order_by_name.each do |c|
+          %option{:selected=> @tag.category.id == c.id, :value => c.name }= c.name
+      %a
+        Save
+
+  .popup_items
+    %ul
+      - @tag.items.each do |item|
+        %li
+          %a{:href=>"/item/#{item.id}"}= "#{item.name} #{if item.rating then ' (r:' + item.rating.to_s + ')' else ' (r:unrated)' end}"
+
+  - unless @tag.images.empty?
+    #images.span-24.last
+      %h2= "Images"
+
+-# *********************************
+-# JS Model
+-# *********************************
+
+%script{:type=>"text/javascript"}
+  = "var images=#{@tag.images.to_a.to_json}"
+  = "var tag_id=#{@tag.id}"
+
+%script{:type=>"text/javascript", :src=>'/js/simple_catalog/images.js'}
+
+:javascript
+  $(function() {
+    $('.editable-select').editableSelect(
+      {
+        bg_iframe: true,
+        onSelect: function(list_item) {
+          // alert('List item text: '+ list_item.text());
+          // 'this' is a reference to the instance of EditableSelect
+          // object, so you have full access to everything there
+          // alert('Input value: '+ this.text.val());
+        },
+        case_sensitive: false,
+        items_then_scroll: 10
+      }
+    );
+    $('.select-tags a').click(
+      function(e) {
+        e.preventDefault(); // stop normal link click
+        var category_name = $('input.editable-select')[0].value
+        $.post("/ajax/set-category", {tag_id:tag_id, category_name:category_name}, function(xml) {
+          $('#feedback').html('tag settato');
+        });
+    });
+  });

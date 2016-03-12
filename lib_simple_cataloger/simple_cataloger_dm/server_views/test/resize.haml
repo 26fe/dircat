@@ -1,0 +1,32 @@
+Test resize
+
+%style(type="text/css")
+  :sass
+    #loader
+      :border 1px solid #ccc
+      :width 200px
+      :height 250px
+  
+    #loader.loading
+      :background url(img/spinner.gif) no-repeat center center
+
+#loader.loading
+
+:javascript
+  $(function () {
+    var img = new Image();
+    $(img)
+      .load(function () {
+        $(this).hide();
+          
+        $('#loader')
+          .removeClass('loading')
+          .append(this);
+        $(this).fadeIn()
+          .aeImageResize({height: 200, width: 250});
+      })
+      .error(function () {
+      })
+      .attr('src', '/test_catalog/folder.jpg');
+  });
+
